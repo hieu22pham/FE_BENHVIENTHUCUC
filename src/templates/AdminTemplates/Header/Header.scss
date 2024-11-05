@@ -1,0 +1,73 @@
+@import "../../../styles/common.scss";
+
+.header-container {
+    z-index         : 99;
+    display         : flex;
+    justify-content : space-between;
+    background-color: $colormain;
+    color           : $common-text-color;
+    position        : relative;
+
+    .navigate_home {
+        display        : inline-block;
+        line-height    : 40px;
+        color          : white;
+        text-decoration: none;
+        padding        : 0 15px;
+        height         : 40px;
+        border-left    : 1px solid #ccc;
+        border-right   : 1px solid #ccc;
+
+        i {
+            padding-right: 10px;
+        }
+
+        &:hover {
+            cursor          : pointer;
+            background-color: #0062a1;
+        }
+    }
+
+    .btn-logout {
+        color      : $common-text-color;
+        line-height: 40px;
+        height     : 40px;
+        padding    : 0 10px;
+
+        &:hover {
+            background-color: darken($colormain, 5);
+        }
+
+        i {
+            font-size: $base-size + 1px;
+        }
+    }
+
+    .languages {
+        .welcome {
+            padding-right: 10px;
+        }
+
+        .language-vi {
+            cursor : pointer;
+            opacity: 0.8;
+
+            &.active {
+                opacity: 1;
+                color  : orange;
+            }
+        }
+
+        .language-en {
+            margin-right: 15px;
+            margin-left : 10px;
+            cursor      : pointer;
+            opacity     : 0.8;
+
+            &.active {
+                opacity: 1;
+                color  : orange;
+            }
+        }
+    }
+}

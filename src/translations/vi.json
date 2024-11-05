@@ -1,0 +1,266 @@
+{
+    "homeHeader": {
+        "speciality": "Chuyên khoa",
+        "search-doctor": "Tìm bác sĩ theo chuyên khoa",
+        "health-facility": "Cơ sở y tế",
+        "select-room": "Chọn bệnh viện phòng khám",
+        "doctor": "Bác sĩ",
+        "select-doctor": "Chọn bác sĩ giỏi",
+        "fee": "Gói khám",
+        "check-health": "Khám sức khỏe tổng quát",
+        "support": "Hỗ trợ",
+        "welcome": "Xin chào, ",
+        "hambergerMenu": {
+            "home": "Trang chủ",
+            "examination-history": "Lịch hẹn",
+            "look-up": "Tra cứu lịch hẹn",
+            "contact": "Liên hệ",
+            "terms": "Điều khoản sử dụng",
+            "logout": "Đăng xuất",
+            "login": "Đăng nhập",
+            "register": "Đăng ký"
+        }
+    },
+    "banner": {
+        "title1": "NỀN TẢNG Y TẾ",
+        "title2": "chăm sóc sức khỏe toàn diện",
+        "examination": "Khám",
+        "speciality": "Chuyên khoa",
+        "clinic": "Phòng khám",
+        "doctor": "Bác sĩ",
+        "remote": "từ xa",
+        "generality": "tổng quát",
+        "test": "Xét nghiệm",
+        "medical": "y học",
+        "health": "Sức khỏe",
+        "spirit": "tinh thần",
+        "dentistry": "nha khoa",
+        "text-search": "Tìm kiếm"
+    },
+    "menu": {
+        "admin": {
+            "manage-user": "Người dùng",
+            "manage-doctor": "Quản lý bác sĩ",
+            "manage-admin": "Quản lý admin",
+            "crud": "CRUD user",
+            "crud-redux": "Quản lý người dùng",
+            "clinic": "Phòng khám",
+            "manage-clinic": "Quản lý phòng khám",
+            "specialty": "Chuyên khoa",
+            "manage-specialty": "Quản lý chuyên khoa",
+            "handbook": "Cẩm nang",
+            "manage-handbook": "Quản lý cẩm nang",
+            "profile": "Thông tin cá nhân",
+            "manage-profile": "Quản lý thông tin cá nhân"
+        },
+        "doctor": {
+            "manage-schedule": "Quản lý kế hoạch khám bệnh",
+            "manage-patient": "Quản lý bệnh nhân"
+        }
+    },
+    "manage-user": {
+        "title": "Quản lý người dùng",
+        "add": "Thêm mới người dùng",
+        "email": "Email",
+        "passWord": "Mật khẩu",
+        "firstName": "Họ",
+        "lastName": "Tên",
+        "phoneNumber": "Số điện thoại",
+        "address": "Địa chỉ",
+        "gender": "Giới tính",
+        "position": "Chức danh",
+        "role": "Vai trò",
+        "img": "Ảnh đại diện",
+        "choose": "Chọn",
+        "listUser": "Danh sách User",
+        "save": "Lưu user",
+        "edit": "Lưu thay đổi"
+    },
+    "manage-schedule": {
+        "title": "Quản lý kế hoạch khám bệnh của bác sĩ",
+        "choose-doctor": "Chọn bác sĩ",
+        "choose-date": "Chọn ngày",
+        "save": "Lưu thông tin"
+    },
+    "actions": {
+        "add": "Thêm",
+        "edit": "Sửa",
+        "delete": "Xóa",
+        "confirm": "Xác nhận",
+        "cancel": "Hủy"
+    },
+    "homepage": {
+        "out-standing-doctor": "Bác sĩ nổi bật",
+        "more-infor": "Xem thêm",
+        "popular-specialties": "Chuyên khoa",
+        "hand-book": "Tin tức",
+        "text-search": "Tìm kiếm",
+        "outstanding-medical-facilities": "Cơ sở y tế",
+        "text-about-media": "Truyền thông về PKDK Thu Cúc",
+        "footer": {
+            "company": "Phòng Khám ĐK Thu Cúc",
+            "address": "toà HH01, Eco LakeView số 32 Đại Từ",
+            "headquarters": "Trụ sở Hà Nội",
+            "support": "Hỗ trợ khách hàng"
+        }
+    },
+    "patient": {
+        "login": {
+            "userName": "Tài khoản",
+            "passWord": "Mật khẩu",
+            "login": "Đăng nhập",
+            "register": "Đăng ký tài khoản",
+            "other-app": "Đăng nhập cùng: ",
+            "forgot": "Quên mật khẩu?"
+        },
+        "register": {
+            "title": "ĐĂNG KÝ",
+            "email": "Email",
+            "passWord": "Mật khẩu",
+            "confirm": "Xác nhận mật khẩu",
+            "firstName": "Họ",
+            "lastName": "Tên",
+            "phoneNumber": "Số điện thoại",
+            "register": "Đăng ký"
+        },
+        "detail-doctor": {
+            "schedule": "Lịch khám",
+            "no-schedule": "Bác sĩ không có lịch hẹn trong thời gian này, vui lòng chọn thời gian khác!",
+            "choose": "Chọn ",
+            "book-free": " và đặt (miễn phí)"
+        },
+        "extra-infor-doctor": {
+            "text-address": "Địa chỉ khám",
+            "text-price": "Giá khám: ",
+            "text-view-detail": "Xem chi tiết",
+            "text-payment": "Người bệnh có thể thanh toán chi phí bằng hình thức: ",
+            "text-hide-price": "Ẩn bảng giá"
+        },
+        "booking-modal": {
+            "title": "Thông tin đặt lịch khám bệnh",
+            "fullName": "Họ và tên",
+            "phoneNumber": "Số điện thoại",
+            "email": "Email",
+            "address": "Địa chỉ liên hệ",
+            "reason": "Lý do khám",
+            "birthday": "Ngày sinh",
+            "gender": "Giới tính",
+            "btnConfirm": "Xác nhận",
+            "btnCancel": "Hủy",
+            "text-price": "Giá khám: ",
+            "free-booking": "Miễn phí đặt lịch",
+            "text-more": "Xem thêm"
+        },
+        "detail-clinic": {
+            "text-search": "Tìm kiếm",
+            "text-desc": "Giới thiệu"
+        },
+        "detail-speciality": {
+            "text-more": "Đọc thêm",
+            "text-hiden": "Ân"
+        },
+        "list-speciality": {
+            "text-title": "Danh sách chuyên khoa khám bệnh",
+            "text-examination": "Khám chuyên khoa",
+            "text-search": "Tìm kiếm"
+        },
+        "list-clinic": {
+            "text-title": "Danh sách cơ sở y tế dành cho bạn",
+            "text-examination": "Danh sách cơ sở y tế dành cho bạn",
+            "text-search": "Tìm kiếm"
+        },
+        "list-doctor": {
+            "text-title": "Danh sách bác sĩ dành cho bạn",
+            "text-examination": "Danh sách bác sĩ dành cho bạn",
+            "text-search": "Tìm kiếm"
+        },
+        "appointment-schedule": {
+            "text-appointment-schedule": "Lịch hẹn đã đặt",
+            "text-result": "Bạn chưa có lịch hẹn trên trình duyệt này.",
+            "text-title-lookup": "Tra cứu lịch hẹn",
+            "text-title-appointment-scheduled": "Lịch hẹn đã đặt",
+            "text-title-history": "Lịch sử khám"
+        }
+    },
+    "admin": {
+        "header": {
+            "text-home": "Trang chủ"
+        },
+        "manage-doctor": {
+            "title": "Tạo thông tin bác sĩ",
+            "select-doctor": "Chọn bác sĩ",
+            "intro": "Thông tin giới thiệu",
+            "save": "Lưu thông tin",
+            "add": "Tạo thông tin",
+            "price": "Giá khám bệnh",
+            "payment": "Phương thức thanh toán",
+            "province": "Tỉnh thành",
+            "specialty": "Chuyên khoa",
+            "clinic": "Phòng khám",
+            "select-specialty": "Chọn chuyên khoa",
+            "select-clinic": "Chọn phòng khám",
+            "name-clinic": "Tên phòng khám",
+            "address-clinic": "Địa chỉ phòng khám",
+            "note": "Ghi chú",
+            "listDoctor": "Danh sách bác sĩ"
+        },
+        "manage-specialty": {
+            "title": "Quản lý chuyên khoa",
+            "text-nameVi": "Tên Tiếng Việt",
+            "text-nameEn": "Tên Tiếng Anh",
+            "text-image": "Ảnh chuyên khoa",
+            "text-upload": "Tải ảnh ",
+            "text-desc": "Giới thiệu",
+            "text-errnameVi": "Tên tiếng Việt không được để trống",
+            "text-errnameEn": "Tên tiếng Anh không được để trống",
+            "text-errimage": "Ảnh chuyên khoa không được để trống",
+            "text-errdesc": "Giới thiệu không được để trống",
+            "save": "Lưu chuyên khoa",
+            "edit": "Lưu thay đổi"
+        },
+        "manage-clinic": {
+            "title": "Quản lý phòng khám",
+            "text-nameVi": "Tên Tiếng Việt",
+            "text-nameEn": "Tên Tiếng Anh",
+            "text-address": "Địa chỉ",
+            "text-image": "Ảnh chuyên khoa",
+            "text-upload": "Tải ảnh ",
+            "text-desc": "Giới thiệu",
+            "text-province": "Tỉnh thành",
+            "text-errnameVi": "Tên tiếng Việt không được để trống",
+            "text-errnameEn": "Tên tiếng Anh không được để trống",
+            "text-errimage": "Ảnh phòng khám không được để trống",
+            "text-errdesc": "Giới thiệu không được để trống",
+            "text-erraddress": "Địa chỉ không được để trống",
+            "save": "Lưu phòng khám",
+            "edit": "Lưu thay đổi"
+        },
+        "dashboard": {
+            "title": "Chào mừng trở lại 👋",
+            "desc": "Khám phá và quản lý dữ liệu của bạn một cách dễ dàng."
+        },
+        "manage-patient": {
+            "title": "Quản lý bệnh nhân",
+            "choose-date": "Chọn ngày khám"
+        },
+        "manage-profile": {
+            "title": "Quản lý hồ sơ",
+            "text-home": "Trang chủ",
+            "text-profile": "Hồ sơ",
+            "text-account": "Tài khoản",
+            "text-general": "Chung",
+            "text-security": "Bảo mật",
+            "email": "Email",
+            "firstName": "Họ",
+            "lastName": "Tên",
+            "phoneNumber": "Số điện thoại",
+            "gender": "Giới tính",
+            "address": "Địa chỉ",
+            "birthday": "Ngày sinh",
+            "save": "Lưu thay đổi"
+        },
+        "menu": {
+            "text-manage": "Quản lý"
+        }
+    }
+}

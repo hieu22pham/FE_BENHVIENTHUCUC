@@ -1,0 +1,77 @@
+.doctor-schedule_container {
+    // border-right: 1px solid green;
+
+    .schedules-date {
+        select {
+            outline         : none;
+            background-color: transparent;
+            color           : #337ab7;
+            border          : none;
+            border-bottom   : 1px solid #999;
+            border-radius   : 0;
+            font-size       : 14px;
+            font-family     : 'Montserrat', sans-serif;
+            font-weight     : bold;
+            padding         : 3px;
+        }
+    }
+
+    .schedules-available_time {
+        .text-calenders {
+            margin: 10px 0;
+            color : #333;
+
+            span {
+                text-transform: uppercase;
+                margin-left   : 5px;
+                font-weight   : 600;
+            }
+
+        }
+
+        .times {
+            transition: all 0.3s ease-in-out;
+
+            .times-content {
+                display  : flex;
+                flex-wrap: wrap;
+
+                button {
+
+                    padding         : 10px 15px;
+                    margin          : 5px 8px 5px 0;
+                    border          : none;
+                    outline         : none;
+                    background-color: #fff8ae;
+                    font-weight     : 600;
+                    font-size       : 13px;
+
+                    &:hover {
+                        text-decoration: none;
+                        cursor         : pointer;
+                        box-shadow     : 0px 0px 0px 2px #33B0E3 inset;
+                    }
+                }
+
+                .btn-vie {
+                    min-width: 23%;
+                }
+
+                .btn-en {
+                    min-width: 25%;
+                }
+
+            }
+
+            .book-free {
+                padding-top: 10px;
+            }
+
+            .no-schedule {
+                text-align: center;
+                font-style: italic;
+                font-size : 14px;
+            }
+        }
+    }
+}

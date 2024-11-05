@@ -1,0 +1,264 @@
+{
+    "homeHeader": {
+        "speciality": "Medical specialty",
+        "search-doctor": "Find a doctor by specialty",
+        "health-facility": "Health facilities",
+        "select-room": "Choose hospital clinic",
+        "doctor": "Doctor",
+        "select-doctor": "Choose a good doctor",
+        "fee": "Check up package",
+        "check-health": "General health check",
+        "support": "Support",
+        "welcome": "Welcome, ",
+        "hambergerMenu": {
+            "home": "Home",
+            "examination-history": "Appointment schedule",
+            "look-up": "Look up appointment schedules",
+            "contact": "Contact",
+            "terms": "Terms of use",
+            "logout": "Logout",
+            "login": "Login",
+            "register": "Register"
+        }
+    },
+    "banner": {
+        "title1": "MEDICAL FOUNDATION",
+        "title2": "Comprehensive health care",
+        "examination": "Examination",
+        "speciality": "Specialty",
+        "clinic": "Clinic",
+        "doctor": "Doctor",
+        "remote": "Telemedicine",
+        "generality": "General",
+        "test": "Testing",
+        "medical": "Medical",
+        "health": "Health",
+        "spirit": "Mental",
+        "dentistry": "Dental",
+        "text-search": "Search"
+    },
+    "menu": {
+        "admin": {
+            "manage-user": "Users",
+            "manage-doctor": "Manage Doctor",
+            "manage-admin": "Manage Admin",
+            "crud": "CRUD user",
+            "crud-redux": "Manage user",
+            "clinic": "Clinics",
+            "manage-clinic": "Manage Clinics",
+            "specialty": "Specialties",
+            "manage-specialty": "Manage Specialty",
+            "handbook": "Handbook",
+            "manage-handbook": "Manage Handbook",
+            "profile": "Profile",
+            "manage-profile": "Manage Profile"
+        },
+        "doctor": {
+            "manage-schedule": "Manage Doctor's schedule",
+            "manage-patient": "Manage Patients"
+        }
+    },
+    "manage-user": {
+        "title": "Manage User",
+        "add": "Add new user",
+        "email": "Email",
+        "passWord": "PassWord",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "phoneNumber": "Phone Number",
+        "address": "Address",
+        "gender": "Gender",
+        "position": "Position",
+        "role": "Role",
+        "img": "Avatar",
+        "choose": "Choose",
+        "listUser": "List User",
+        "save": "Save User",
+        "edit": "Edit user"
+    },
+    "manage-schedule": {
+        "title": "Manage doctor's examination plan",
+        "choose-doctor": "Choose Doctor",
+        "choose-date": "Choose Date",
+        "save": "Save Information"
+    },
+    "actions": {
+        "add": "Add",
+        "edit": "Edit",
+        "delete": "Delete",
+        "confirm": "Confirm",
+        "cancel": "Cancel"
+    },
+    "homepage": {
+        "out-standing-doctor": "Last Week's featured doctor",
+        "more-infor": "More",
+        "popular-specialties": "Specialties",
+        "hand-book": "News",
+        "text-search": "Search",
+        "outstanding-medical-facilities": "Medical facilities",
+        "text-about-media": "Communication about Thu Cuc TCI",
+        "footer": {
+            "company": "Thu Cuc TCI",
+            "address": "Building HH01, Eco LakeView, 32 Dai Tu Street",
+            "headquarters": "Hanoi headquarters",
+            "support": "Customer support"
+        }
+    },
+    "patient": {
+        "login": {
+            "userName": "UserName",
+            "passWord": "PassWord",
+            "login": "Login",
+            "register": "Register",
+            "other-app": "Or Login with: ",
+            "forgot": "Forgot password?"
+        },
+        "register": {
+            "title": "REGISTER",
+            "email": "Email",
+            "passWord": "PassWord",
+            "confirm": "Confirm Password",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "phoneNumber": "Phone Number",
+            "register": "Register"
+        },
+        "detail-doctor": {
+            "schedule": "Schedule",
+            "no-schedule": "The doctor does not have appointments scheduled for this time, please choose another time!",
+            "choose": "Choose ",
+            "book-free": " and book (free)"
+        },
+        "extra-infor-doctor": {
+            "text-address": "Address of examination",
+            "text-price": "Examination price: ",
+            "text-view-detail": "View detail",
+            "text-payment": "Patients can pay costs in the form of: ",
+            "text-hide-price": "Hide price list"
+        },
+        "booking-modal": {
+            "title": "Information on scheduling medical examinations",
+            "fullName": "Fullname",
+            "phoneNumber": "Phone number",
+            "email": "Email",
+            "address": "Address",
+            "reason": "Reason for examination",
+            "birthday": "Birthday",
+            "gender": "Gender",
+            "btnConfirm": "Confirm",
+            "btnCancel": "Cancel",
+            "text-price": "Price: ",
+            "free-booking": "Free booking",
+            "text-more": "View Detail"
+        },
+        "detail-clinic": {
+            "text-search": "Search",
+            "text-desc": "Description"
+        },
+        "detail-speciality": {
+            "text-more": "More",
+            "text-hiden": "Hiden"
+        },
+        "list-speciality": {
+            "text-title": "List of medical specialties",
+            "text-examination": "Specialized examination",
+            "text-search": "Search"
+        },
+        "list-clinic": {
+            "text-title": "List of medical facilities for you",
+            "text-examination": "List of medical facilities for you",
+            "text-search": "Search"
+        },
+        "list-doctor": {
+            "text-title": "List of doctors for you",
+            "text-examination": "List of doctors for you",
+            "text-search": "Search"
+        },
+        "appointment-schedule": {
+            "text-appointment-schedule": "Appointment scheduled",
+            "text-result": "You do not have an appointment scheduled in this browser.",
+            "text-title-lookup": "Look up appointment schedules",
+            "text-title-appointment-scheduled": "Appointment scheduled",
+            "text-title-history": "Examination history"
+        }
+    },
+    "admin": {
+        "header": {
+            "text-home": "Home Page"
+        },
+        "manage-doctor": {
+            "title": "Generate more information for doctors",
+            "select-doctor": "Choose Doctor",
+            "intro": "Introduction",
+            "add": "Create information",
+            "save": "Save information",
+            "price": "Price",
+            "payment": "Payment",
+            "province": "Province",
+            "specialty": "Specialty",
+            "clinic": "Clinic",
+            "select-specialty": "Choose Specialty",
+            "select-clinic": "Choose Clinic",
+            "name-clinic": "Clinic's name",
+            "address-clinic": "Clinic's address",
+            "note": "Note",
+            "listDoctor": "List Doctor"
+        },
+        "manage-specialty": {
+            "title": "Manage Specialty",
+            "text-nameVi": "Name's Vietnamese",
+            "text-nameEn": "Name's English",
+            "text-image": "Image Specialty",
+            "text-upload": "Upload image ",
+            "text-errnameVi": "Name's Vietnamese is empty",
+            "text-errnameEn": "Name's English is empty",
+            "text-errimage": "Image Specialty is empty",
+            "text-errdesc": "Description is empty",
+            "save": "Save Specialty",
+            "add": "Create Specialty"
+        },
+        "manage-clinic": {
+            "title": "Manage Clinic",
+            "text-nameVi": "Name's Vietnamese",
+            "text-nameEn": "Name's English",
+            "text-image": "Image Clinic",
+            "text-address": "Address",
+            "text-upload": "Upload image ",
+            "text-province": "Province",
+            "text-errnameVi": "Name's Vietnamese is empty",
+            "text-errnameEn": "Name's English is empty",
+            "text-errimage": "Image Clinic is empty",
+            "text-errdesc": "Description is empty",
+            "text-erraddress": "Address is empty",
+            "save": "Save Clinic",
+            "edit": "Edit Clinic"
+        },
+        "dashboard": {
+            "title": "Welcome back 👋",
+            "desc": "Explore and manage your data with ease."
+        },
+        "manage-patient": {
+            "title": "MANAGE PATIENT'S",
+            "choose-date": "Choose Date"
+        },
+        "manage-profile": {
+            "title": "Manage Profile",
+            "text-home": "Dashboard",
+            "text-profile": "Profile",
+            "text-account": "Account",
+            "text-general": "General",
+            "text-security": "Security",
+            "email": "Email",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "phoneNumber": "Phone Number",
+            "gender": "Gender",
+            "address": "Address",
+            "birthday": "Birthday",
+            "save": "Save Changes"
+        },
+        "menu": {
+            "text-manage": "Management"
+        }
+    }
+}

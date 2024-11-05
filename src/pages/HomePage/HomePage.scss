@@ -1,0 +1,538 @@
+//Dùng riêng
+.section-share {
+    border-bottom: 3px solid #efeef5;
+
+    &.section-medical-facility {
+
+        // background-color: #f5f5f5;
+        .section-customize {
+            cursor: pointer;
+
+            .container-content {
+                border: 2px solid #eee;
+                border-radius: 10px;
+                min-height: 300px;
+                padding: 20px 15px;
+            }
+        }
+    }
+
+    &.section-specialty {
+        .section-customize {
+            cursor: pointer;
+
+            .container-content {
+                border: 2px solid #eee;
+                border-radius: 10px;
+                min-height: 250px;
+                padding: 20px 15px;
+            }
+        }
+    }
+
+    &.section-handbook {
+        // background-color: #f5f5f5;
+    }
+
+    &.section-about {
+        background-image: url("../../assets/background/140311-background5.png");
+    }
+
+    &.section-doctor {
+        background-image: url("../../assets/background/140311-background5.png");
+    }
+
+
+
+    .section-body {
+        // border: 1px solid black;
+        margin-bottom: 20px;
+        margin-right: 5px;
+
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        color: rgb(26, 26, 26);
+
+        .section-customize {
+            margin: 5px;
+            padding: 10px 5px;
+            cursor: pointer;
+
+            &:hover .description {
+                color: #5f6dea;
+            }
+
+            .description {
+                padding-top: 20px;
+            }
+
+            .bg-img {
+                width: 100%;
+                height: 150px;
+                margin-bottom: 10px;
+                border-radius: 10px;
+
+                &.specialty-img {
+                    background-image: url("../../assets/images/specialty/112457-co-xuong-khop.jpg");
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #eee;
+                }
+
+                &.medical-facility-img {
+                    background-image: url("../../assets/images/medical-facility/083122lo-go-viet-duc.jpg");
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-color: #fff;
+                }
+
+                &.outstanding-doctor-img {
+                    // background-image: url("../../assets/images/out-standing-doctor/105401-bsckii-tran-minh-khuyen.jpg");
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #eee;
+                    width: 170px;
+                    height: 170px;
+                    margin: 0 auto;
+                    border-radius: 50%;
+                }
+
+                &.handbook-img {
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #eee;
+                    border: 1px solid;
+                    border-color: rgb(221, 221, 221);
+                }
+
+                &.img-number-1 {
+                    background-image: url("../../assets/images/handbook/a1_ngu-ngoi-bi-o-hoi.jpg");
+                }
+
+                &.img-number-2 {
+                    background-image: url("../../assets/images/handbook/a2_phan-biet-trao-nguoc-non-tro.jpg");
+                }
+
+                &.img-number-3 {
+                    background-image: url("../../assets/images/handbook/a3_can-trong-nhung-sai-lam-trong-dieu-tri-gerd.jpg");
+                }
+
+                &.img-number-4 {
+                    background-image: url("../../assets/images/handbook/a4_can-trong-nhung-sai-lam-trong-dieu-tri-gerd1.jpg");
+                }
+
+                &.img-number-5 {
+                    background-image: url("../../assets/images/handbook/a5_IMG_0830-e1687589265276-.jpg");
+                }
+
+                &.img-number-6 {
+                    background-image: url("../../assets/images/handbook/a6_uu-dai-tiem-chung.jpg");
+                }
+
+            }
+        }
+    }
+}
+
+.section-doctor {
+    .section-customize {
+        cursor: pointer;
+
+        .container-content {
+            // border : 1px solid #eee;
+            height: 245px;
+            padding: 10px 5px;
+        }
+    }
+}
+
+.section-about-container {
+    padding: 45px 0;
+    width: 1300px;
+    margin: auto;
+
+    .section-about-header {
+        text-align: center;
+        margin-bottom: 40px;
+
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+        }
+    }
+
+    .section-about-content {
+        display: flex;
+        flex-wrap: wrap;
+
+        .content-left {
+            width: 60%;
+
+            iframe {
+                border-radius: 10px;
+
+            }
+        }
+
+        .content-right {
+            width: 40%;
+            text-align: center;
+            margin-top: 10px;
+            padding-left: 20px;
+
+            ul {
+                list-style: none;
+                display: flex;
+
+                li {
+
+                    height: 65px;
+                    display: flex;
+                    margin-right: 10px;
+                    margin-left: 10px;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    z-index: 2;
+                    background-color: rgb(255, 255, 255);
+                    border-radius: 10px;
+                    width: calc(50% - 20px);
+
+
+                    .truyenthong-img {
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        display: inline-block;
+                        border-radius: 5px;
+                    }
+
+                    .suckhoedoisong-img {
+                        background-image: url("../../assets/images/truyenthong/suckhoedoisong.png");
+                        width: 162px;
+                        height: 50px;
+                        background-size: 142px 30px;
+                    }
+
+                    .vnexpress-img {
+                        background-image: url("../../assets/images/truyenthong/vnexpress.png");
+                        background-repeat: no-repeat;
+                        width: 183px;
+                        height: 50px;
+                        background-size: 163px 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Dùng chung
+.section-share {
+    .section-container {
+        padding: 20px 0 30px 0;
+        margin: 0 100px;
+        display: flex;
+        flex-direction: column;
+
+        .section-header {
+            // border: 1px solid green;
+            height: 60px;
+            margin-bottom: 20px;
+            padding: 15px;
+            position: relative;
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .title-section {
+                font-size: 22px;
+                font-weight: 600;
+            }
+
+            .btn-section {
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: rgb(218, 243, 246);
+                padding: 10px 15px;
+                border: none;
+                border-radius: 10px;
+                outline: none;
+                font-family: 'TikTokFont-Bold';
+                font-size: 20px;
+                color: #14c841;
+                // text-transform  : uppercase;
+            }
+        }
+    }
+}
+
+//reset slick-slider css
+.slick-prev {
+    left: 0 !important;
+    z-index: 99;
+    border-radius: 5px;
+    box-shadow: rgb(201, 236, 240) 2px 2px 5px;
+    border-color: rgb(181, 231, 237) !important;
+
+    &:hover {
+        opacity: 1 !important;
+    }
+}
+
+.slick-prev::before {
+    font-family: "" !important;
+    font-size: 0;
+}
+
+.slick-next {
+    right: 0 !important;
+    border-radius: 5px;
+    box-shadow: rgb(201, 236, 240) 2px 2px 5px;
+    border-color: rgb(181, 231, 237) !important;
+
+    &:hover {
+        opacity: 1 !important;
+    }
+}
+
+.slick-next::before {
+    font-family: "" !important;
+    font-size: 5px;
+}
+
+//Footer
+footer {
+    .home-footer {
+        background: #2d6a4f;
+        padding: 30px 0;
+        border-radius: 40px 40px 0 0;
+
+        .footer-logo {
+            max-width: 200px;
+            border-radius: 5px;
+        }
+
+        .footer-company {
+            margin: 15px 0;
+            font-size: 1.2rem;
+
+            h2 {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+        }
+
+        .footer-address {
+            padding: 5px 0;
+            font-size: 1.2rem;
+
+            span {
+                color: #14c841;
+            }
+        }
+    }
+
+    .home-footer2 {
+        background: #2d6a4f;
+        color: #4ddb15;
+        padding: 10px;
+        min-height: 58px;
+    }
+}
+
+/* Thiết lập cho màn hình nhỏ */
+@media (max-width: 767px) {
+    .section-share {
+        .section-container {
+            padding: 0;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+
+            .section-header {
+                // border: 1px solid green;
+                height: 60px;
+                margin-bottom: 20px;
+                padding: 15px;
+                position: relative;
+
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+
+                .title-section {
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+
+                .btn-section {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    background-color: rgb(218, 243, 246);
+                    padding: 10px 15px;
+                    border: none;
+                    border-radius: 10px;
+                    outline: none;
+                    font-family: 'TikTokFont-Bold';
+                    font-size: 14px;
+                    color: rgb(52, 146, 158);
+                    // text-transform  : uppercase;
+                }
+            }
+
+            .section-body {
+                font-size: 14px;
+            }
+        }
+
+        .section-about-container {
+            width: 100%;
+            padding: 20px;
+
+            .section-about-header {
+                h2 {
+                    font-size: 16px;
+                }
+            }
+
+            .section-about-content {
+                display: block;
+
+                .content-left {
+                    width: 100%;
+                }
+
+                .content-right {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    footer {
+        .home-footer {
+            background: #efefef;
+            padding: 30px 0;
+
+            .footer-logo {
+                max-width: 200px;
+                border-radius: 5px;
+            }
+
+            .footer-company {
+                margin: 15px 0;
+                font-size: 1.2rem;
+
+                h2 {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                }
+            }
+
+            .footer-address {
+                padding: 5px 0;
+                font-size: 1.2rem;
+
+                span {
+                    color: #1ed352;
+                }
+            }
+        }
+    }
+}
+
+/* Thiết lập cho màn hình trung bình */
+@media (min-width: 768px) and (max-width: 991px) {
+    .section-about-container {
+        width: 100%;
+        padding: 20px;
+
+        .section-about-header {
+            h2 {
+                font-size: 18px;
+            }
+        }
+
+        .section-about-content {
+            display: block;
+
+            .content-left {
+                width: 100%;
+            }
+
+            .content-right {
+                width: 100%;
+            }
+        }
+    }
+
+    footer {
+        .home-footer {
+            background: #efefef;
+            padding: 30px 0;
+
+            .footer-logo {
+                max-width: 200px;
+                border-radius: 5px;
+            }
+
+            .footer-company {
+                margin: 15px 0;
+                font-size: 1.2rem;
+
+                h2 {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                }
+            }
+
+            .footer-address {
+                padding: 5px 0;
+                font-size: 1.2rem;
+
+                span {
+                    color: #49bce2;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+/* Thiết lập cho màn hình lớn */
+@media (min-width: 992px) {
+    .section-about-container {
+        width: 100%;
+        padding: 20px;
+
+        .section-about-header {
+            h2 {
+                font-size: 32px;
+            }
+        }
+
+        .section-about-content {
+            display: flex;
+
+            .content-left {
+                width: 60%;
+            }
+
+            .content-right {
+                width: 40%;
+            }
+        }
+    }
+}

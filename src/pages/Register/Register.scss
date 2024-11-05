@@ -1,0 +1,144 @@
+.register-container {
+    background-color: #f1eff2;
+    height: calc(100vh - 52px);
+
+    .register-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-height: calc(100vh - 52px);
+
+        .Logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .card {
+            width: 80%;
+
+            .btn-register {
+                // background: linear-gradient(135deg,
+                //         rgba(34, 193, 195, 1) 0%,
+                //         rgba(253, 187, 45, 1) 100%);
+                background: #14c841;
+                width: 100%;
+                height: 35px;
+                margin: 10px 0;
+                outline: none;
+                border-radius: 15px;
+                border: none;
+                color: white;
+                font-size: 16px;
+            }
+        }
+    }
+
+
+    .register-bg_img {
+        background-image: url('../../assets/background/cover-14.cdc08a1d.jpg');
+        height: 100%;
+        width: 100%;
+        // position           : absolute;
+        // top                : 0;
+        // right              : 0;
+        background-size: cover;
+        background-position: 50%;
+
+        .style_shape__1HA08 {
+            background-color: #f1eff2;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 50px;
+            -webkit-clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 5% 100%, 0 100%);
+        }
+    }
+}
+
+/* Thiết lập cho màn hình nhỏ */
+@media (max-width: 767px) {
+    .register-container {
+        height: calc(100vh);
+
+        .register-content {
+            justify-content: flex-start;
+            align-items: center;
+
+            .Logo {
+                margin: 10px 0;
+            }
+
+            .card {
+
+                .card-header {
+                    padding: 0;
+
+                    h3 {
+                        font-size: 16px;
+                    }
+                }
+
+                .card-body {
+                    .mb3 {
+                        margin-bottom: 5px !important;
+                    }
+
+                    label {
+                        font-size: 12px !important;
+                    }
+
+                    input {
+                        font-size: 12px !important;
+                        height: 25px !important;
+                    }
+
+                    #inputGender {
+                        font-size: 12px !important;
+                        height: 25px !important;
+                    }
+                }
+            }
+
+            .register-bg_img {
+                display: none;
+            }
+        }
+
+        .register-bg_img {
+            display: none;
+        }
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .register-container {
+        .register-content {
+            .card {
+                .card-body {
+                    label {
+                        font-size: 12px !important;
+                    }
+
+                    input {
+                        font-size: 12px !important;
+                        height: 25px !important;
+                    }
+                }
+            }
+
+        }
+
+        .register-bg_img {
+            display: none;
+        }
+    }
+}

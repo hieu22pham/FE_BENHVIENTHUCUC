@@ -1,0 +1,268 @@
+.manage-profile-container {
+    .manage-profile-header {
+        margin-bottom: 40px;
+        margin-top   : 20px;
+
+        .manage-profile-title {
+            color      : rgb(33, 43, 54);
+            margin     : 0px 0px 8px !important;
+            font-weight: 700 !important;
+            line-height: 1.5 !important;
+            font-family: "Public Sans", sans-serif !important;
+        }
+
+        nav {
+            margin     : 0px;
+            line-height: 1.5;
+            font-size  : 1rem;
+            font-family: "Public Sans", sans-serif;
+            font-weight: 400;
+            color      : rgb(99, 115, 129);
+
+            ol {
+                display          : flex;
+                flex-wrap        : wrap;
+                -webkit-box-align: center;
+                align-items      : center;
+                padding          : 0px;
+                margin           : 0px;
+                list-style       : none;
+
+                li {
+                    display: inline-flex;
+                    margin : 2px 0px;
+
+                    &.breadcrums-separator {
+                        display     : flex;
+                        user-select : none;
+                        margin-left : 16px;
+                        margin-right: 16px;
+
+                        .doot {
+                            width           : 4px;
+                            height          : 4px;
+                            border-radius   : 50%;
+                            background-color: rgb(145, 158, 171);
+                        }
+                    }
+
+                    &:hover {
+                        a {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    >a {
+                        line-height: 1.57143;
+                        font-size  : 1rem;
+                        font-family: "Public Sans", sans-serif;
+                        font-weight: 400;
+
+                        margin                 : 0px;
+                        font-style             : inherit;
+                        font-variant           : inherit;
+                        font-stretch           : inherit;
+                        font-optical-sizing    : inherit;
+                        font-kerning           : inherit;
+                        font-feature-settings  : inherit;
+                        font-variation-settings: inherit;
+                        text-decoration        : none;
+                        line-height            : 1.57143;
+                        font-size              : 1rem;
+                        font-family            : "Public Sans", sans-serif;
+                        font-weight            : 400;
+                        -webkit-box-align      : center;
+                        align-items            : center;
+                        color                  : rgb(33, 43, 54);
+                        display                : inline-flex;
+                    }
+
+                    >div {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .manage-profile-body {
+        .custom-tabs {
+            .ant-tabs-nav {
+                .ant-tabs-nav-list {
+                    .ant-tabs-tab {
+                        color: rgb(99, 115, 129);
+                        /* Màu sắc khi chưa chọn */
+
+                    }
+                }
+            }
+        }
+
+
+        .profile-avatar-container {
+            background-color: rgb(255, 255, 255);
+            color           : rgb(33, 43, 54);
+            transition      : box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            background-image: none;
+            overflow        : hidden;
+            position        : relative;
+            box-shadow      : rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+            border-radius   : 16px;
+            z-index         : 0;
+            padding         : 24px;
+            padding         : 80px 24px 40px;
+
+            span {
+                height           : 24px;
+                min-width        : 24px;
+                line-height      : 0;
+                border-radius    : 6px;
+                cursor           : default;
+                -webkit-box-align: center;
+                align-items      : center;
+                white-space      : nowrap;
+                display          : inline-flex;
+                -webkit-box-pack : center;
+                justify-content  : center;
+                text-transform   : capitalize;
+                padding          : 0px 6px;
+                font-size        : 0.75rem;
+                font-weight      : 700;
+                transition       : all 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+                color            : rgb(17, 141, 87);
+                background-color : rgba(34, 197, 94, 0.16);
+                position         : absolute;
+                top              : 24px;
+                right            : 24px;
+            }
+
+            .avatar {
+                padding      : 8px;
+                margin       : auto;
+                width        : 144px;
+                height       : 144px;
+                cursor       : pointer;
+                overflow     : hidden;
+                border-radius: 50%;
+                border       : 1px dashed rgba(145, 158, 171, 0.2);
+
+                .upload-container {
+                    height          : 100%;
+                    width           : 100%;
+                    background-color: #eeee;
+                    border-radius   : 50%;
+
+                    .upload-image {
+                        width          : 100%;
+                        height         : 100%;
+                        display        : flex;
+                        justify-content: center;
+                        align-items    : center;
+
+
+                        .upload-placholder {
+                            color          : rgb(145, 158, 171);
+                            transition     : opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+                            display        : flex;
+                            flex-direction : column;
+                            justify-content: center;
+                            align-items    : center;
+                            width          : 100%;
+                            height         : 100%;
+                            border-radius  : 50%;
+                            background     : center center no-repeat;
+                            background-size: cover;
+                            cursor         : pointer;
+
+                            i {
+                                font-size: 20px;
+                            }
+
+                            div {
+                                font-size  : 1rem;
+                                padding-top: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .desc-img {
+                margin     : 24px auto 0px;
+                line-height: 1.5;
+                font-size  : 0.85rem;
+                font-family: "Public Sans", sans-serif;
+                font-weight: 400;
+                color      : rgb(145, 158, 171);
+                display    : block;
+                text-align : center;
+            }
+        }
+
+        .profile-container {
+            background-color: rgb(255, 255, 255);
+            color           : rgb(33, 43, 54);
+            transition      : box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            position        : relative;
+            box-shadow      : rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+            border-radius   : 16px;
+            z-index         : 0;
+            padding         : 24px;
+            min-height      : 300px;
+
+            .react-datepicker-popper {
+                z-index  : 10000;
+                transform: translateZ(0);
+                /* Đảm bảo duỗi popper */
+            }
+
+            .btn-save {
+                display        : flex;
+                justify-content: flex-end;
+            }
+        }
+
+        .change-password-container {
+            background-color: rgb(255, 255, 255);
+            color           : rgb(33, 43, 54);
+            transition      : box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            background-image: none;
+            overflow        : hidden;
+            position        : relative;
+            box-shadow      : rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+            border-radius   : 16px;
+            z-index         : 0;
+            padding         : 24px;
+            width           : 80%;
+
+            input {
+                padding-top   : 20px;
+                padding-bottom: 20px;
+            }
+
+            .login-input {
+                margin: 7px 0;
+
+
+                .custom-input-password {
+                    position: relative;
+
+                    i {
+                        position: absolute;
+                        right   : 5px;
+                        top     : 14px;
+                        cursor  : pointer;
+                    }
+                }
+            }
+
+            .btn-save {
+                margin-top     : 30px;
+                display        : flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+
+
+}

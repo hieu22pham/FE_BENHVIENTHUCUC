@@ -1,0 +1,18 @@
+.manage-patient_container {
+    max-width: 1350px;
+    margin   : 0 auto;
+
+    .m-p-title {
+        text-align    : center;
+        text-transform: uppercase;
+        margin        : 30px 0;
+        font-weight   : 700;
+        line-height   : 1.5;
+        font-size     : 1.25rem;
+        font-family   : "Public Sans", sans-serif;
+    }
+
+    .manage-patient_body {
+        padding: 20px 0;
+    }
+}

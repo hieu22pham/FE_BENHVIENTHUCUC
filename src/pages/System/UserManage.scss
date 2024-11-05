@@ -1,0 +1,86 @@
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td,
+#customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+    background-color: #ddd;
+}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04aa6d;
+    color: white;
+}
+
+.btn-Edit {
+    width: 50px;
+    outline: none !important;
+    border: none;
+    background-color: transparent;
+    color: orange;
+
+    &:hover {
+        background-color: transparent !important;
+        color: orange !important;
+    }
+}
+
+.btn-Delete {
+    outline: none !important;
+    border: none;
+    background-color: transparent;
+}
+
+// .users-container {
+//     // overflow: auto;
+//     // height: 100vh;
+// }
+
+.modal-user-container {
+    .modal-content {
+        .modal-header {
+            .btn-close {
+                position: relative !important;
+            }
+        }
+    }
+}
+
+.modal-user-body {
+    display: flex;
+    gap: 10px; //khoảng cách giữa các phần tử con trong flex
+    flex-wrap: wrap;
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        width: 49%;
+
+        //viết class ngang hàng vs input này
+        &.max-width-input {
+            width: 100%;
+        }
+
+        input {
+            border-radius: 3px;
+            border: 1px solid grey;
+            height: 30px;
+            padding-left: 10px;
+            outline: none;
+        }
+    }
+}

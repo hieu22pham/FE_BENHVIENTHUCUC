@@ -1,0 +1,39 @@
+@import "variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+$fa-font-path: "~@fortawesome/fontawesome-free-webfonts/webfonts";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-regular.scss";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-brands.scss";
+
+@import "base";
+@import "form";
+
+* {
+    padding   : 0;
+    margin    : 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'TikTokFont-Bold';
+    src        : url('../assets/fronts/TikTokFont-Semibold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'TikTokFont-Regular';
+    src        : url('../assets/fronts/TikTokFont-Regular.woff2') format('woff2');
+}
+
+
+body {
+    font-family: 'TikTokFont-Regular', Arial, Tahoma, sans-serif;
+    font-size  : 16px;
+}
+
+
+// .main-container {
+//     // overflow-y: scroll;
+//     height: 100vh; //vượt quá chiều cao màn hình thì sẽ scroll
+// }
