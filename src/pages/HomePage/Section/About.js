@@ -20,7 +20,7 @@ class About extends Component {
                                     width="100%"
                                     height="400"
                                     src="https://www.youtube.com/embed/Dts7MuVTl1o"
-                                    title="Hệ thống Y tế Thu Cúc - Chăm sóc sức khỏe trọn đời cho bạn"
+                                    title="Hệ thống Y tế Thu Cúc  - Chăm sóc sức khỏe trọn đời cho bạn"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowFullScreen
