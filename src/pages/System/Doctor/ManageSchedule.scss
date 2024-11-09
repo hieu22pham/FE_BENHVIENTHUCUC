@@ -1,36 +1,40 @@
 .manage-schedule_container {
     .m-s-title {
-        text-align    : center;
+        text-align: center;
         text-transform: uppercase;
-        margin        : 30px 0;
-        font-weight   : 700;
-        line-height   : 1.5;
-        font-size     : 1.25rem;
-        font-family   : "Public Sans", sans-serif;
+        margin: 30px 0;
+        font-weight: 700;
+        line-height: 1.5;
+        font-size: 1.25rem;
+        font-family: "Public Sans", sans-serif;
     }
 
     .container {
 
         background-color: rgb(255, 255, 255);
-        color           : rgb(33, 43, 54);
-        transition      : box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        color: rgb(33, 43, 54);
+        transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
         background-image: none;
-        position        : relative;
-        box-shadow      : rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
-        border-radius   : 16px;
-        z-index         : 0;
-        padding         : 24px;
+        position: relative;
+        box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+        border-radius: 16px;
+        z-index: 0;
+        padding: 24px;
+
+        .display-clinic {
+            display: none;
+        }
 
         .pick-hour_container {
             // border        : 1px solid red;
-            padding-top   : 20px;
+            padding-top: 20px;
             padding-bottom: 20px;
-            display       : flex;
-            gap           : 20px;
-            flex-wrap     : wrap;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
 
             .btn-schedule {
-                border : 1px solid gray;
+                border: 1px solid gray;
                 padding: 5px 15px;
 
                 &.active {

@@ -11,7 +11,7 @@
             .container-content {
                 border: 2px solid #eee;
                 border-radius: 10px;
-                min-height: 300px;
+                min-height: 300px; //300
                 padding: 20px 15px;
             }
         }
@@ -22,7 +22,7 @@
             cursor: pointer;
 
             .container-content {
-                border: 2px solid #eee;
+                border: 2px solid #4a4747;
                 border-radius: 10px;
                 min-height: 250px;
                 padding: 20px 15px;
@@ -35,7 +35,10 @@
     }
 
     &.section-about {
-        background-image: url("../../assets/background/140311-background5.png");
+        background-image: url("../../assets/background/banner_about.PNG");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     &.section-doctor {
@@ -74,15 +77,15 @@
                 border-radius: 10px;
 
                 &.specialty-img {
-                    background-image: url("../../assets/images/specialty/112457-co-xuong-khop.jpg");
+                    background-image: url("../../assets/images/specialty/khoa_rang_ham_mat_2.jpg");
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-size: cover;
-                    background-color: #eee;
+                    background-color: #f6b8b8;
                 }
 
                 &.medical-facility-img {
-                    background-image: url("../../assets/images/medical-facility/083122lo-go-viet-duc.jpg");
+                    // background-image: url("../../assets/images/medical-about/he-thong-y-te-thu-cuc-tci-chinh-thuc-khai-truong-co-so.jpg");
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-size: contain;
@@ -157,7 +160,7 @@
     margin: auto;
 
     .section-about-header {
-        text-align: center;
+        text-align: left;
         margin-bottom: 40px;
 
         h2 {
@@ -175,7 +178,6 @@
 
             iframe {
                 border-radius: 10px;
-
             }
         }
 
@@ -185,48 +187,12 @@
             margin-top: 10px;
             padding-left: 20px;
 
-            ul {
-                list-style: none;
-                display: flex;
-
-                li {
-
-                    height: 65px;
-                    display: flex;
-                    margin-right: 10px;
-                    margin-left: 10px;
-                    justify-content: center;
-                    align-items: center;
-                    position: relative;
-                    z-index: 2;
-                    background-color: rgb(255, 255, 255);
-                    border-radius: 10px;
-                    width: calc(50% - 20px);
-
-
-                    .truyenthong-img {
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        display: inline-block;
-                        border-radius: 5px;
-                    }
-
-                    .suckhoedoisong-img {
-                        background-image: url("../../assets/images/truyenthong/suckhoedoisong.png");
-                        width: 162px;
-                        height: 50px;
-                        background-size: 142px 30px;
-                    }
-
-                    .vnexpress-img {
-                        background-image: url("../../assets/images/truyenthong/vnexpress.png");
-                        background-repeat: no-repeat;
-                        width: 183px;
-                        height: 50px;
-                        background-size: 163px 30px;
-                    }
-                }
+            p {
+                text-align: justify;
+                font-style: italic;
+                padding-top: 30px;
             }
+
         }
     }
 }
@@ -278,9 +244,9 @@
 .slick-prev {
     left: 0 !important;
     z-index: 99;
-    border-radius: 5px;
+    border-radius: 20px;
     box-shadow: rgb(201, 236, 240) 2px 2px 5px;
-    border-color: rgb(181, 231, 237) !important;
+    border-color: rgb(245, 63, 35) !important;
 
     &:hover {
         opacity: 1 !important;
@@ -294,9 +260,9 @@
 
 .slick-next {
     right: 0 !important;
-    border-radius: 5px;
+    border-radius: 20px;
     box-shadow: rgb(201, 236, 240) 2px 2px 5px;
-    border-color: rgb(181, 231, 237) !important;
+    border-color: rgb(12, 237, 27) !important;
 
     &:hover {
         opacity: 1 !important;
@@ -315,18 +281,33 @@ footer {
         padding: 30px 0;
         border-radius: 40px 40px 0 0;
 
-        .footer-logo {
-            max-width: 200px;
-            border-radius: 5px;
-        }
+        .footer-logo-company {
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-        .footer-company {
-            margin: 15px 0;
-            font-size: 1.2rem;
+            .footer-logo {
+                max-width: 200px;
+                border-radius: 5px;
+            }
 
-            h2 {
+            .footer-company {
+                margin: 15px 0;
                 font-size: 1.2rem;
-                font-weight: bold;
+
+                h2 {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                }
+
+                .icon-right {
+                    margin-right: 10px;
+                }
+
+                p {
+                    color: #cdc7c7;
+                }
             }
         }
 
@@ -335,7 +316,12 @@ footer {
             font-size: 1.2rem;
 
             span {
-                color: #14c841;
+                color: #cdc7c7;
+
+            }
+
+            p {
+                color: #cdc7c7;
             }
         }
     }
@@ -421,8 +407,9 @@ footer {
 
     footer {
         .home-footer {
-            background: #efefef;
+            background: #c8d6e5;
             padding: 30px 0;
+
 
             .footer-logo {
                 max-width: 200px;
@@ -437,11 +424,24 @@ footer {
                     font-size: 1.2rem;
                     font-weight: bold;
                 }
+
+                span {
+                    color: #17e043;
+                }
+
+                p {
+                    color: #17e043 !important;
+                }
             }
+
 
             .footer-address {
                 padding: 5px 0;
                 font-size: 1.2rem;
+
+                p {
+                    color: #14c841;
+                }
 
                 span {
                     color: #1ed352;
@@ -478,7 +478,7 @@ footer {
 
     footer {
         .home-footer {
-            background: #efefef;
+            background: #695a5d;
             padding: 30px 0;
 
             .footer-logo {
@@ -494,6 +494,10 @@ footer {
                     font-size: 1.2rem;
                     font-weight: bold;
                 }
+
+                p {
+                    color: #ddd;
+                }
             }
 
             .footer-address {
@@ -501,7 +505,7 @@ footer {
                 font-size: 1.2rem;
 
                 span {
-                    color: #49bce2;
+                    color: #ddd;
                 }
             }
         }

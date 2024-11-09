@@ -185,6 +185,29 @@ class HomeHeader extends Component {
                             </Link>
                         </div>
                         <div className="center-content d-none d-lg-flex">
+                            {/* PHẦN THÊM */}
+                            <Link
+                                to={routes.HOMEPAGE}
+                                className="child-content"
+                            >
+                                <div to={"/detail-clinic/6"}>
+                                    <b>
+                                        <FormattedMessage id="homeHeader.home" />
+                                    </b>
+                                </div>
+                            </Link>
+                            <Link
+                                to={routes.ABOUT_CLINIC}
+                                className="child-content"
+                            >
+                                <div to={"/detail-clinic/6"}>
+                                    <b>
+                                        <FormattedMessage id="homeHeader.about-clinic" />
+                                    </b>
+                                </div>
+                            </Link>
+
+                            {/* KẾT THÚC PHẦN RIÊNG */}
                             <Link
                                 to={routes.LIST_SPECIALTY}
                                 className="child-content"
@@ -194,11 +217,11 @@ class HomeHeader extends Component {
                                         <FormattedMessage id="homeHeader.speciality" />
                                     </b>
                                 </div>
-                                <div className="sub-title">
+                                {/* <div className="sub-title">
                                     <FormattedMessage id="homeHeader.search-doctor" />
-                                </div>
+                                </div> */}
                             </Link>
-                            <Link
+                            {/* <Link
                                 to={routes.LIST_CLINIC}
                                 className="child-content"
                             >
@@ -210,7 +233,7 @@ class HomeHeader extends Component {
                                 <div className="sub-title">
                                     <FormattedMessage id="homeHeader.select-room" />
                                 </div>
-                            </Link>
+                            </Link> */}
                             <Link
                                 to={routes.LIST_DOCTOR}
                                 className="child-content"
@@ -220,9 +243,9 @@ class HomeHeader extends Component {
                                         <FormattedMessage id="homeHeader.doctor" />
                                     </b>
                                 </div>
-                                <div className="sub-title">
+                                {/* <div className="sub-title">
                                     <FormattedMessage id="homeHeader.select-doctor" />
-                                </div>
+                                </div> */}
                             </Link>
                             {/* <div className="child-content">
                                 <div>
@@ -493,12 +516,12 @@ class HomeHeader extends Component {
                                                                     backgroundImage: `url(${item.image})`,
                                                                 }}
                                                             ></div>
-                                                            {/* <h4>
+                                                            <h4>
                                                                 {language ===
                                                                     LANGUAGE.VI
                                                                     ? `${item.positionData.valueVi} ${item.firstName} ${item.lastName}`
                                                                     : `${item.positionData.valueEn} ${item.firstName} ${item.lastName}`}
-                                                            </h4> */}
+                                                            </h4>
                                                             <div className="xoa"></div>
                                                         </Link>
                                                     );

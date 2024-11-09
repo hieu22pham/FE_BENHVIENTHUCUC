@@ -1,11 +1,10 @@
 {
     "homeHeader": {
+        "home": "Trang chủ",
         "speciality": "Chuyên khoa",
-        "search-doctor": "Tìm bác sĩ theo chuyên khoa",
+        "about-clinic": "Giới thiệu",
         "health-facility": "Cơ sở y tế",
-        "select-room": "Chọn bệnh viện phòng khám",
         "doctor": "Bác sĩ",
-        "select-doctor": "Chọn bác sĩ giỏi",
         "fee": "Gói khám",
         "check-health": "Khám sức khỏe tổng quát",
         "support": "Hỗ trợ",
@@ -96,11 +95,12 @@
         "hand-book": "Tin tức",
         "text-search": "Tìm kiếm",
         "outstanding-medical-facilities": "Cơ sở y tế",
-        "text-about-media": "Truyền thông về PKDK Thu Cúc",
+        "text-about-media": "Truyền thông nói về PKDK Thu Cúc",
+        "text-about-media-talk": "Hệ thống phòng khám Đa khoa Thu Cúc luôn được đánh giá cao về sự khang trang, rộng rãi, tiện nghi, mang đến sự thoải mái cho mọi khách hàng. Phòng khám được phân chia thành nhiều khu vực để phục vụ các chức năng riêng.",
         "footer": {
             "company": "Phòng Khám ĐK Thu Cúc",
             "address": "toà HH01, Eco LakeView số 32 Đại Từ",
-            "headquarters": "Trụ sở Hà Nội",
+            "headquarters": "Địa chỉ phòng khám",
             "support": "Hỗ trợ khách hàng"
         }
     },

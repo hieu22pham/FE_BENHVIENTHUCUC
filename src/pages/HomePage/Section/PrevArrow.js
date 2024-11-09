@@ -15,14 +15,14 @@ export default function PrevArrow(props) {
                 width: "44px",
                 height: "48px",
                 border: "2px solid #d7d7d7",
-                opacity: "0.5",
+                opacity: "0.8",
                 textAlign: "center",
             }}
             onClick={onClick}
         >
             <i
                 className="fas fa-angle-left"
-                style={{ fontSize: "30px", color: "#959595", opacity: 0.5 }}
+                style={{ fontSize: "30px", color: "#ff302f", opacity: 0.8 }}
             ></i>
         </div>
     );

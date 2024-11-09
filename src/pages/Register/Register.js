@@ -192,7 +192,7 @@ class Register extends Component {
                             <div className="Logo  mb-sm-2">
                                 <img
                                     src={require("../../assets/background/logo_remove1.png")}
-                                    alt="HealthBookings"
+                                    alt=""
                                 />
                             </div>
                             <div className="card">

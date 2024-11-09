@@ -354,26 +354,22 @@ class ManageDoctor extends Component {
                                 {listDoctor.map((item) => (
                                     <Option key={item.id} value={item.id}>
                                         {language === LANGUAGE.VI
-                                            ? `${item.firstName} ${
-                                                  item.lastName
-                                              } - ${
-                                                  item.Doctor_Infor
-                                                      .specialtyData.nameVi
-                                                      ? item.Doctor_Infor
-                                                            .specialtyData
-                                                            .nameVi
-                                                      : ""
-                                              }`
-                                            : `${item.lastName} ${
-                                                  item.firstName
-                                              } - ${
-                                                  item.Doctor_Infor
-                                                      .specialtyData.nameEn
-                                                      ? item.Doctor_Infor
-                                                            .specialtyData
-                                                            .nameEn
-                                                      : ""
-                                              }`}
+                                            ? `${item.firstName} ${item.lastName
+                                            } - ${item.Doctor_Infor
+                                                .specialtyData.nameVi
+                                                ? item.Doctor_Infor
+                                                    .specialtyData
+                                                    .nameVi
+                                                : ""
+                                            }`
+                                            : `${item.lastName} ${item.firstName
+                                            } - ${item.Doctor_Infor
+                                                .specialtyData.nameEn
+                                                ? item.Doctor_Infor
+                                                    .specialtyData
+                                                    .nameEn
+                                                : ""
+                                            }`}
                                     </Option>
                                 ))}
                             </Select>
@@ -510,7 +506,7 @@ class ManageDoctor extends Component {
                                 ))}
                             </Select>
                         </div>
-                        <div className="col-lg-4 col-sm-12 form-group">
+                        {/* <div className="col-lg-4 col-sm-12 form-group">
                             <label>
                                 <FormattedMessage
                                     id={"admin.manage-doctor.name-clinic"}
@@ -525,7 +521,8 @@ class ManageDoctor extends Component {
                                 value={nameClinic}
                                 name="nameClinic"
                             />
-                        </div>
+                        </div> */}
+                        {/* ĐÂY NHẤT */}
                         <div className="col-lg-4 col-sm-12 form-group">
                             <label>
                                 <FormattedMessage
@@ -599,7 +596,7 @@ class ManageDoctor extends Component {
                                 ))}
                             </Select>
                         </div>
-                        <div className="col-lg-4 col-sm-12 form-group">
+                        <div style={{ display: "none" }} className="col-lg-4 col-sm-12 form-group">
                             <label>
                                 <FormattedMessage
                                     id={"admin.manage-doctor.select-clinic"}
@@ -637,6 +634,7 @@ class ManageDoctor extends Component {
                                 ))}
                             </Select>
                         </div>
+                        {/* ĐÂY NHẤT */}
                     </div>
 
                     <div className="manage-doctor-editor mt-3">

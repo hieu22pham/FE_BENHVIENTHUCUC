@@ -7,8 +7,8 @@ export default class HomeFooter extends Component {
         return (
             <footer>
                 <div className="home-footer px-5">
-                    <div className="d-lg-flex d-sm-block">
-                        <div className="col-lg-6 col-sm-12">
+                    <div className="d-lg-flex d-sm-block content-footer">
+                        <div className="col-lg-6 col-sm-12 footer-logo-company ">
                             <NavLink to="/home">
                                 <img
                                     title="Logo"
@@ -18,14 +18,9 @@ export default class HomeFooter extends Component {
                                 />
                             </NavLink>
                             <div className="footer-company">
-                                <h2>
-                                    <FormattedMessage
-                                        id={"homepage.footer.company"}
-                                    />
-                                </h2>
                                 <p>
-                                    <span>
-                                        <i className="fas fa-map-marker-alt"></i>
+                                    <span >
+                                        <i className="fas fa-map-marker-alt icon-right"></i>
                                     </span>
                                     <FormattedMessage
                                         id={"homepage.footer.address"}
@@ -33,8 +28,8 @@ export default class HomeFooter extends Component {
                                 </p>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-sm-12"></div>
-                        <div className="col-lg-3 col-sm-12">
+                        {/* <div className="col-lg-3 col-sm-12"></div> */}
+                        <div className="col-lg-6 col-sm-12 text-center">
                             <div className="footer-address">
                                 <strong>
                                     <FormattedMessage
@@ -42,9 +37,11 @@ export default class HomeFooter extends Component {
                                     />
                                 </strong>
                                 <br />
-                                <FormattedMessage
-                                    id={"homepage.footer.address"}
-                                />
+                                <p>
+                                    <FormattedMessage
+                                        id={"homepage.footer.address"}
+                                    />
+                                </p>
                             </div>
                             <div className="footer-address">
                                 <strong>
@@ -53,12 +50,15 @@ export default class HomeFooter extends Component {
                                     />
                                 </strong>
                                 <br />
-                                ThuCucAdmin@gmail.com
+                                <p>
+                                    ThuCucAdmin@gmail.com
+                                </p>
+
                             </div>
                             <div className="footer-address">
                                 <strong>Hotline</strong>
                                 <br />
-                                <span>0123-438-375</span> {"(7h30 - 18h)"}
+                                <span>0123-438-375 (7h30 - 18h) </span>
                             </div>
                         </div>
                     </div>

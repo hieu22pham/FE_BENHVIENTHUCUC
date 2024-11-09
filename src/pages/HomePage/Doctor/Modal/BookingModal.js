@@ -66,7 +66,7 @@ class BookingModal extends Component {
                 genders: this.buildDataGender(this.props.gendersRedux),
                 selectedGender:
                     this.props.gendersRedux &&
-                    this.props.gendersRedux.length > 0
+                        this.props.gendersRedux.length > 0
                         ? this.props.gendersRedux[0].keyMap
                         : "",
             });
@@ -144,14 +144,14 @@ class BookingModal extends Component {
             let date =
                 language === LANGUAGE.VI
                     ? this.capitalizeFirstLetter(
-                          moment
-                              .unix(+dataTime.date / 1000)
-                              .format("dddd - DD/MM/YYYY")
-                      )
+                        moment
+                            .unix(+dataTime.date / 1000)
+                            .format("dddd - DD/MM/YYYY")
+                    )
                     : moment
-                          .unix(+dataTime.date / 1000)
-                          .locale("en")
-                          .format("ddd - MM/DD/YYYY");
+                        .unix(+dataTime.date / 1000)
+                        .locale("en")
+                        .format("ddd - MM/DD/YYYY");
 
             return `${time} - ${date}`;
         }
@@ -546,7 +546,7 @@ class BookingModal extends Component {
                                     <li className="text-note">
                                         {`Ghi rõ họ và tên, viết hoa chữ cái đầu
                                         tiên ví dụ: `}
-                                        <b>Đỗ Mạnh Hùng</b>
+                                        <b>Trịnh Bá Nhất</b>
                                     </li>
                                     <li className="text-note">
                                         Điền đầy đủ thông tin trước khi xác nhận

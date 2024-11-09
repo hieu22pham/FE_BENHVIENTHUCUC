@@ -92,7 +92,7 @@ class DetailClinic extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {}
+    componentDidUpdate(prevProps, prevState, snapshot) { }
 
     handleOnChangeSelect = async (event) => {
         // console.log("check onChange: ", event.target.value);
@@ -193,7 +193,7 @@ class DetailClinic extends Component {
                     <div
                         className="detail-clinic_header"
                         style={{
-                            backgroundImage: `url(${require("../../../assets/images/detail_specialty/114348-bv-viet-duc.jpg")})`,
+                            backgroundImage: `url(${require("../../../assets/images/detail_specialty/he-thong-y-te-thu-cuc-tci-chinh-thuc-khai-truong-co-so.jpg")})`,
                         }}
                     >
                         <div className="detail-clinic_content">

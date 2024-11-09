@@ -1,11 +1,11 @@
 {
     "homeHeader": {
+        "home": "Home",
         "speciality": "Medical specialty",
         "search-doctor": "Find a doctor by specialty",
+        "about-clinic": "About",
         "health-facility": "Health facilities",
-        "select-room": "Choose hospital clinic",
         "doctor": "Doctor",
-        "select-doctor": "Choose a good doctor",
         "fee": "Check up package",
         "check-health": "General health check",
         "support": "Support",
@@ -96,11 +96,12 @@
         "hand-book": "News",
         "text-search": "Search",
         "outstanding-medical-facilities": "Medical facilities",
-        "text-about-media": "Communication about Thu Cuc TCI",
+        "text-about-media": "The media discusses Thu Cuc General Clinic.",
+        "text-about-media-talk": "The Thu Cuc General Clinic system is always highly regarded for its spacious, modern, and comfortable facilities, providing a pleasant experience for all customers. The clinic is divided into several areas to serve specific functions",
         "footer": {
             "company": "Thu Cuc TCI",
             "address": "Building HH01, Eco LakeView, 32 Dai Tu Street",
-            "headquarters": "Hanoi headquarters",
+            "headquarters": "Address Clinic",
             "support": "Customer support"
         }
     },

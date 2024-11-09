@@ -1,6 +1,7 @@
 const routes = {
     HOME: "/",
     HOMEPAGE: "/home",
+    ABOUT_CLINIC: "/detail-clinic/6",
     LOGIN: "/login",
     LOG_OUT: "/logout",
     SYSTEM: "/system",

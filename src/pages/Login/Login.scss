@@ -106,7 +106,7 @@
     }
 
     .login-bg_img {
-        background-image: url('../../assets/background/cover-14.cdc08a1d.jpg');
+        background-image: url('../../assets/background/banner_login_regester.PNG');
         // height                   : 100%;
         width: 100%;
         // position           : absolute;
@@ -115,16 +115,5 @@
         background-size: cover;
         background-position: 50%;
 
-        .style_shape__1HA08 {
-            background-color: #f1eff2;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            width: 50px;
-            -webkit-clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
-            clip-path: polygon(0 0, 100% 0, 5% 100%, 0 100%);
-        }
     }
 }

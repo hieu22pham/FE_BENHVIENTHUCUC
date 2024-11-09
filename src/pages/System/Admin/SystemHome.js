@@ -28,7 +28,7 @@ class SystemHome extends Component {
             chartClinicBooking: null,
             userCountStats: 0,
             doctorCountStats: 0,
-            clinicCountStats: 0,
+            specialtyCountStats: 0,
             authorized: false,
             totalBooking: 0,
             totalCancleBooking: 0,
@@ -62,21 +62,19 @@ class SystemHome extends Component {
                         labels: labels,
                         datasets: [
                             {
-                                label: `${
-                                    language === LANGUAGE.VI
-                                        ? "Lịch hủy"
-                                        : "Cancellation schedule"
-                                }`,
+                                label: `${language === LANGUAGE.VI
+                                    ? "Lịch hủy"
+                                    : "Cancellation schedule"
+                                    }`,
                                 data: countsCancle,
                                 backgroundColor: "rgba(255, 99, 132, 0.5)",
                                 hoverBackgroundColor: "rgba(255, 99, 132, 1)",
                             },
                             {
-                                label: `${
-                                    language === LANGUAGE.VI
-                                        ? "Lịch đặt"
-                                        : "Appointment number"
-                                }`,
+                                label: `${language === LANGUAGE.VI
+                                    ? "Lịch đặt"
+                                    : "Appointment number"
+                                    }`,
                                 data: counts,
                                 backgroundColor: "rgba(53, 162, 235, 0.5)",
                                 hoverBackgroundColor: "rgba(53, 162, 235, 1)",
@@ -116,7 +114,7 @@ class SystemHome extends Component {
                 this.setState({
                     userCountStats: resCountStats.data.userCountStats,
                     doctorCountStats: resCountStats.data.doctorCountStats,
-                    clinicCountStats: resCountStats.data.clinicCountStats,
+                    specialtyCountStats: resCountStats.data.specialtyCountStats,
                 });
             }
         }
@@ -146,21 +144,19 @@ class SystemHome extends Component {
                         labels: labels,
                         datasets: [
                             {
-                                label: `${
-                                    language === LANGUAGE.VI
-                                        ? "Lịch hủy"
-                                        : "Cancellation schedule"
-                                }`,
+                                label: `${language === LANGUAGE.VI
+                                    ? "Lịch hủy"
+                                    : "Cancellation schedule"
+                                    }`,
                                 data: countsCancle,
                                 backgroundColor: "rgba(255, 99, 132, 0.5)",
                                 hoverBackgroundColor: "rgba(255, 99, 132, 1)",
                             },
                             {
-                                label: `${
-                                    language === LANGUAGE.VI
-                                        ? "Lịch đặt"
-                                        : "Appointment"
-                                }`,
+                                label: `${language === LANGUAGE.VI
+                                    ? "Lịch đặt"
+                                    : "Appointment"
+                                    }`,
                                 data: counts,
                                 backgroundColor: "rgba(53, 162, 235, 0.5)",
                                 hoverBackgroundColor: "rgba(53, 162, 235, 1)",
@@ -185,11 +181,10 @@ class SystemHome extends Component {
                     labels: labels,
                     datasets: [
                         {
-                            label: `${
-                                language === LANGUAGE.VI
-                                    ? "Lịch đặt"
-                                    : "Appointment"
-                            }`,
+                            label: `${language === LANGUAGE.VI
+                                ? "Lịch đặt"
+                                : "Appointment"
+                                }`,
                             data: countsBooking,
                             backgroundColor: "rgba(53, 162, 235, 0.5)",
                         },
@@ -235,7 +230,7 @@ class SystemHome extends Component {
         const {
             userCountStats,
             doctorCountStats,
-            clinicCountStats,
+            specialtyCountStats,
             authorized,
             totalBooking,
             totalCancleBooking,
@@ -306,10 +301,10 @@ class SystemHome extends Component {
                                 }
                                 title={
                                     language === LANGUAGE.EN
-                                        ? "Clinic"
-                                        : "Phòng khám"
+                                        ? "Specialties"
+                                        : "Chuyên Khoa"
                                 }
-                                value={clinicCountStats}
+                                value={specialtyCountStats}
                             />
                             <DashboardCard
                                 icon={

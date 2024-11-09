@@ -155,10 +155,9 @@ class ManageSchedule extends Component {
 
         if (!selectedDoctor) {
             toast.error(
-                `${
-                    LANGUAGE.VI === language
-                        ? "Yêu cầu chọn bác sĩ!"
-                        : "Isvalid selected Doctor!"
+                `${LANGUAGE.VI === language
+                    ? "Yêu cầu chọn bác sĩ!"
+                    : "Isvalid selected Doctor!"
                 }`
             );
             return;
@@ -188,20 +187,18 @@ class ManageSchedule extends Component {
         const { language } = this.props;
         if (!currentDate) {
             toast.error(
-                `${
-                    LANGUAGE.VI === language
-                        ? "Yêu cầu chọn ngày!"
-                        : "Isvalid selected Date!"
+                `${LANGUAGE.VI === language
+                    ? "Yêu cầu chọn ngày!"
+                    : "Isvalid selected Date!"
                 }`
             );
             return;
         }
         if (!selectedDoctor) {
             toast.error(
-                `${
-                    LANGUAGE.VI === language
-                        ? "Yêu cầu chọn bác sĩ!"
-                        : "Isvalid selected Doctor!"
+                `${LANGUAGE.VI === language
+                    ? "Yêu cầu chọn bác sĩ!"
+                    : "Isvalid selected Doctor!"
                 }`
             );
             return;
@@ -232,10 +229,9 @@ class ManageSchedule extends Component {
                 });
             } else {
                 toast.error(
-                    `${
-                        LANGUAGE.VI === language
-                            ? "Yêu cầu chọn thời gian!"
-                            : "Isvalid selected Time!"
+                    `${LANGUAGE.VI === language
+                        ? "Yêu cầu chọn thời gian!"
+                        : "Isvalid selected Time!"
                     }`
                 );
                 return;
@@ -249,10 +245,9 @@ class ManageSchedule extends Component {
         });
         if (res && res.errCode === 0) {
             toast.success(
-                `${
-                    LANGUAGE.VI === language
-                        ? "Lưu kế hoạch khám bệnh thành công!"
-                        : "Isvalid ScheduleTime Time!"
+                `${LANGUAGE.VI === language
+                    ? "Lưu kế hoạch khám bệnh thành công!"
+                    : "Isvalid ScheduleTime Time!"
                 }`
             );
             this.getAllScheduleDoctor(selectedDoctor, currentDate);
@@ -332,7 +327,8 @@ class ManageSchedule extends Component {
                 <div className="container">
                     {userInfo && userInfo.userType === "doctor" ? null : (
                         <div className="row">
-                            <div className="col-4 mb-3">
+                            {/* ĐÂY NHẤT display-clinic */}
+                            <div className="col-4 mb-3 display-clinic">
                                 <label>Chọn phòng khám</label>
                                 <Select
                                     showSearch
@@ -392,16 +388,12 @@ class ManageSchedule extends Component {
                                 {listDoctor.map((item) => (
                                     <Option key={item.id} value={item.id}>
                                         {language === LANGUAGE.VI
-                                            ? `${item.firstName} ${
-                                                  item.lastName
-                                              } - ${
-                                                  item.nameVi ? item.nameVi : ""
-                                              }`
-                                            : `${item.lastName} ${
-                                                  item.firstName
-                                              } - ${
-                                                  item.nameEn ? item.nameEn : ""
-                                              }`}
+                                            ? `${item.firstName} ${item.lastName
+                                            } - ${item.nameVi ? item.nameVi : ""
+                                            }`
+                                            : `${item.lastName} ${item.firstName
+                                            } - ${item.nameEn ? item.nameEn : ""
+                                            }`}
                                     </Option>
                                 ))}
                             </Select>
@@ -431,9 +423,8 @@ class ManageSchedule extends Component {
                                 rangeTime.map((item) => {
                                     return (
                                         <button
-                                            className={`btn btn btn-schedule ${
-                                                item.isSelected ? "active" : ""
-                                            }`}
+                                            className={`btn btn btn-schedule ${item.isSelected ? "active" : ""
+                                                }`}
                                             key={item.id}
                                             onClick={() => {
                                                 this.handleSelectTime(item);

@@ -10,7 +10,7 @@ export default function LoadingComponent() {
         return (
             <div className={style.bgLoading}>
                 <img
-                    src={require("../../assets/imgloading/loading.gif")}
+                    src={require("../../assets/imgloading/loadinganimation.gif")}
                     alt=""
                 />
             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getDoctorReviewService } from "../services";
 import "./ReviewList.scss";
+import { Rate } from "antd";
 
 export default class ReviewList extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ export default class ReviewList extends Component {
     async componentDidUpdate(prevProps) {
         if (prevProps.doctorId !== this.props.doctorId) {
             let res = await getDoctorReviewService(this.props.doctorId);
+            console.log(' GET REVIEW By Nhat Ba: ', res);
             if (res && res.errCode === 0) {
                 this.setState({
                     reviews: res.data,
@@ -28,6 +30,7 @@ export default class ReviewList extends Component {
                 <div className="feedback-list">
                     {reviews &&
                         reviews.map((review, index) => {
+                            let rating = parseInt(review.rating)
                             return (
                                 <div className="feedback-item" key={index}>
                                     <div className="feedback-name">
@@ -37,8 +40,18 @@ export default class ReviewList extends Component {
                                         </strong>
                                         <a className="feedback-info">
                                             <i className="fas fa-check-circle"></i>
-                                            &nbsp;Đã khám ngày 04/10/2020{" "}
+                                            &nbsp; {review.createdAt}
                                         </a>
+                                        <div className="rating">
+                                            {rating != 0 && rating && (
+                                                <Rate
+                                                    disabled
+                                                    allowHalf
+                                                    defaultValue={rating != 0 ? rating : 0}
+                                                />
+                                            )}
+
+                                        </div>
                                     </div>
                                     <div className="feedback-content">
                                         {review.comment}

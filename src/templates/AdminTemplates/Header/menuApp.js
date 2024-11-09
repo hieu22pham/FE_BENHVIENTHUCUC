@@ -20,7 +20,7 @@ export const adminMenu = [
             {
                 id: "sub_1_1",
                 name: "menu.admin.crud-redux",
-                // link: "/system/user-manage-redux",
+                //link: "/system/user-manage-redux",
                 link: "/system/user-manage",
             },
             {

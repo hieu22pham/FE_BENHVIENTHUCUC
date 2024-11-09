@@ -85,7 +85,7 @@ class ProfileUser extends Component {
                 genders: this.buildDataGender(this.props.gendersRedux),
                 selectedGender:
                     this.props.gendersRedux &&
-                    this.props.gendersRedux.length > 0
+                        this.props.gendersRedux.length > 0
                         ? this.props.gendersRedux[0].keyMap
                         : "",
             });
@@ -341,7 +341,6 @@ class ProfileUser extends Component {
                                                 "admin.manage-profile.phoneNumber"
                                             }
                                         />
-                                        Số điện thoại
                                     </label>
                                     <input
                                         className="form-control"

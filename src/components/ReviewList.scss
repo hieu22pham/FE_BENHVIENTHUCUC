@@ -2,29 +2,39 @@
     padding-bottom: 30px;
 
     h2 {
-        margin     : 15px 0;
-        font-size  : 20px !important;
+        margin: 15px 0;
+        font-size: 20px !important;
         font-weight: bold;
     }
 
     .feedback-list {
         .feedback-item {
             padding-bottom: 10px;
-            padding-top   : 10px;
-            border-top    : 1px solid #eee;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            cursor: default;
+            background: #eee;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 15px;
 
             .feedback-name {
                 font-size: 13px;
-                cursor   : pointer;
+                cursor: default;
 
                 a {
-                    color: #45c3d2;
+                    color: #59ee2b;
+                    cursor: default;
+                }
+
+                .feedback-info {
+                    text-decoration: none;
                 }
             }
 
             .feedback-content {
                 padding-top: 5;
-                font-size  : 13px;
+                font-size: 13px;
             }
         }
 
