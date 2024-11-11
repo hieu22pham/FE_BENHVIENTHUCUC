@@ -67,9 +67,8 @@ class HamburgerMenu extends Component {
                     onClick={this.handleMenuOpen}
                 ></div>
                 <nav
-                    className={`navbar-container ${
-                        this.state.isOpen ? "open" : ""
-                    }`}
+                    className={`navbar-container ${this.state.isOpen ? "open" : ""
+                        }`}
                 >
                     <ul className="navbar-content">
                         {menus.map((item, index) => {

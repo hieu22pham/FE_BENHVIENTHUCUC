@@ -21,7 +21,7 @@ class HomePage extends Component {
             slidesToScroll: 2,
             nextArrow: <NextArrow />,
             prevArrow: <PrevArrow />,
-
+            // slickGoTo: this.handleAfterChang
             responsive: [
                 {
                     breakpoint: 1200,
@@ -60,7 +60,7 @@ class HomePage extends Component {
             <div>
                 <HomeHeader isShowBanner={true} />
                 <Specialty settings={settings} />
-                <MedicalFacility settings={settings} />
+                {/* <MedicalFacility settings={settings} /> */}
                 <OutStandingDoctor settings={settings} />
                 <HandBook settings={settings} />
                 <About />

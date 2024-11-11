@@ -93,7 +93,8 @@
         "more-infor": "Xem thêm",
         "popular-specialties": "Chuyên khoa",
         "hand-book": "Tin tức",
-        "text-search": "Tìm kiếm",
+        "text-search": "More",
+        "about-us": "Về chúng tôi",
         "outstanding-medical-facilities": "Cơ sở y tế",
         "text-about-media": "Truyền thông nói về PKDK Thu Cúc",
         "text-about-media-talk": "Hệ thống phòng khám Đa khoa Thu Cúc luôn được đánh giá cao về sự khang trang, rộng rãi, tiện nghi, mang đến sự thoải mái cho mọi khách hàng. Phòng khám được phân chia thành nhiều khu vực để phục vụ các chức năng riêng.",
@@ -153,7 +154,8 @@
         },
         "detail-clinic": {
             "text-search": "Tìm kiếm",
-            "text-desc": "Giới thiệu"
+            "text-desc": "Giới thiệu",
+            "text-title": "Về chúng tôi"
         },
         "detail-speciality": {
             "text-more": "Đọc thêm",

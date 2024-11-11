@@ -1,38 +1,39 @@
 .nen-mo {
     background-color: rgba(0, 0, 0, 0.5);
-    position        : fixed;
-    top             : 0;
-    left            : 0;
-    display         : none;
-    height          : 100%;
-    width           : 100%;
-    z-index         : 101;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    height: 100%;
+    width: 100%;
+    z-index: 101;
 
     &.display {
-        display           : block;
+        display: block;
         -webkit-transition: display 0s 0.6s;
-        -moz-transition   : display 0s 0.6s;
-        transition        : display 0s 0.6s;
+        -moz-transition: display 0s 0.6s;
+        transition: display 0s 0.6s;
     }
 }
 
 .navbar-container {
     background-color: #fff;
-    position        : fixed;
-    top             : 0;
-    left            : 0;
-    height          : 100%;
-    width           : 260px;
-    display         : none;
-    max-width       : 90%;
-    z-index         : 102;
-    overflow-y      : auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    display: none;
+    max-width: 90%;
+    z-index: 102;
+    overflow-y: auto;
+    padding-top: 25px;
 
     &.open {
-        display           : block;
+        display: block;
         -webkit-transition: display 0s 0.4s;
-        -moz-transition   : display 0s 0.4s;
-        transition        : display 0s 0.4s;
+        -moz-transition: display 0s 0.4s;
+        transition: display 0s 0.4s;
     }
 
     .navbar-content {
@@ -40,17 +41,25 @@
     }
 
     li {
-        border-bottom: 1px solid #eee;
-        margin       : 0;
-        cursor       : pointer;
-        user-select  : none;
+        margin: 0;
+        cursor: pointer;
+        user-select: none;
+
+        &:hover a {
+            background-color: #e9edff;
+            border-radius: 32px;
+            color: #3ce61e;
+        }
 
         a {
-            padding        : 10px 15px;
-            display        : block;
-            font-size      : 16px;
-            color          : #45c3d2;
+            padding: 10px 15px;
+            display: block;
             text-decoration: none;
+            margin: 3px 8px;
+            text-align: center;
+            font-size: 18px;
+            color: #4e3b3b;
+            font-weight: 600;
         }
     }
 }

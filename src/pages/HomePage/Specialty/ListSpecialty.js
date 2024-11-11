@@ -83,7 +83,7 @@ class ListSpecialty extends Component {
         return (
             <>
                 <Helmet>
-                    <title>{`healthbookings.vn/kham-chuyen-khoa`}</title>
+                    <title>{`Khám Chuyên Khoa`}</title>
                     <meta
                         name="description"
                         content={`Danh sách chuyên khoa`}

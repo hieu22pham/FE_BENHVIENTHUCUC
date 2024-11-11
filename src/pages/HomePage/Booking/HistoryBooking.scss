@@ -1,28 +1,28 @@
 .booking-history-container {
-    margin-top   : 0;
+    margin-top: 0;
     padding-right: 15px;
-    padding-left : 15px;
-    margin-right : auto;
-    margin-left  : auto;
-    width        : 1200px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
     margin-bottom: 30px;
-    min-height   : calc(100vh - 324px - 125px);
+    min-height: calc(100vh - 324px - 125px);
 
     .booking-history-header {
-        display       : flex;
-        align-items   : center;
-        color         : #49bce2;
+        display: flex;
+        align-items: center;
+        color: #29ef4d;
         padding-bottom: 10px;
-        border-bottom : 1px solid #eee;
-        margin-top    : 20px;
-        margin-bottom : 30px;
+        border-bottom: 1px solid #eee;
+        margin-top: 20px;
+        margin-bottom: 30px;
 
 
         a {
             text-decoration: none;
 
             i {
-                color    : #49bce2;
+                color: #4ae741;
                 font-size: 20px;
             }
 
@@ -34,32 +34,32 @@
 
     .booking-search {
         .filter_search {
-            display        : flex;
+            display: flex;
             justify-content: flex-end;
-            align-items    : center;
-            position       : relative;
-            width          : 100%;
-            margin         : 20px 0;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
 
             input {
                 width: 30%;
             }
 
             button {
-                position                  : absolute;
-                right                     : 0px;
-                color                     : #fff;
-                outline                   : none;
-                background                : #49bce2;
-                border                    : none;
+                position: absolute;
+                right: 0px;
+                color: #fff;
+                outline: none;
+                background: #1fdf28;
+                border: none;
                 border-bottom-right-radius: 4px;
-                padding                   : 5px;
+                padding: 5px;
             }
 
             i {
-                position   : absolute;
-                right      : 5px;
-                color      : #49bce2;
+                position: absolute;
+                right: 5px;
+                color: #33f022;
                 margin-left: 20px;
             }
 
@@ -69,15 +69,15 @@
 
     .booking-history-content {
         h2 {
-            font-size    : 25px;
-            font-weight  : 600;
+            font-size: 25px;
+            font-weight: 600;
             margin-bottom: 30px;
         }
 
         .status-column {
-            padding      : 3px 8px;
+            padding: 3px 8px;
             border-radius: 10px;
-            color        : #fff;
+            color: #fff;
         }
 
         .new-status {

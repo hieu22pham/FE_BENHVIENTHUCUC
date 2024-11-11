@@ -140,8 +140,8 @@ class ListDoctor extends Component {
                                             <div className="description">
                                                 <h3>
                                                     {language === LANGUAGE.VI
-                                                        ? `${item.positionData.valueVi} ${item.firstName} ${item.lastName}`
-                                                        : `${item.positionData.valueEn} ${item.lastName} ${item.firstName}`}
+                                                        ? `${item.positionData.valueVi} ${item.lastName} ${item.firstName} `
+                                                        : `${item.positionData.valueEn} ${item.firstName} ${item.lastName} `}
                                                 </h3>
                                                 <div>
                                                     {language === LANGUAGE.VI

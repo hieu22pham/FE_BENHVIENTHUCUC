@@ -91,20 +91,18 @@ class HistoryBooking extends Component {
         let dataSource = data.map((item) => {
             return {
                 key: item.id,
-                fullName: `${
-                    item.patientData.firstName ? item.patientData.firstName : ""
-                } ${item.patientData.lastName}`,
+                fullName: `${item.patientData.firstName ? item.patientData.firstName : ""
+                    } ${item.patientData.lastName}`,
                 doctorName: `${item.User.firstName} ${item.User.lastName}`,
-                timeType: `${item.timeTypeDataPatient.valueVi}, ${
-                    language === LANGUAGE.VI
-                        ? moment
-                              .unix(+item.date / 1000)
-                              .format("dddd - DD/MM/YYYY")
-                        : moment
-                              .unix(+item.date / 1000)
-                              .locale("en")
-                              .format("ddd - MM/DD/YYYY")
-                }`,
+                timeType: `${item.timeTypeDataPatient.valueVi}, ${language === LANGUAGE.VI
+                    ? moment
+                        .unix(+item.date / 1000)
+                        .format("dddd - DD/MM/YYYY")
+                    : moment
+                        .unix(+item.date / 1000)
+                        .locale("en")
+                        .format("ddd - MM/DD/YYYY")
+                    }`,
                 reason: item.reason,
                 description: "",
                 date: item.date,
@@ -122,16 +120,15 @@ class HistoryBooking extends Component {
                 key: item.id,
                 fullName: `${item.bookingData.patientData.firstName} ${item.bookingData.patientData.lastName}`,
                 doctorName: `${item.bookingData.User.firstName} ${item.bookingData.User.lastName}`,
-                timeType: `${item.bookingData.timeTypeDataPatient.valueVi}, ${
-                    language === LANGUAGE.VI
-                        ? moment
-                              .unix(+item.bookingData.date / 1000)
-                              .format("dddd - DD/MM/YYYY")
-                        : moment
-                              .unix(+item.bookingData.date / 1000)
-                              .locale("en")
-                              .format("ddd - MM/DD/YYYY")
-                }`,
+                timeType: `${item.bookingData.timeTypeDataPatient.valueVi}, ${language === LANGUAGE.VI
+                    ? moment
+                        .unix(+item.bookingData.date / 1000)
+                        .format("dddd - DD/MM/YYYY")
+                    : moment
+                        .unix(+item.bookingData.date / 1000)
+                        .locale("en")
+                        .format("ddd - MM/DD/YYYY")
+                    }`,
                 reason: item.bookingData.reason,
                 description: item.description,
                 doctorId: item.doctorId,
@@ -149,26 +146,23 @@ class HistoryBooking extends Component {
         let dataSource = data.map((item) => {
             return {
                 key: item.id,
-                fullName: `${
-                    item.patientData.firstName ? item.patientData.firstName : ""
-                } ${item.patientData.lastName}`,
+                fullName: `${item.patientData.firstName ? item.patientData.firstName : ""
+                    } ${item.patientData.lastName}`,
                 doctorName: `${item.User.firstName} ${item.User.lastName}`,
-                timeType: `${item.timeTypeDataPatient.valueVi}, ${
-                    language === LANGUAGE.VI
-                        ? moment
-                              .unix(+item.date / 1000)
-                              .format("dddd - DD/MM/YYYY")
-                        : moment
-                              .unix(+item.date / 1000)
-                              .locale("en")
-                              .format("ddd - MM/DD/YYYY")
-                }`,
+                timeType: `${item.timeTypeDataPatient.valueVi}, ${language === LANGUAGE.VI
+                    ? moment
+                        .unix(+item.date / 1000)
+                        .format("dddd - DD/MM/YYYY")
+                    : moment
+                        .unix(+item.date / 1000)
+                        .locale("en")
+                        .format("ddd - MM/DD/YYYY")
+                    }`,
                 statusId: `${item.statusId}`,
-                status: `${
-                    language === LANGUAGE.VI
-                        ? item.statusData.valueVi
-                        : item.statusData.valueEn
-                }`,
+                status: `${language === LANGUAGE.VI
+                    ? item.statusData.valueVi
+                    : item.statusData.valueEn
+                    }`,
                 reason: item.reason,
                 description:
                     item.bookingData && item.bookingData.description
@@ -294,6 +288,8 @@ class HistoryBooking extends Component {
                     let dateBooking =
                         parseInt(record.date) - 24 * 60 * 60 * 1000;
 
+
+
                     return currentDate.getTime() < dateBooking ? (
                         <Space size="middle">
                             <button
@@ -327,7 +323,7 @@ class HistoryBooking extends Component {
                 key: "timeType",
             },
             {
-                title: language === LANGUAGE.EN ? "Địa chỉ" : "Adress Clinic",
+                title: language === LANGUAGE.VI ? "Địa chỉ" : "Address Clinic",
                 dataIndex: "addressClinic",
                 key: "addressClinic",
             },
@@ -455,7 +451,7 @@ class HistoryBooking extends Component {
                                         />
                                     </h2>
                                     {lookUpBooking &&
-                                    lookUpBooking.length > 0 ? (
+                                        lookUpBooking.length > 0 ? (
                                         <Table
                                             dataSource={lookUpBooking}
                                             columns={columnsLookUp}

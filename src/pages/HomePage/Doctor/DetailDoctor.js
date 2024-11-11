@@ -63,8 +63,8 @@ class DetailDoctor extends Component {
         let nameVi = "",
             nameEn = "";
         if (doctorDetail && doctorDetail.positionData) {
-            nameVi = `${doctorDetail.positionData.valueVi}, ${doctorDetail.firstName} ${doctorDetail.lastName}`;
-            nameEn = `${doctorDetail.positionData.valueEn}, ${doctorDetail.lastName} ${doctorDetail.firstName}`;
+            nameVi = `${doctorDetail.positionData.valueVi}, ${doctorDetail.lastName} ${doctorDetail.firstName} `;
+            nameEn = `${doctorDetail.positionData.valueEn},  ${doctorDetail.firstName} ${doctorDetail.lastName}`;
         }
 
         return (
@@ -83,11 +83,10 @@ class DetailDoctor extends Component {
                             <div
                                 className="image-doctor"
                                 style={{
-                                    backgroundImage: `url(${
-                                        doctorDetail.image
+                                    backgroundImage: `url(${doctorDetail.image
                                             ? doctorDetail.image
                                             : ""
-                                    })`,
+                                        })`,
                                 }}
                             ></div>
                             <div className="rating">

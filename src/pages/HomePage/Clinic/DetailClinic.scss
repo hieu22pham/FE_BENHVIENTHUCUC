@@ -1,4 +1,31 @@
 .detail-clinic_container {
+
+    .about-header {
+        display: flex;
+        align-items: center;
+        color: #19eb38;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        margin-top: 18px;
+        margin-right: 100px;
+        margin-left: 100px;
+
+        a {
+            text-decoration: none;
+
+            i {
+                color: #2adf39;
+            }
+
+            span {
+                margin: 0 5px;
+            }
+        }
+
+
+
+    }
+
     .detail-clinic_header {
         height: 200px;
         width: 100%;
@@ -110,10 +137,12 @@
                     right: 0px;
                     color: #fff;
                     outline: none;
-                    background: #49bce2;
+                    background: #2eea2e;
                     border: none;
                     border-bottom-right-radius: 4px;
                     padding: 5px;
+                    border-top-left-radius: 20px;
+                    border-bottom-right-radius: 20px;
                 }
             }
         }
@@ -153,9 +182,61 @@
         }
     }
 
+
+
     .clinic-description {
         margin: 0 100px;
         margin-top: 30px;
+
+        .container-img-about {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 20px;
+
+            .img-about {
+                width: 100%;
+                height: 300px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            .img-about-1 {
+                background-image: url('../../../assets/images/detail_specialty/gioi-thieu-co-so-32-dai-tu-1.jpg');
+            }
+
+            .img-about-2 {
+                background-image: url('../../../assets/images/detail_specialty/gioi-thieu-co-so-32-dai-tu-2.jpg');
+            }
+
+            .img-about-3 {
+                background-image: url('../../../assets/images/detail_specialty/gioi-thieu-co-so-32-dai-tu-3.jpg');
+            }
+
+            p {
+                margin: 10px 0;
+            }
+        }
+
+        .attention-body {
+            .attention-text {
+                border: 1px solid green;
+                padding: 16px 27px;
+                font-size: 16px;
+                font-style: italic;
+                border-radius: 21px;
+            }
+
+            .attention-img {
+                width: 100%;
+                height: 300px;
+                background-image: url('../../../assets/images/detail_specialty/tri_an_2011.PNG');
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
 
         .text-desc {
             font-weight: bold;
@@ -170,5 +251,7 @@
             font-size: 18px;
         }
     }
+
+
 
 }

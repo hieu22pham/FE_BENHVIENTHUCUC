@@ -131,7 +131,7 @@ class Login extends Component {
                             <div className="Logo mb-5">
                                 <img
                                     src={require("../../assets/background/logo_remove1.png")}
-                                    alt="HealthBookings"
+                                    alt="ThuCucTCI"
                                 />
                             </div>
                             <div className="col-12 text-login"></div>

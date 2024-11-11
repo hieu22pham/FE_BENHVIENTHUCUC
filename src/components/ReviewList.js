@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { getDoctorReviewService } from "../services";
 import "./ReviewList.scss";
 import { Rate } from "antd";
+import { dateFormat } from "../utils";
+import moment from "moment";
 
 export default class ReviewList extends Component {
     constructor(props) {
@@ -40,7 +42,7 @@ export default class ReviewList extends Component {
                                         </strong>
                                         <a className="feedback-info">
                                             <i className="fas fa-check-circle"></i>
-                                            &nbsp; {review.createdAt}
+                                            &nbsp; đã khám ngày {moment(review.createdAt).format('DD/MM/yyyy')}
                                         </a>
                                         <div className="rating">
                                             {rating != 0 && rating && (

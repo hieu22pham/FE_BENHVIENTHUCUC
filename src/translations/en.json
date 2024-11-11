@@ -94,7 +94,8 @@
         "more-infor": "More",
         "popular-specialties": "Specialties",
         "hand-book": "News",
-        "text-search": "Search",
+        "text-search": "More",
+        "about-us": "About us",
         "outstanding-medical-facilities": "Medical facilities",
         "text-about-media": "The media discusses Thu Cuc General Clinic.",
         "text-about-media-talk": "The Thu Cuc General Clinic system is always highly regarded for its spacious, modern, and comfortable facilities, providing a pleasant experience for all customers. The clinic is divided into several areas to serve specific functions",
@@ -154,7 +155,8 @@
         },
         "detail-clinic": {
             "text-search": "Search",
-            "text-desc": "Description"
+            "text-desc": "Description",
+            "text-title": "About Us"
         },
         "detail-speciality": {
             "text-more": "More",

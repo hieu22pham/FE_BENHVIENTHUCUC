@@ -8,6 +8,8 @@ import HomeHeader from "../HomeHeader";
 import HomeFooter from "../HomeFooter";
 import DoctorSchedule from "../Doctor/DoctorSchedule";
 import DoctorExtraInfor from "../Doctor/DoctorExtraInfor";
+import { Link } from "react-router-dom/cjs/react-router-dom";
+
 import ProfileDoctor from "../Doctor/ProfileDoctor";
 import {
     getDetailClinicByIdService,
@@ -181,7 +183,7 @@ class DetailClinic extends Component {
             <>
                 <Helmet>
                     <title>
-                        {`Đặt lịch khám tại - ${dataDetailClinic.nameVi}`}
+                        {`Về chúng tôi`}
                     </title>
                     <meta
                         name="description"
@@ -190,6 +192,17 @@ class DetailClinic extends Component {
                 </Helmet>
                 <div className="detail-clinic_container">
                     <HomeHeader />
+                    <div className="about-header">
+                        <Link to="/home">
+                            <i className="fas fa-home"></i>
+                            <span>/</span>
+                        </Link>
+                        <div>
+                            <FormattedMessage
+                                id={"patient.detail-clinic.text-title"}
+                            />
+                        </div>
+                    </div>
                     <div
                         className="detail-clinic_header"
                         style={{
@@ -303,7 +316,33 @@ class DetailClinic extends Component {
                                 }}
                             ></div>
                         )}
+
+                        <div className="container-img-about">
+                            <div className="img-about img-about-1"></div>
+                            <p>
+                                Hình ảnh phía ngoài của cơ sở 32 Đại Từ
+                            </p>
+                        </div>
+                        <div className="container-img-about">
+                            <div className="img-about img-about-2"></div>
+                            <p>
+                                TCI 32 Đại Từ sở hữu nhiều thế mạnh vượt trội về không gian và cơ sở vật chất
+                            </p>
+                        </div>
+                        <div className="container-img-about">
+                            <div className="img-about img-about-3"></div>
+                            <p>
+                                Chất lượng dịch vụ được ưu tiên hàng đầu tại TCI 32 Đại Từ
+                            </p>
+                        </div>
+                        <div className="attention-body">
+                            <div className="attention-text">
+                                Lưu ý, các thông tin trên chỉ dành cho mục đích tham khảo và tra cứu, không thay thế cho việc thăm khám, chẩn đoán hoặc điều trị y khoa. Người bệnh cần tuân theo hướng dẫn của bác sĩ, không tự ý thực hiện theo nội dung bài viết để đảm bảo an toàn cho sức khỏe.
+                            </div>
+                            <div className="attention-img"></div>
+                        </div>
                     </div>
+
                 </div>
 
                 <div className="mt-3">

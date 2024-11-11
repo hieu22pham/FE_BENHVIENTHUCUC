@@ -1,23 +1,23 @@
 .list-clinic_container {
     padding-right: 15px;
-    padding-left : 15px;
-    margin-right : auto;
-    margin-left  : auto;
-    width        : 1170px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1170px;
 
     .list-clinic-header {
-        display       : flex;
-        align-items   : center;
-        color         : #49bce2;
+        display: flex;
+        align-items: center;
+        color: #2de94f;
         padding-bottom: 10px;
-        border-bottom : 1px solid #eee;
-        margin-top    : 20px;
+        border-bottom: 1px solid #eee;
+        margin-top: 20px;
 
         a {
             text-decoration: none;
 
             i {
-                color: #49bce2;
+                color: #2eee51;
             }
 
             span {
@@ -30,35 +30,35 @@
     }
 
     .list-clinic_search {
-        display        : flex;
-        align-items    : center;
+        display: flex;
+        align-items: center;
         justify-content: space-between;
 
         h3 {
-            margin-top : 10px;
+            margin-top: 10px;
             margin-left: 15px;
-            font-size  : 18px !important;
+            font-size: 18px !important;
             font-weight: 550 !important;
-            color      : #333 !important;
+            color: #333 !important;
         }
 
         .filter_search {
-            display        : flex;
+            display: flex;
             justify-content: center;
-            align-items    : center;
-            position       : relative;
-            width          : 25%;
-            margin         : 20px 0;
+            align-items: center;
+            position: relative;
+            width: 25%;
+            margin: 20px 0;
 
             button {
-                position                  : absolute;
-                right                     : 0px;
-                color                     : #fff;
-                outline                   : none;
-                background                : #49bce2;
-                border                    : none;
+                position: absolute;
+                right: 0px;
+                color: #fff;
+                outline: none;
+                background: #20e51a;
+                border: none;
                 border-bottom-right-radius: 4px;
-                padding                   : 5px;
+                padding: 5px;
             }
         }
     }
@@ -67,34 +67,34 @@
 
     ul {
         list-style-type: none;
-        padding        : 0;
-        margin         : 0;
+        padding: 0;
+        margin: 0;
 
         li {
-            display      : block;
-            overflow     : hidden;
-            padding      : 15px;
+            display: block;
+            overflow: hidden;
+            padding: 15px;
             border-bottom: 1px solid #eee;
-            position     : relative;
+            position: relative;
 
             a {
                 text-decoration: none;
-                display        : flex;
-                align-items    : center;
+                display: flex;
+                align-items: center;
 
                 img {
-                    float       : left;
+                    float: left;
                     margin-right: 10px;
-                    width       : 200px;
-                    height      : 105px;
-                    object-fit  : contain;
+                    width: 200px;
+                    height: 105px;
+                    object-fit: contain;
                 }
 
                 h3 {
-                    display    : block;
+                    display: block;
                     line-height: 1.3em;
-                    font-size  : 18px;
-                    color      : rgba(0, 0, 0, 1.00);
+                    font-size: 18px;
+                    color: rgba(0, 0, 0, 1.00);
                 }
             }
         }

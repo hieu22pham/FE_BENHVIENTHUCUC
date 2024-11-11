@@ -85,7 +85,7 @@ class DetailSpecialty extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {}
+    componentDidUpdate(prevProps, prevState, snapshot) { }
 
     handleOnChangeSelect = async (event) => {
         // console.log("check onChange: ", event.target.value);
@@ -127,18 +127,16 @@ class DetailSpecialty extends Component {
         return (
             <>
                 <Helmet>
-                    <title>{`${
-                        language === LANGUAGE.VI
+                    <title>{`${language === LANGUAGE.VI
                             ? dataDetailSpecialty.nameVi
                             : dataDetailSpecialty.nameEn
-                    }`}</title>
+                        }`}</title>
                     <meta
                         name="description"
-                        content={`Thông tin chi tiết ${
-                            language === LANGUAGE.VI
+                        content={`Thông tin chi tiết ${language === LANGUAGE.VI
                                 ? dataDetailSpecialty.nameVi
                                 : dataDetailSpecialty.nameEn
-                        }`}
+                            }`}
                     />
                 </Helmet>
                 <div className="detail-specialty_container">
@@ -151,20 +149,19 @@ class DetailSpecialty extends Component {
                     >
                         <div className="description-specialty">
                             <div className="description-specialty_content">
-                                {/* <div className="specialty_header">
+                                <div className="specialty_header">
                                     <h1 data-title="Cơ Xương Khớp">
                                         {dataDetailSpecialty &&
-                                        language === LANGUAGE.VI
+                                            language === LANGUAGE.VI
                                             ? dataDetailSpecialty.nameVi
                                             : dataDetailSpecialty.nameEn}
                                     </h1>
-                                </div> */}
+                                </div>
                                 <div
-                                    className={`more ${
-                                        readMoreDesc
+                                    className={`more ${readMoreDesc
                                             ? "more-display"
                                             : "more-hiden"
-                                    }`}
+                                        }`}
                                 >
                                     <div className="specialty_content">
                                         {dataDetailSpecialty &&

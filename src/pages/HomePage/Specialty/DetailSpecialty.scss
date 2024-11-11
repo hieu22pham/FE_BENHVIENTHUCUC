@@ -1,32 +1,32 @@
 .detail-specialty_container {
     background-color: #eeeeee;
-    min-height      : 100vh;
+    min-height: 100vh;
 
     .description-specialty_background {
         // border             : 1px solid red;
-        background         : #fff;
-        background-repeat  : no-repeat;
+        background: #fff;
+        background-repeat: no-repeat;
         background-position: center;
-        background-size    : cover;
+        background-size: cover;
 
         .description-specialty {
             background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
-            padding         : 10px 0;
+            padding: 10px 0;
 
             .description-specialty_content {
                 margin: 0 100px;
 
                 .specialty_header {
                     h1 {
-                        font-size  : 20px;
+                        font-size: 20px;
                         font-weight: bold;
                     }
                 }
 
                 .more {
                     .specialty_content {
-                        color   : #333;
-                        padding : 0px 15px 0px 0px;
+                        color: #333;
+                        padding: 0px 15px 0px 0px;
                         overflow: hidden;
 
                         h1,
@@ -39,13 +39,13 @@
                             list-style-type: disc !important;
 
                             li {
-                                list-style-type    : disc;
+                                list-style-type: disc;
                                 /* Kiểu dấu chấm mặc định (disc) */
                                 list-style-position: outside;
                                 /* Vị trí của dấu chấm bên ngoài */
-                                list-style-image   : none;
+                                list-style-image: none;
                                 /* Không sử dụng hình ảnh làm dấu chấm */
-                                margin-left        : 40px;
+                                margin-left: 40px;
                                 /* Khoảng cách bên trái giữa dấu chấm và nội dung */
                             }
                         }
@@ -58,19 +58,19 @@
                     }
 
                     .btn_display {
-                        cursor     : pointer;
-                        font-size  : 14px;
-                        color      : #288ad6;
+                        cursor: pointer;
+                        font-size: 14px;
+                        color: #288ad6;
                         padding-top: 5px;
-                        display    : block;
+                        display: block;
                     }
 
                     .btn_hiden {
-                        cursor     : pointer;
-                        font-size  : 14px;
-                        color      : #288ad6;
+                        cursor: pointer;
+                        font-size: 14px;
+                        color: #288ad6;
                         padding-top: 5px;
-                        display    : block;
+                        display: block;
                     }
                 }
 
@@ -99,28 +99,29 @@
         margin: 0 100px;
 
         .filter-doctor {
+            display: none;
             margin-top: 15px;
 
             select {
-                appearance         : none;
-                -webkit-appearance : none;
+                appearance: none;
+                -webkit-appearance: none;
                 /* Safari and Chrome */
-                -moz-appearance    : none;
+                -moz-appearance: none;
                 /* Firefox */
-                display            : block;
-                padding            : 8px 80px 8px 8px;
-                font-size          : 18px;
-                font-weight        : 400;
-                line-height        : 1.5;
-                color              : #212529;
-                outline            : none;
-                border             : 1px solid #ced4da;
-                border-radius      : 0.25rem;
-                background-color   : #fff;
-                background-image   : url('../../../assets/images/icon-select/icon_select.svg');
-                background-repeat  : no-repeat;
+                display: block;
+                padding: 8px 80px 8px 8px;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #212529;
+                outline: none;
+                border: 1px solid #ced4da;
+                border-radius: 0.25rem;
+                background-color: #fff;
+                background-image: url('../../../assets/images/icon-select/icon_select.svg');
+                background-repeat: no-repeat;
                 background-position: right 0.75rem center;
-                background-size    : 16px 12px;
+                background-size: 16px 12px;
             }
         }
 
@@ -128,30 +129,30 @@
             padding-bottom: 10px;
 
             .doctor-item {
-                display      : flex;
-                width        : 100%;
-                min-height   : 300px;
+                display: flex;
+                width: 100%;
+                min-height: 300px;
                 // margin    : 15px 0;
-                margin-top   : 15px;
-                padding      : 10px;
+                margin-top: 15px;
+                padding: 10px;
 
                 background-color: #fff;
-                box-shadow      : 0 1px 6px rgb(32 33 36 / 28%);
-                border-radius   : 8px;
+                box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+                border-radius: 8px;
 
                 .doctor-item_left {
-                    width        : 50%;
-                    border-right : 1px solid #ddd;
+                    width: 50%;
+                    border-right: 1px solid #ddd;
                     padding-right: 10px;
                 }
 
                 .doctor-item_right {
-                    width  : 50%;
+                    width: 50%;
                     padding: 10px;
 
                     .doctor-extraInfor_container {
-                        border     : 1px solid #ddd;
-                        margin-top : 10px;
+                        border: 1px solid #ddd;
+                        margin-top: 10px;
                         padding-top: 10px;
                     }
                 }

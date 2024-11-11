@@ -43,10 +43,10 @@ class MedicalFacility extends Component {
                 <div className="section-container">
                     <div className="section-header">
                         <span className="title-section">
-                            <FormattedMessage id="homepage.outstanding-medical-facilities" />
+                            <FormattedMessage id="homepage.about-us" />
                         </span>
                         <Link
-                            to={`/danh-sach/co-so-y-te/danh-cho-ban`}
+                            to={`/detail-clinic/6`}
                             className="btn-section"
                         >
                             <FormattedMessage id="homepage.text-search" />
