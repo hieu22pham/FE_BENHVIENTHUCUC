@@ -155,7 +155,9 @@
         "detail-clinic": {
             "text-search": "Tìm kiếm",
             "text-desc": "Giới thiệu",
-            "text-title": "Về chúng tôi"
+            "text-title": "Về chúng tôi",
+            "view more": "Xem thêm",
+            "list-doctor": "Đội ngũ bác sĩ"
         },
         "detail-speciality": {
             "text-more": "Đọc thêm",
@@ -238,8 +240,8 @@
             "edit": "Lưu thay đổi"
         },
         "dashboard": {
-            "title": "Chào mừng trở lại 👋",
-            "desc": "Khám phá và quản lý dữ liệu của bạn một cách dễ dàng."
+            "title": "Chào mừng trở lại hệ thống 👋",
+            "desc": "Dễ dàng khám phá và tối ưu hóa dữ liệu của bạn!."
         },
         "manage-patient": {
             "title": "Quản lý bệnh nhân",

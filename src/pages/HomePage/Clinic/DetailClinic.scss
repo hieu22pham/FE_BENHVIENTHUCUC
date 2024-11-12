@@ -93,7 +93,7 @@
     }
 
     .detail-clinic_body {
-        display: none;
+        display: block;
         margin: 0 100px;
         margin-top: 30px;
 
@@ -125,12 +125,24 @@
                 background-size: 16px 12px;
             }
 
+            h3 {
+                font-weight: 600;
+                color: rgb(51, 122, 183);
+                ;
+            }
+
             .filter-doctor_search {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 position: relative;
                 width: 25%;
+
+                input {
+                    font-size: 16px;
+                    height: 40px;
+                    border-radius: 15px;
+                }
 
                 button {
                     position: absolute;
@@ -139,10 +151,10 @@
                     outline: none;
                     background: #2eea2e;
                     border: none;
-                    border-bottom-right-radius: 4px;
+                    border-bottom-right-radius: 15px;
                     padding: 5px;
-                    border-top-left-radius: 20px;
-                    border-bottom-right-radius: 20px;
+                    border-top-right-radius: 15px;
+                    height: 40px;
                 }
             }
         }
@@ -182,11 +194,44 @@
         }
     }
 
+    .view-more {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+
+        .btn-view-more {
+            width: 120px;
+            height: 50px;
+            color: #fff;
+            background-color: #19eb38;
+            text-align: center;
+            outline: none;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            text-decoration: none;
+
+            &:hover {
+                background-color: #cfe71c;
+                color: #fff;
+            }
+        }
+
+
+    }
+
+
 
 
     .clinic-description {
         margin: 0 100px;
         margin-top: 30px;
+
+        p {
+            text-align: justify;
+        }
 
         .container-img-about {
             width: 100%;

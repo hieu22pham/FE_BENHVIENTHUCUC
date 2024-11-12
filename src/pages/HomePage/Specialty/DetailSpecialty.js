@@ -40,8 +40,8 @@ class DetailSpecialty extends Component {
                 id: id,
                 location: "ALL",
             });
-
-            let provinces = await getAllCodeService("PROVINCE");
+            // PROVINCE
+            let provinces = await getAllCodeService("POSITION");
 
             // console.log("check res from DetailSpecialty: ", provinces);
 
@@ -128,14 +128,14 @@ class DetailSpecialty extends Component {
             <>
                 <Helmet>
                     <title>{`${language === LANGUAGE.VI
-                            ? dataDetailSpecialty.nameVi
-                            : dataDetailSpecialty.nameEn
+                        ? dataDetailSpecialty.nameVi
+                        : dataDetailSpecialty.nameEn
                         }`}</title>
                     <meta
                         name="description"
                         content={`Thông tin chi tiết ${language === LANGUAGE.VI
-                                ? dataDetailSpecialty.nameVi
-                                : dataDetailSpecialty.nameEn
+                            ? dataDetailSpecialty.nameVi
+                            : dataDetailSpecialty.nameEn
                             }`}
                     />
                 </Helmet>
@@ -159,8 +159,8 @@ class DetailSpecialty extends Component {
                                 </div>
                                 <div
                                     className={`more ${readMoreDesc
-                                            ? "more-display"
-                                            : "more-hiden"
+                                        ? "more-display"
+                                        : "more-hiden"
                                         }`}
                                 >
                                     <div className="specialty_content">

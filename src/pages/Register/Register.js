@@ -191,7 +191,7 @@ class Register extends Component {
                         <div className="row justify-content-center align-items-center w-100">
                             <div className="Logo  mb-sm-2">
                                 <img
-                                    src={require("../../assets/background/logo_remove1.png")}
+                                    src={require("../../assets/background/logo_remove01.png")}
                                     alt=""
                                 />
                             </div>

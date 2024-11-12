@@ -67,14 +67,14 @@ class ProfileDoctor extends Component {
             let date =
                 language === LANGUAGE.VI
                     ? this.capitalizeFirstLetter(
-                          moment
-                              .unix(+dataTime.date / 1000)
-                              .format("dddd - DD/MM/YYYY")
-                      )
+                        moment
+                            .unix(+dataTime.date / 1000)
+                            .format("dddd - DD/MM/YYYY")
+                    )
                     : moment
-                          .unix(+dataTime.date / 1000)
-                          .locale("en")
-                          .format("ddd - MM/DD/YYYY");
+                        .unix(+dataTime.date / 1000)
+                        .locale("en")
+                        .format("ddd - MM/DD/YYYY");
 
             return (
                 <>
@@ -104,8 +104,8 @@ class ProfileDoctor extends Component {
         let nameVi = "",
             nameEn = "";
         if (dataProfile && dataProfile.positionData) {
-            nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.firstName} ${dataProfile.lastName}`;
-            nameEn = `${dataProfile.positionData.valueEn}, ${dataProfile.lastName} ${dataProfile.firstName}`;
+            nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.lastName} ${dataProfile.firstName} `;
+            nameEn = `${dataProfile.positionData.valueEn}, ${dataProfile.firstName} ${dataProfile.lastName} `;
         }
 
         return (
@@ -114,11 +114,10 @@ class ProfileDoctor extends Component {
                     <div
                         className="intro-left"
                         style={{
-                            backgroundImage: `url(${
-                                dataProfile && dataProfile.image
+                            backgroundImage: `url(${dataProfile && dataProfile.image
                                     ? dataProfile.image
                                     : ""
-                            })`,
+                                })`,
                         }}
                     ></div>
                     <div className="intro-right">

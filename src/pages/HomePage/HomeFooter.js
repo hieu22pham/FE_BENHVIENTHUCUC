@@ -13,7 +13,7 @@ export default class HomeFooter extends Component {
                                 <img
                                     title="Logo"
                                     className="footer-logo"
-                                    src={require("../../assets/background/logo_remove1.png")}
+                                    src={require("../../assets/background/logo_remove01.png")}
                                     alt="ThuCucTCI"
                                 />
                             </NavLink>

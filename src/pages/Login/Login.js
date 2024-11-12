@@ -130,7 +130,7 @@ class Login extends Component {
                         <div className="login-content row">
                             <div className="Logo mb-5">
                                 <img
-                                    src={require("../../assets/background/logo_remove1.png")}
+                                    src={require("../../assets/background/logo_remove01.png")}
                                     alt="ThuCucTCI"
                                 />
                             </div>
@@ -143,7 +143,7 @@ class Login extends Component {
                                 </label>
                                 <input
                                     type="text"
-                                    className="form-control login-input"
+                                    className="form-control login-input input-text"
                                     placeholder="Enter your usename"
                                     name="userName"
                                     value={this.state.userName}
@@ -165,7 +165,7 @@ class Login extends Component {
                                                 ? "text"
                                                 : "password"
                                         }
-                                        className="form-control"
+                                        className="form-control input-text"
                                         placeholder="Enter your password"
                                         name="passWord"
                                         value={this.state.passWord}

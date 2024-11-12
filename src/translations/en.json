@@ -156,7 +156,9 @@
         "detail-clinic": {
             "text-search": "Search",
             "text-desc": "Description",
-            "text-title": "About Us"
+            "text-title": "About Us",
+            "view more": "View more",
+            "list-doctor": "Medical team"
         },
         "detail-speciality": {
             "text-more": "More",
@@ -237,8 +239,8 @@
             "edit": "Edit Clinic"
         },
         "dashboard": {
-            "title": "Welcome back 👋",
-            "desc": "Explore and manage your data with ease."
+            "title": "Welcome back to the system. 👋",
+            "desc": "Easily explore and optimize your data!."
         },
         "manage-patient": {
             "title": "MANAGE PATIENT'S",

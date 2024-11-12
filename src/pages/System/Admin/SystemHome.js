@@ -348,14 +348,14 @@ class SystemHome extends Component {
                                     />
                                 </div>
                             </div>
-                            <DashboardChart
+                            {/* <DashboardChart
                                 chartData={this.state.chartClinicBooking}
                                 titleChart={
                                     language === LANGUAGE.VI
                                         ? `Số liệu thống kê phòng khám tháng ${currentMonth}`
                                         : `Monthly clinic scheduling statistics ${currentMonth}`
                                 }
-                            />
+                            /> */}
                         </div>
                     </div>
                 )}

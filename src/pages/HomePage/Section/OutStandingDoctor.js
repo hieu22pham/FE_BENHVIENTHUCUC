@@ -88,9 +88,9 @@ class OutStandingDoctor extends Component {
                                 <span>
                                     {language === LANGUAGE.VI
                                         ? doctor.User.Doctor_Infor.specialtyData
-                                              .nameVi
+                                            .nameVi
                                         : doctor.User.Doctor_Infor.specialtyData
-                                              .nameEn}
+                                            .nameEn}
                                 </span>
                             </div>
                         </div>
@@ -116,7 +116,7 @@ class OutStandingDoctor extends Component {
                     <div className="section-body">
                         <Slider {...this.props.settings}>
                             {this.state.arrDoctors &&
-                            this.state.arrDoctors.length > 0
+                                this.state.arrDoctors.length > 0
                                 ? renderTopDoctor()
                                 : ""}
                         </Slider>

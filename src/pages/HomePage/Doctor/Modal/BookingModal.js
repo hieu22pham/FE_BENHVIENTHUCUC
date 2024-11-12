@@ -498,7 +498,7 @@ class BookingModal extends Component {
                                         />
                                     </label>
                                     <select
-                                        className="form-control"
+                                        className="form-control select-gender1"
                                         id="inputGender"
                                         name="gender"
                                         value={selectedGender}
@@ -546,10 +546,10 @@ class BookingModal extends Component {
                                     <li className="text-note">
                                         {`Ghi rõ họ và tên, viết hoa chữ cái đầu
                                         tiên ví dụ: `}
-                                        <b>Trịnh Bá Nhất</b>
+                                        <b>Nguyễn Văn A</b>
                                     </li>
                                     <li className="text-note">
-                                        Điền đầy đủ thông tin trước khi xác nhận
+                                        Vui lòng điền đầy đủ thông tin trước khi xác nhận
                                     </li>
                                 </ul>
                             </div>

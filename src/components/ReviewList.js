@@ -37,7 +37,7 @@ export default class ReviewList extends Component {
                                 <div className="feedback-item" key={index}>
                                     <div className="feedback-name">
                                         <strong>
-                                            {`${review.firstName} ${review.lastName}`}
+                                            {`${review.lastName} ${review.firstName} `}
                                             &nbsp; &nbsp;
                                         </strong>
                                         <a className="feedback-info">

@@ -312,7 +312,6 @@ class ManageSchedule extends Component {
             selectedClinic,
         } = this.state;
         const { language, userInfo } = this.props;
-
         // Tạo một đối tượng Date đại diện cho ngày hiện tại
         var today = new Date();
         // Tạo một đối tượng Date đại diện cho ngày mai
@@ -385,18 +384,38 @@ class ManageSchedule extends Component {
                                 }
                             >
                                 {/* Render các Option từ dữ liệu API */}
+
                                 {listDoctor.map((item) => (
                                     <Option key={item.id} value={item.id}>
                                         {language === LANGUAGE.VI
                                             ? `${item.firstName} ${item.lastName
-                                            } - ${item.nameVi ? item.nameVi : ""
+                                            } - ${item.Doctor_Infor
+                                                .specialtyData.nameVi
+                                                ? item.Doctor_Infor
+                                                    .specialtyData
+                                                    .nameVi
+                                                : ""
                                             }`
                                             : `${item.lastName} ${item.firstName
-                                            } - ${item.nameEn ? item.nameEn : ""
+                                            } - ${item.Doctor_Infor
+                                                .specialtyData.nameEn
+                                                ? item.Doctor_Infor
+                                                    .specialtyData
+                                                    .nameEn
+                                                : ""
                                             }`}
                                     </Option>
+
                                 ))}
                             </Select>
+                            {/* {language === LANGUAGE.VI
+                                ? `${item.firstName} ${item.lastName
+                                } 
+                                            - ${item.nameVi ? item.nameVi : ""
+                                }`
+                                : `${item.lastName} ${item.firstName
+                                } - ${item.nameEn ? item.nameEn : ""
+                                }`} */}
                         </div>
                         <div className="col-lg-6 col-sm-12 form-group">
                             <label>

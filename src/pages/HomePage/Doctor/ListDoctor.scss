@@ -52,6 +52,12 @@
             width: 25%;
             margin: 20px 0;
 
+            input {
+                height: 40px;
+                border-radius: 15px;
+                font-size: 15px;
+            }
+
             button {
                 position: absolute;
                 right: 0px;
@@ -61,6 +67,9 @@
                 border: none;
                 border-bottom-right-radius: 4px;
                 padding: 5px;
+                height: 40px;
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
             }
         }
     }

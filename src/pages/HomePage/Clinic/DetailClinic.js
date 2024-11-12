@@ -175,6 +175,7 @@ class DetailClinic extends Component {
     };
 
     render() {
+
         let { arrDoctorId, dataDetailClinic, listProvince, searchInput } =
             this.state;
         let { language } = this.props;
@@ -228,9 +229,50 @@ class DetailClinic extends Component {
                             </div>
                         </div>
                     </div>
+
+                    <div className="clinic-description">
+                        <h2 className="text-desc">
+                            <FormattedMessage
+                                id={"patient.detail-clinic.text-desc"}
+                            />
+                        </h2>
+                        {dataDetailClinic && !_.isEmpty(dataDetailClinic) && (
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: dataDetailClinic.descriptionHTML,
+                                }}
+                            ></div>
+                        )}
+
+                        <div className="container-img-about">
+                            <div className="img-about img-about-1"></div>
+                            <p>
+                                Hình ảnh phía ngoài của cơ sở 32 Đại Từ
+                            </p>
+                        </div>
+                        <div className="container-img-about">
+                            <div className="img-about img-about-2"></div>
+                            <p>
+                                TCI 32 Đại Từ sở hữu nhiều thế mạnh vượt trội về không gian và cơ sở vật chất
+                            </p>
+                        </div>
+                        <div className="container-img-about">
+                            <div className="img-about img-about-3"></div>
+                            <p>
+                                Chất lượng dịch vụ được ưu tiên hàng đầu tại TCI 32 Đại Từ
+                            </p>
+                        </div>
+                        <div className="attention-body">
+                            <div className="attention-text">
+                                Lưu ý, các thông tin trên chỉ dành cho mục đích tham khảo và tra cứu, không thay thế cho việc thăm khám, chẩn đoán hoặc điều trị y khoa. Người bệnh cần tuân theo hướng dẫn của bác sĩ, không tự ý thực hiện theo nội dung bài viết để đảm bảo an toàn cho sức khỏe.
+                            </div>
+                            <div className="attention-img"></div>
+                        </div>
+                    </div>
+
                     <div className="detail-clinic_body">
                         <div className="filter-doctor">
-                            <select
+                            {/* <select
                                 onChange={(event) => {
                                     this.handleOnChangeSelect(event);
                                 }}
@@ -249,7 +291,14 @@ class DetailClinic extends Component {
                                             </option>
                                         );
                                     })}
-                            </select>
+                            </select> */}
+                            <div className="heaer-filter-content">
+                                <h3>
+                                    <FormattedMessage
+                                        id={"patient.detail-clinic.list-doctor"}
+                                    />
+                                </h3>
+                            </div>
                             <div className="filter-doctor_search">
                                 <input
                                     className="form-control"
@@ -303,47 +352,20 @@ class DetailClinic extends Component {
                                 })}
                         </div>
                     </div>
-                    <div className="clinic-description">
-                        <h2 className="text-desc">
+                    <div className="view-more">
+                        <Link
+                            to={`/danh-sach/bac-si/danh-cho-ban`}
+                            className="btn-view-more"
+                        >
                             <FormattedMessage
-                                id={"patient.detail-clinic.text-desc"}
+                                id={"patient.detail-clinic.view more"}
                             />
-                        </h2>
-                        {dataDetailClinic && !_.isEmpty(dataDetailClinic) && (
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: dataDetailClinic.descriptionHTML,
-                                }}
-                            ></div>
-                        )}
-
-                        <div className="container-img-about">
-                            <div className="img-about img-about-1"></div>
-                            <p>
-                                Hình ảnh phía ngoài của cơ sở 32 Đại Từ
-                            </p>
-                        </div>
-                        <div className="container-img-about">
-                            <div className="img-about img-about-2"></div>
-                            <p>
-                                TCI 32 Đại Từ sở hữu nhiều thế mạnh vượt trội về không gian và cơ sở vật chất
-                            </p>
-                        </div>
-                        <div className="container-img-about">
-                            <div className="img-about img-about-3"></div>
-                            <p>
-                                Chất lượng dịch vụ được ưu tiên hàng đầu tại TCI 32 Đại Từ
-                            </p>
-                        </div>
-                        <div className="attention-body">
-                            <div className="attention-text">
-                                Lưu ý, các thông tin trên chỉ dành cho mục đích tham khảo và tra cứu, không thay thế cho việc thăm khám, chẩn đoán hoặc điều trị y khoa. Người bệnh cần tuân theo hướng dẫn của bác sĩ, không tự ý thực hiện theo nội dung bài viết để đảm bảo an toàn cho sức khỏe.
-                            </div>
-                            <div className="attention-img"></div>
-                        </div>
+                        </Link>
                     </div>
 
+
                 </div>
+
 
                 <div className="mt-3">
                     <HomeFooter />

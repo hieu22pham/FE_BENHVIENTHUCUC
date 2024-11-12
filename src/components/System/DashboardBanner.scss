@@ -1,20 +1,25 @@
 .dashboard-banner {
-    color          : #fff;
-    align-items    : flex-start;
+    color: #fff;
+    align-items: flex-start;
     justify-content: space-between;
-    padding        : 40px;
-    text-align     : left;
-    background     : linear-gradient(135deg, rgba(27, 123, 187, 0.2), rgba(1, 56, 93, 0.2)) rgb(246, 246, 246);
-    border-radius  : 16px;
-    color          : #0071ba;
+    padding: 40px;
+    text-align: left;
+    background: linear-gradient(135deg, rgb(199 221 30 / 20%), rgb(55 7 66 / 40%)) rgb(246, 246, 246);
+    // background: linear-gradient(135deg, rgba(27, 123, 187, 0.2), rgba(1, 56, 93, 0.2)) rgb(246, 246, 246);
+    border-radius: 16px;
+    color: #5437e3;
 
     .banner-left {
         // width: 65%;
 
         .banner-title {
-            font-size    : 36px;
-            font-weight  : bold;
+            font-size: 36px;
+            font-weight: bold;
             margin-bottom: 10px;
+        }
+
+        p {
+            color: #000;
         }
     }
 
@@ -22,14 +27,14 @@
         // width: 35%;
 
         img {
-            width        : 100%;
-            object-fit   : cover;
+            width: 100%;
+            object-fit: cover;
             border-radius: 16px;
         }
     }
 
     .banner-description {
-        font-size : 18px;
+        font-size: 18px;
         margin-top: 30px;
     }
 }

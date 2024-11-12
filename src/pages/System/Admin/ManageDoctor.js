@@ -119,9 +119,10 @@ class ManageDoctor extends Component {
             action: hasOldData ? CRUD_ACTIONS.EDIT : CRUD_ACTIONS.CREATE,
 
             priceId: this.state.selectedPrice,
-            // paymentId: this.state.selectedPayment,
-            paymentId: "PAY1",
-            provinceId: this.state.selectedProvince,
+            paymentId: this.state.selectedPayment,
+            //paymentId: "PAY1",
+            //provinceId: this.state.selectedProvince,
+            provinceId: "PRO1",
             nameClinic: this.state.nameClinic,
             addressClinic: this.state.addressClinic,
             note: this.state.note,
@@ -431,7 +432,8 @@ class ManageDoctor extends Component {
                                 ))}
                             </Select>
                         </div>
-                        {/* <div className="col-lg-4 col-sm-12 form-group">
+                        {/* ĐÂY NHẤT */}
+                        <div className="col-lg-4 col-sm-12 form-group">
                             <label>
                                 <FormattedMessage
                                     id={"admin.manage-doctor.payment"}
@@ -467,8 +469,9 @@ class ManageDoctor extends Component {
                                     </Option>
                                 ))}
                             </Select>
-                        </div> */}
-                        <div className="col-lg-4 col-sm-12 form-group">
+                        </div>
+                        {/* ĐÂY NHẤT */}
+                        <div className="col-lg-4 col-sm-12 form-group list-city" >
                             <label>
                                 <FormattedMessage
                                     id={"admin.manage-doctor.province"}
@@ -506,58 +509,7 @@ class ManageDoctor extends Component {
                                 ))}
                             </Select>
                         </div>
-                        {/* <div className="col-lg-4 col-sm-12 form-group">
-                            <label>
-                                <FormattedMessage
-                                    id={"admin.manage-doctor.name-clinic"}
-                                />
-                            </label>
-                            <br />
-                            <input
-                                className="form-control"
-                                onChange={(event) => {
-                                    this.handleChangeText(event);
-                                }}
-                                value={nameClinic}
-                                name="nameClinic"
-                            />
-                        </div> */}
-                        {/* ĐÂY NHẤT */}
-                        <div className="col-lg-4 col-sm-12 form-group">
-                            <label>
-                                <FormattedMessage
-                                    id={"admin.manage-doctor.address-clinic"}
-                                />
-                            </label>
-                            <br />
-                            <input
-                                className="form-control"
-                                value={addressClinic}
-                                onChange={(event) => {
-                                    this.handleChangeText(event);
-                                }}
-                                name="addressClinic"
-                            />
-                        </div>
-                        <div className="col-lg-4 col-sm-12 form-group">
-                            <label>
-                                <FormattedMessage
-                                    id={"admin.manage-doctor.note"}
-                                />
-                            </label>
-                            <br />
-                            <input
-                                className="form-control"
-                                value={note}
-                                onChange={(event) => {
-                                    this.handleChangeText(event);
-                                }}
-                                name="note"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="row">
+                        {/* THÊM VÀO ĐÂY */}
                         <div className="col-lg-4 col-sm-12 form-group">
                             <label>
                                 <FormattedMessage
@@ -596,6 +548,59 @@ class ManageDoctor extends Component {
                                 ))}
                             </Select>
                         </div>
+                        {/* ĐÂY NHẤT */}
+                        <div className="col-lg-4 col-sm-12 form-group">
+                            <label>
+                                <FormattedMessage
+                                    id={"admin.manage-doctor.address-clinic"}
+                                />
+                            </label>
+                            <br />
+                            <input
+                                className="form-control"
+                                value={addressClinic}
+                                onChange={(event) => {
+                                    this.handleChangeText(event);
+                                }}
+                                name="addressClinic"
+                            />
+                        </div>
+                        <div className="col-lg-4 col-sm-12 form-group">
+                            <label>
+                                <FormattedMessage
+                                    id={"admin.manage-doctor.note"}
+                                />
+                            </label>
+                            <br />
+                            <input
+                                className="form-control"
+                                value={note}
+                                onChange={(event) => {
+                                    this.handleChangeText(event);
+                                }}
+                                name="note"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        {/* <div className="col-lg-4 col-sm-12 form-group">
+                            <label>
+                                <FormattedMessage
+                                    id={"admin.manage-doctor.name-clinic"}
+                                />
+                            </label>
+                            <br />
+                            <input
+                                className="form-control"
+                                onChange={(event) => {
+                                    this.handleChangeText(event);
+                                }}
+                                value={nameClinic}
+                                name="nameClinic"
+                            />
+                        </div> */}
+
                         <div style={{ display: "none" }} className="col-lg-4 col-sm-12 form-group">
                             <label>
                                 <FormattedMessage

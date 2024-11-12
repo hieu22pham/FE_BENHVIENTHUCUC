@@ -110,7 +110,7 @@ class ListSpecialty extends Component {
                         </h3>
                         <div className="filter_search">
                             <input
-                                className="form-control"
+                                className="form-control input-search"
                                 name="searchInput"
                                 value={searchInput}
                                 placeholder="Search"
