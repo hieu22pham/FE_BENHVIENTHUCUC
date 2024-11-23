@@ -44,7 +44,7 @@ class VerifyEmail extends Component {
             // console.log(">>>> check token: " + token + " " + doctorId);
         }
     }
-    componentDidUpdate(prevProps, prevState, snapshot) {}
+    componentDidUpdate(prevProps, prevState, snapshot) { }
 
     render() {
         const { statusVerify, errCode } = this.state;
@@ -62,8 +62,15 @@ class VerifyEmail extends Component {
                         <div className="verify-email">
                             {errCode === 0 ? (
                                 <div className="verify-email_success">
-                                    Xác nhận lịch hẹn thành công!
+                                    <p className="success">Đặt lịch khám bệnh thành công!</p>
+                                    <div className="success-info">
+                                        <p>Vui lòng đến khám đúng giờ để chúng tôi
+                                            hỗ trợ tốt nhất cho bạn.
+                                        </p>
+                                        <p>Xin cảm ơn</p>
+                                    </div>
                                 </div>
+
                             ) : (
                                 <div className="verify-email_error">
                                     Lịch hẹn không tồn tại hoặc đã được xác

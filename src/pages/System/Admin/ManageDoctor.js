@@ -123,8 +123,11 @@ class ManageDoctor extends Component {
             //paymentId: "PAY1",
             //provinceId: this.state.selectedProvince,
             provinceId: "PRO1",
-            nameClinic: this.state.nameClinic,
-            addressClinic: this.state.addressClinic,
+            //nameClinic: this.state.nameClinic,
+            nameClinic: 'Phòng Khám Đa Khoa Thu Cúc',
+            //addressClinic: this.state.addressClinic,
+            addressClinic: 'Toà HH01, Eco LakeView số 32 Đại Từ',
+
             note: this.state.note,
             specialtyId: this.state.selectedSpecialty,
             clinicId: this.state.selectedClinic ? this.state.selectedClinic : 0,
@@ -549,7 +552,7 @@ class ManageDoctor extends Component {
                             </Select>
                         </div>
                         {/* ĐÂY NHẤT */}
-                        <div className="col-lg-4 col-sm-12 form-group">
+                        <div style={{ display: "none" }} className="col-lg-4 col-sm-12 form-group">
                             <label>
                                 <FormattedMessage
                                     id={"admin.manage-doctor.address-clinic"}

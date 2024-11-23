@@ -91,9 +91,9 @@ class HistoryBooking extends Component {
         let dataSource = data.map((item) => {
             return {
                 key: item.id,
-                fullName: `${item.patientData.firstName ? item.patientData.firstName : ""
-                    } ${item.patientData.lastName}`,
-                doctorName: `${item.User.firstName} ${item.User.lastName}`,
+                fullName: `${item.patientData.lastName} ${item.patientData.firstName ? item.patientData.firstName : ""
+                    } `,
+                doctorName: `${item.User.lastName} ${item.User.firstName} `,
                 timeType: `${item.timeTypeDataPatient.valueVi}, ${language === LANGUAGE.VI
                     ? moment
                         .unix(+item.date / 1000)
@@ -118,8 +118,8 @@ class HistoryBooking extends Component {
         let dataSource = data.map((item) => {
             return {
                 key: item.id,
-                fullName: `${item.bookingData.patientData.firstName} ${item.bookingData.patientData.lastName}`,
-                doctorName: `${item.bookingData.User.firstName} ${item.bookingData.User.lastName}`,
+                fullName: `${item.bookingData.patientData.lastName} ${item.bookingData.patientData.firstName} `,
+                doctorName: `${item.bookingData.User.lastName} ${item.bookingData.User.firstName} `,
                 timeType: `${item.bookingData.timeTypeDataPatient.valueVi}, ${language === LANGUAGE.VI
                     ? moment
                         .unix(+item.bookingData.date / 1000)
@@ -471,6 +471,7 @@ class HistoryBooking extends Component {
                         </>
                     ) : (
                         <>
+
                             <div className="booking-history-content">
                                 <div className="booking-current">
                                     <h2>

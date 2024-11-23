@@ -82,7 +82,7 @@ export default class TableManageClinic extends Component {
                         >
                             <FormattedMessage id={"actions.edit"} />
                         </button>
-                        <button
+                        {/* <button
                             className="btn btn-danger"
                             onClick={() => {
                                 // console.log(record.id);
@@ -90,7 +90,7 @@ export default class TableManageClinic extends Component {
                             }}
                         >
                             <FormattedMessage id={"actions.delete"} />
-                        </button>
+                        </button> */}
                     </Space>
                 ),
             },
@@ -120,8 +120,8 @@ export default class TableManageClinic extends Component {
                 <Table
                     dataSource={
                         filteredData &&
-                        filteredData.length > 0 &&
-                        nameFilter !== ""
+                            filteredData.length > 0 &&
+                            nameFilter !== ""
                             ? filteredData
                             : dataSource
                     }
@@ -130,16 +130,16 @@ export default class TableManageClinic extends Component {
                     title={() => (
                         <h3>
                             {/* <FormattedMessage id={"manage-user.listUser"} /> */}
-                            Danh sách phòng khám
+                            Thông tin phòng khám
                         </h3>
                     )}
-                    pagination={{
-                        defaultPageSize: 5, // Số lượng bản ghi hiển thị trên mỗi trang
-                        showSizeChanger: true, // Hiển thị chọn kích thước trang
-                        pageSizeOptions: ["5", "10", "15"], // Các tùy chọn kích thước trang
-                        showTotal: (total, range) =>
-                            `${range[0]}-${range[1]} of ${total} items`, // Hiển thị tổng số bản ghi
-                    }}
+                // pagination={{
+                //     defaultPageSize: 5, // Số lượng bản ghi hiển thị trên mỗi trang
+                //     showSizeChanger: true, // Hiển thị chọn kích thước trang
+                //     pageSizeOptions: ["5", "10", "15"], // Các tùy chọn kích thước trang
+                //     showTotal: (total, range) =>
+                //         `${range[0]}-${range[1]} of ${total} items`, // Hiển thị tổng số bản ghi
+                // }}
                 />
             </div>
         );

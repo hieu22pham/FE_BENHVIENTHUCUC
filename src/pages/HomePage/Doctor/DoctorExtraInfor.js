@@ -14,6 +14,8 @@ class DoctorExtraInfor extends Component {
             isShowDetailInfor: false,
             extraInfor: {},
         };
+        window.scrollTo(0, 0);
+
     }
 
     async componentDidMount() {
@@ -84,8 +86,8 @@ class DoctorExtraInfor extends Component {
                             </h3>
                             <span>
                                 {extraInfor &&
-                                extraInfor.priceData &&
-                                language === LANGUAGE.VI ? (
+                                    extraInfor.priceData &&
+                                    language === LANGUAGE.VI ? (
                                     <NumberFormat
                                         value={extraInfor.priceData.valueVi}
                                         displayType="text"
@@ -96,8 +98,8 @@ class DoctorExtraInfor extends Component {
                                     ""
                                 )}
                                 {extraInfor &&
-                                extraInfor.priceData &&
-                                language === LANGUAGE.EN ? (
+                                    extraInfor.priceData &&
+                                    language === LANGUAGE.EN ? (
                                     <NumberFormat
                                         value={extraInfor.priceData.valueEn}
                                         displayType="text"
@@ -140,8 +142,8 @@ class DoctorExtraInfor extends Component {
                                     </span>
                                     <span className="price">
                                         {extraInfor &&
-                                        extraInfor.priceData &&
-                                        language === LANGUAGE.VI ? (
+                                            extraInfor.priceData &&
+                                            language === LANGUAGE.VI ? (
                                             <NumberFormat
                                                 value={
                                                     extraInfor.priceData.valueVi
@@ -154,8 +156,8 @@ class DoctorExtraInfor extends Component {
                                             ""
                                         )}
                                         {extraInfor &&
-                                        extraInfor.priceData &&
-                                        language === LANGUAGE.EN ? (
+                                            extraInfor.priceData &&
+                                            language === LANGUAGE.EN ? (
                                             <NumberFormat
                                                 value={
                                                     extraInfor.priceData.valueEn
@@ -182,13 +184,13 @@ class DoctorExtraInfor extends Component {
                                     }
                                 />
                                 {extraInfor &&
-                                extraInfor.paymentData &&
-                                language === LANGUAGE.VI
+                                    extraInfor.paymentData &&
+                                    language === LANGUAGE.VI
                                     ? extraInfor.paymentData.valueVi
                                     : ""}
                                 {extraInfor &&
-                                extraInfor.paymentData &&
-                                language === LANGUAGE.EN
+                                    extraInfor.paymentData &&
+                                    language === LANGUAGE.EN
                                     ? extraInfor.paymentData.valueEn
                                     : ""}
                             </div>

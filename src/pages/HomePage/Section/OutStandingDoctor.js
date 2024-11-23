@@ -63,7 +63,7 @@ class OutStandingDoctor extends Component {
                         "base64"
                     ).toString("binary");
                 }
-                let nameVi = `${doctor.User.positionData.valueVi}, ${doctor.User.firstName} ${doctor.User.lastName}`;
+                let nameVi = `${doctor.User.positionData.valueVi}, ${doctor.User.lastName} ${doctor.User.firstName} `;
                 let nameEn = `${doctor.User.positionData.valueEn}, ${doctor.User.firstName} ${doctor.User.lastName}`;
 
                 return (

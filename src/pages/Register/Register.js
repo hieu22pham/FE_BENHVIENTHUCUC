@@ -420,6 +420,7 @@ class Register extends Component {
                         </div>
                     </div>
                     <div className="register-bg_img col-lg-6">
+                        <div className="slogan_img">Uy tín - Tận tâm - Trách nhiệm</div>
                         <div className="style_shape__1HA08"></div>
                     </div>
                 </div>

@@ -31,6 +31,8 @@ class DetailClinic extends Component {
             location: "ALL",
             clinicId: "",
         };
+        window.scrollTo(0, 0);
+
     }
 
     async componentDidMount() {
@@ -204,38 +206,27 @@ class DetailClinic extends Component {
                             />
                         </div>
                     </div>
-                    <div
-                        className="detail-clinic_header"
-                        style={{
-                            backgroundImage: `url(${require("../../../assets/images/detail_specialty/he-thong-y-te-thu-cuc-tci-chinh-thuc-khai-truong-co-so.jpg")})`,
-                        }}
-                    >
-                        <div className="detail-clinic_content">
-                            <div className="detail-clinic_description">
-                                <div className="detail-clinic_image">
-                                    <img
-                                        src={dataDetailClinic.image}
-                                        alt={dataDetailClinic.image}
-                                    />
-                                </div>
-                                <div className="detail-clinic_address">
-                                    <h1>
-                                        {language === LANGUAGE.VI
-                                            ? dataDetailClinic.nameVi
-                                            : dataDetailClinic.nameEn}
-                                    </h1>
-                                    <div>{dataDetailClinic.address}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div className="clinic-description">
+
                         <h2 className="text-desc">
                             <FormattedMessage
                                 id={"patient.detail-clinic.text-desc"}
-                            />
+                            /> {language === LANGUAGE.VI
+                                ? dataDetailClinic.nameVi
+                                : dataDetailClinic.nameEn}
                         </h2>
+                        <div>
+                            <b>{language === LANGUAGE.VI
+                                ? dataDetailClinic.nameVi
+                                : dataDetailClinic.nameEn} – {dataDetailClinic.address}</b> có vị trí giao thông thuận lợi phù hợp với khách hàng ở khu vực lân cận và phía Bắc Thủ Đô. Với quy mô 7000m2, cơ sở vật chất khang trang cùng đội ngũ các bác sĩ, nhân viên y tế có trình độ chuyên môn cao và tận tâm
+                        </div>
+                        <div className="detail-clinic_image">
+                            <img
+                                src={dataDetailClinic.image}
+                                alt={dataDetailClinic.image}
+                            />
+                        </div>
                         {dataDetailClinic && !_.isEmpty(dataDetailClinic) && (
                             <div
                                 dangerouslySetInnerHTML={{
@@ -272,26 +263,6 @@ class DetailClinic extends Component {
 
                     <div className="detail-clinic_body">
                         <div className="filter-doctor">
-                            {/* <select
-                                onChange={(event) => {
-                                    this.handleOnChangeSelect(event);
-                                }}
-                            >
-                                {listProvince &&
-                                    listProvince.length > 0 &&
-                                    listProvince.map((item, index) => {
-                                        return (
-                                            <option
-                                                key={index}
-                                                value={item.keyMap}
-                                            >
-                                                {language === LANGUAGE.VI
-                                                    ? item.valueVi
-                                                    : item.valueEn}
-                                            </option>
-                                        );
-                                    })}
-                            </select> */}
                             <div className="heaer-filter-content">
                                 <h3>
                                     <FormattedMessage

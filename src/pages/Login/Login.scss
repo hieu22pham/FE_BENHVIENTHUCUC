@@ -112,14 +112,25 @@
     }
 
     .login-bg_img {
-        background-image: url('../../assets/background/banner_login_regester.PNG');
-        // height                   : 100%;
+        background-image: url('../../assets/background/banner_12.png');
+        // height: 100%;
         width: 100%;
-        // position           : absolute;
+        position: relative;
         // top                   : 50;
         // right                 : 0;
         background-size: cover;
         background-position: 50%;
+
+        .slogan_img {
+            position: absolute;
+            top: 44%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            font-size: 24px;
+            color: red;
+            font-style: italic;
+        }
 
     }
 }

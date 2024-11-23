@@ -26,6 +26,8 @@ class DetailSpecialty extends Component {
             readMoreDesc: false,
             listProvince: [],
         };
+        window.scrollTo(0, 0);
+
     }
 
     async componentDidMount() {

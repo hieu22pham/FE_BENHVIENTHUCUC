@@ -21,6 +21,8 @@ class DetailDoctor extends Component {
             rating: null,
             doctorId: null,
         };
+        window.scrollTo(0, 0);
+
     }
 
     async componentDidMount() {
@@ -84,8 +86,8 @@ class DetailDoctor extends Component {
                                 className="image-doctor"
                                 style={{
                                     backgroundImage: `url(${doctorDetail.image
-                                            ? doctorDetail.image
-                                            : ""
+                                        ? doctorDetail.image
+                                        : ""
                                         })`,
                                 }}
                             ></div>

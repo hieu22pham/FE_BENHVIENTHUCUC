@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import HomeHeader from "./HomeHeader";
 import Specialty from "./Section/Specialty";
-import MedicalFacility from "./Section/MedicalFacility";
 import "./HomePage.scss";
 import NextArrow from "./Section/NextArrow";
 import PrevArrow from "./Section/PrevArrow";
 import OutStandingDoctor from "./Section/OutStandingDoctor";
-import HandBook from "./Section/HandBook";
 import HomeFooter from "./HomeFooter";
 import About from "./Section/About";
+import AboutClinic from "./Section/AboutClinic";
+import HandBook from "./Section/HandBook";
 
 class HomePage extends Component {
     render() {
@@ -60,7 +60,7 @@ class HomePage extends Component {
             <div>
                 <HomeHeader isShowBanner={true} />
                 <Specialty settings={settings} />
-                {/* <MedicalFacility settings={settings} /> */}
+                <AboutClinic />
                 <OutStandingDoctor settings={settings} />
                 <HandBook settings={settings} />
                 <About />

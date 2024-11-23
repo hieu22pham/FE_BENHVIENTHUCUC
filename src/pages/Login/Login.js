@@ -127,7 +127,7 @@ class Login extends Component {
                 <HeaderBack />
                 <div className="login-background d-flex">
                     <div className="login-container col-6">
-                        <div className="login-content row">
+                        <div className="login-content row ">
                             <div className="Logo mb-5">
                                 <img
                                     src={require("../../assets/background/logo_remove01.png")}
@@ -233,6 +233,7 @@ class Login extends Component {
                         </div>
                     </div>
                     <div className="login-bg_img col-6">
+                        <div className="slogan_img">Uy tín - Tận tâm - Trách nhiệm</div>
                         <div className="style_shape__1HA08"></div>
                     </div>
                 </div>

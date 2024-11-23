@@ -199,7 +199,7 @@ class ManageClinic extends Component {
                 let res = await createNewClinic(data);
                 if (res && res.errCode === 0) {
                     this.props.isShowLoading(false);
-                    toast.success("Thêm phòng khám thành công!");
+                    toast.success("Thêm thông tin phòng khám thành công!");
                     this.resetData();
                     this.getAllClinic();
                 } else {

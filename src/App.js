@@ -24,7 +24,6 @@ import DetailSpecialty from "./pages/HomePage/Specialty/DetailSpecialty";
 import DetailClinic from "./pages/HomePage/Clinic/DetailClinic";
 import ListSpecialty from "./pages/HomePage/Specialty/ListSpecialty";
 import ListDoctor from "./pages/HomePage/Doctor/ListDoctor";
-import ListClinic from "./pages/HomePage/Clinic/ListClinic";
 import HistoryBooking from "./pages/HomePage/Booking/HistoryBooking";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import Register from "./pages/Register/Register";
@@ -66,8 +65,8 @@ class App extends Component {
                                 <Route
                                     path={configs.routes.LOGIN}
                                     component={userIsNotAuthenticated(Login)}
-                                    //Được phép truy cập trang Login khi isLogged=false (hoc),
-                                    //nếu true thì chạy đến thẳng trang home để xủ lý chuyển trang
+                                //Được phép truy cập trang Login khi isLogged=false (hoc),
+                                //nếu true thì chạy đến thẳng trang home để xủ lý chuyển trang
                                 />
                                 <Route
                                     path={configs.routes.REGISTER}
@@ -77,8 +76,8 @@ class App extends Component {
                                 <Route
                                     path={configs.routes.SYSTEM}
                                     component={userIsAuthenticated(System)}
-                                    //Được phép truy cập trang System khi isLogged=true(hoc)
-                                    //nếu false chuyển sang trang login
+                                //Được phép truy cập trang System khi isLogged=true(hoc)
+                                //nếu false chuyển sang trang login
                                 />
                                 <Route
                                     path={"/doctor"}
@@ -109,10 +108,6 @@ class App extends Component {
                                 <Route
                                     path={configs.routes.LIST_DOCTOR}
                                     component={ListDoctor}
-                                />
-                                <Route
-                                    path={configs.routes.LIST_CLINIC}
-                                    component={ListClinic}
                                 />
 
                                 <Route

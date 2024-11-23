@@ -71,7 +71,9 @@ class ChangePassword extends Component {
     };
 
     render() {
+        console.log("nhất check userinfo id", this.props.userInfo)
         return (
+
             <div className="change-password-container">
                 <div className="row">
                     <div className="col-lg-12 col-sm-12 mt-3 login-input">

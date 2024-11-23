@@ -190,7 +190,7 @@ class HomeHeader extends Component {
                                 to={routes.HOMEPAGE}
                                 className="child-content"
                             >
-                                <div to={"/detail-clinic/6"}>
+                                <div to={"/home"}>
                                     <b>
                                         <FormattedMessage id="homeHeader.home" />
                                     </b>
@@ -200,7 +200,7 @@ class HomeHeader extends Component {
                                 to={routes.ABOUT_CLINIC}
                                 className="child-content"
                             >
-                                <div to={"/detail-clinic/6"}>
+                                <div to={"/gioi-thieu/6"}>
                                     <b>
                                         <FormattedMessage id="homeHeader.about-clinic" />
                                     </b>
@@ -466,7 +466,7 @@ class HomeHeader extends Component {
                                                 }
                                             )}
                                     </div>
-                                    <div className="search-result_clinics">
+                                    {/* <div className="search-result_clinics">
                                         <h3>
                                             <FormattedMessage id="banner.clinic" />
                                         </h3>
@@ -496,7 +496,7 @@ class HomeHeader extends Component {
                                                     );
                                                 }
                                             )}
-                                    </div>
+                                    </div> */}
                                     <div className="search-result_doctors">
                                         <h3>
                                             <FormattedMessage id="banner.doctor" />

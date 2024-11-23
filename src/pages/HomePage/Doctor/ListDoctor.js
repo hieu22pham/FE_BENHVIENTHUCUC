@@ -21,6 +21,8 @@ class ListDoctor extends Component {
             searchInput: "",
             ListDoctor: [],
         };
+        window.scrollTo(0, 0);
+
     }
 
     async componentDidMount() {

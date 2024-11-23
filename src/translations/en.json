@@ -22,8 +22,8 @@
         }
     },
     "banner": {
-        "title1": "MEDICAL FOUNDATION",
-        "title2": "Comprehensive health care",
+        "title1": "THU CÚC MULTI-SPECIALTY CLINIC",
+        "title2": "REPUTATION - QUALITY - DEDICATION",
         "examination": "Examination",
         "speciality": "Specialty",
         "clinic": "Clinic",
@@ -44,8 +44,8 @@
             "manage-admin": "Manage Admin",
             "crud": "CRUD user",
             "crud-redux": "Manage user",
-            "clinic": "Clinics",
-            "manage-clinic": "Manage Clinics",
+            "clinic": "Clinic",
+            "manage-clinic": "Manage Information Clinic",
             "specialty": "Specialties",
             "manage-specialty": "Manage Specialty",
             "handbook": "Handbook",
@@ -95,8 +95,14 @@
         "popular-specialties": "Specialties",
         "hand-book": "News",
         "text-search": "More",
+        "reasons": "Why You Should Trust Us? Get to Know About Us! ",
+        "text-about-1": "Officially operational since March 2021, TCI 32 Dai Tu (Hoang Mai, Hanoi) has become a trusted health destination for the community, affirming the development and expansion of the TCI brand to new heights.",
+        "text-about-2": "With the advantage of having an ideal examination space and a synchronized investment in facilities, TCI 32 Dai Tu is increasingly affirming its position in community healthcare.",
+        "more-infor": "Read more",
+        "text-check-1": "Quality health care",
+        "text-check-2": "Only Qualified Doctors",
+        "text-check-3": "Medical Research Professionals",
         "about-us": "About us",
-        "outstanding-medical-facilities": "Medical facilities",
         "text-about-media": "The media discusses Thu Cuc General Clinic.",
         "text-about-media-talk": "The Thu Cuc General Clinic system is always highly regarded for its spacious, modern, and comfortable facilities, providing a pleasant experience for all customers. The clinic is divided into several areas to serve specific functions",
         "footer": {
@@ -223,7 +229,7 @@
             "add": "Create Specialty"
         },
         "manage-clinic": {
-            "title": "Manage Clinic",
+            "title": "Manage Information Clinic",
             "text-nameVi": "Name's Vietnamese",
             "text-nameEn": "Name's English",
             "text-image": "Image Clinic",

@@ -315,7 +315,15 @@
             h1 {
                 text-shadow: 1px 1px 1px #333;
                 line-height: 55px;
-                color: #ffff;
+                color: #00a750;
+                font-weight: 600;
+
+                b {
+                    font-size: 30px;
+                    font-weight: 500;
+                    color: #fff;
+                    font-style: italic;
+                }
             }
 
             margin-bottom: 15px;
