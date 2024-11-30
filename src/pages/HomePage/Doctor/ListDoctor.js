@@ -72,6 +72,11 @@ class ListDoctor extends Component {
         }
     };
 
+    handleDoctorClick = (doctorId) => {
+        localStorage.setItem("doctorIdSelected", doctorId); // Lưu vào localStorage
+        console.log("Doctor ID selected:", doctorId); // Debug ID được chọn
+    };
+
     render() {
         const { language } = this.props;
         const { searchInput, ListDoctor } = this.state;
@@ -128,7 +133,9 @@ class ListDoctor extends Component {
                             ListDoctor.map((item, index) => {
                                 return (
                                     <li key={index}>
-                                        <Link to={`/detail-doctor/${item.id}`}>
+                                        <Link to={`/detail-doctor/${item.id}`} 
+                                            onClick={() => this.handleDoctorClick(item.id)}
+                                        >
                                             <img
                                                 src={item.image}
                                                 width={100}

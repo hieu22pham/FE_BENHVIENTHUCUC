@@ -13,12 +13,16 @@ import ProfileDoctor from "../ProfileDoctor";
 import * as actions from "../../../../redux/actions";
 import { LANGUAGE, validateEmail, validatePhone } from "../../../../utils";
 import { postPatientBookAppointmentService } from "../../../../services";
+import { useParams } from "react-router-dom";
 
 // const sitekey = "6LdfLC0pAAAAAMKFPIlfXoCqOMhOSBHxYByhydvu";
 // const sitekey = "6LcDeigpAAAAAGR-uUlDOI72QqfzYluAjJ-rRMro";
 const sitekeyLocal = "6LcDeigpAAAAALF7KPDFg0HCJGvh3tj-pv5F2WcK";
+const url = window.location.pathname;
+const id = url.pathname; // "/detail-doctor/33"
 
 class BookingModal extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -52,10 +56,22 @@ class BookingModal extends Component {
             recaptchaValue: null,
         };
     }
+
+    
     componentDidMount() {
+        const storedData = localStorage.getItem("dataTime");
+
+        // Only update storedData state if it has changed
+        console.log()
+            if (storedData) {
+                this.setState({ storedData: storedData }); // Kiểm tra khả dụng với dữ liệu đã parse
+            }
+        this.checkAvailability(); // Kiểm tra khả dụng với dữ liệu đã parse
         this.props.getGenders();
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
+       
+
         if (this.props.language !== prevProps.language) {
             this.setState({
                 genders: this.buildDataGender(this.props.gendersRedux),
@@ -108,6 +124,7 @@ class BookingModal extends Component {
         } else {
             copyState.error[key] = null;
         }
+        
         copyState[key] = valueInput;
         this.setState({
             ...copyState,
@@ -115,6 +132,7 @@ class BookingModal extends Component {
     };
 
     handleSelectDate = (date) => {
+        this.state.data = date
         let copyState = { ...this.state };
         if (!date) {
             copyState.error.birthDay = "Yêu cầu nhập đúng ngày sinh!";
@@ -237,11 +255,107 @@ class BookingModal extends Component {
         });
     };
 
+    componentWillUnmount() {
+        // Gỡ bỏ listener khi component bị unmount
+        window.removeEventListener("storage", this.handleStorageChange);
+    }
+
+    handleStorageChange = (event) => {
+        if (event.key === "dataTime") {
+            const updatedData = event.newValue ? JSON.parse(event.newValue) : null;
+            console.log("dataTime đã thay đổi:", updatedData);
+        }
+    };
+
+    checkAvailability = async () => {
+    
+        // try {
+        //     // Lấy danh sách bệnh nhân
+        //     const response1 = await fetch(
+        //         `http://localhost:8080/api/get-list-patient-for-doctor?doctorId=${doctorId}&date=${this.state.dataTime}`
+        //     );
+        //     const data1 = await response1.json();
+        //     console.log(data1)
+    
+        //     // Lấy số lượng tối đa
+        //     const response2 = await fetch(
+        //         `http://localhost:8080/api/get-schedule-doctor-by-date?doctorId=${doctorId}&date=${this.state.dataTime}`
+        //     );
+        //     const data2 = await response2.json();
+        //     console.log(data2)
+
+    
+        //     if (response1.ok && response2.ok) {
+        //         const registeredCount = data1?.data?.length || 0;
+        //         const maxNumber = data2?.data?.[0]?.maxNumber || 0;
+    
+        //         if (registeredCount >= maxNumber) {
+        //             this.setState({
+        //                 isBookingAvailable: false,
+        //                 errorMessage: "Số lượng đăng ký đã vượt quá số lượng tối đa.",
+        //             });
+        //         } else {
+        //             this.setState({
+        //                 isBookingAvailable: true,
+        //                 errorMessage: "",
+        //             });
+        //         }
+        //     } else {
+        //         throw new Error("Không thể lấy dữ liệu từ API.");
+        //     }
+        // } catch (error) {
+        //     console.error("Lỗi khi fetch API:", error);
+        //     this.setState({
+        //         isBookingAvailable: false,
+        //         errorMessage: "Đã xảy ra lỗi khi kiểm tra khả dụng.",
+        //     });
+        // }
+    };
+
     handleConfirmBooking = async () => {
         //validate input
+        const doctorId = 33;
+        const storedData = localStorage.getItem("dataTime");
+
+        console.log(storedData)
         let birthDay = new Date(this.state.birthDay).getTime(); //timestamp
         let timeString = this.buildTimeBooking(this.props.dataTime);
+        let timeType = this.props.dataTime?.timeType 
+        console.log("timeType: ", this.props.dataTime?.timeType)
+
         let doctorName = this.buildDoctorName(this.props.dataTime);
+
+        const response1 = await fetch(
+            `http://localhost:8080/api/get-list-patient-for-doctor?doctorId=${doctorId}&date=${storedData}&timeType=${this.props.dataTime?.timeType}`
+        );
+        const data1 = await response1.json();
+        console.log("data1: ", data1)
+
+        // Lấy số lượng tối đa
+        const response2 = await fetch(
+            `http://localhost:8080/api/get-schedule-doctor-by-date?doctorId=${doctorId}&date=${storedData}`
+        );
+        const data2 = await response2.json();
+        console.log("data2: ", data2)
+        const number = parseInt(this.props.dataTime?.timeType.replace(/\D/g, ''), 10)-1; 
+
+            const registeredCount = data1?.data?.length || 0;
+            const maxNumber = data2?.data?.[number]?.maxNumber || 0;;
+
+             console.log(registeredCount)
+             console.log(maxNumber)
+
+            if (registeredCount >= maxNumber) {
+                this.setState({
+                    isBookingAvailable: false,
+                    errorMessage: "Số lượng đăng ký đã vượt quá số lượng tối đa.",
+                });
+            } else {
+                this.setState({
+                    isBookingAvailable: true,
+                    errorMessage: "",
+                });
+            }
 
         let data = {
             fullName: this.state.fullName,
@@ -258,17 +372,26 @@ class BookingModal extends Component {
             timeString: timeString,
             doctorName: doctorName,
             addressClinic: this.state.addressClinic,
-        };
+        };  
+
+        console.log(this.state.dataTime)
+        var id = this.state.doctorId
+
+        if (!this.state.isBookingAvailable) {
+            alert(this.state.errorMessage);
+            return;
+        }
 
         let isValid = this.validateInput();
 
-        if (isValid) {
+        
+        if (isValid && maxNumber > registeredCount) {
             this.props.isShowLoading(true);
             let res = await postPatientBookAppointmentService(data);
+            console.log("res: ", res)
             if (res && res.errCode === 0) {
                 this.props.isShowLoading(false);
                 toast.success(res.message);
-                this.props.handleCloseModalBooking();
                 this.resetInput();
                 this.setState({
                     recaptchaValue: null,

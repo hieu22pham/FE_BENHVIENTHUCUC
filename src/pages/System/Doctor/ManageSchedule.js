@@ -4,7 +4,9 @@ import { FormattedMessage } from "react-intl";
 import { Select } from "antd";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 import "./ManageSchedule.scss";
 import {
@@ -39,6 +41,8 @@ class ManageSchedule extends Component {
         };
     }
     componentDidMount = () => {
+        var clickCount = 0
+        localStorage.setItem("clickCount", clickCount)
         this.handleGetAllDoctor();
         this.props.getAllSchedule();
         this.props.getAllClinic();
@@ -71,7 +75,7 @@ class ManageSchedule extends Component {
                 data = data.map((item) => {
                     return {
                         ...item,
-                        isSelected: false,
+                       
                     };
                 });
             }
@@ -100,40 +104,40 @@ class ManageSchedule extends Component {
     }
 
     getAllScheduleDoctor = async (doctorId, date) => {
-        //Gửi lên dạng timeTamp
         let formattedDate = new Date(date).getTime();
         this.props.isShowLoading(true);
-        let res = await getScheduleDoctorByDateServicde(
-            doctorId,
-            formattedDate
-        );
+        let res = await getScheduleDoctorByDateServicde(doctorId, formattedDate);
         this.props.isShowLoading(false);
-
-        this.setState(
-            {
-                listSchedule: res.data,
-                currentDate: date,
-            },
-            () => {
-                const { rangeTime, listSchedule } = this.state;
-
-                let newArr = rangeTime.map((time, index) => {
-                    time.isSelected = false;
-                    let updatedTime = { ...time }; // Tạo một bản sao của time để không ảnh hưởng đến mảng gốc
-                    for (const schedule of listSchedule) {
-                        if (updatedTime.keyMap === schedule.timeType) {
-                            updatedTime.isSelected = true;
+    
+        console.log("API Response:", res); // Kiểm tra dữ liệu trả về từ API
+        if (res && res.data) {
+            this.setState(
+                {
+                    listSchedule: res.data, // Cập nhật listSchedule
+                    currentDate: date,
+                },
+                () => {
+                    console.log("Updated listSchedule:", this.state.listSchedule); // Kiểm tra state
+                    const { rangeTime, listSchedule } = this.state;
+    
+                    let newArr = rangeTime.map((time) => {
+                        let updatedTime = { ...time, isSelected: false };
+                        for (const schedule of listSchedule) {
+                            if (updatedTime.keyMap === schedule.timeType) {
+                                updatedTime.isSelected = true;
+                            }
                         }
-                    }
-                    return updatedTime;
-                });
-
-                this.setState({
-                    rangeTime: newArr,
-                });
-            }
-        );
+                        return updatedTime;
+                    });
+    
+                    this.setState({
+                        rangeTime: newArr,
+                    });
+                }
+            );
+        }
     };
+    
 
     handleGetAllDoctor = async () => {
         await this.props.getAllDoctor();
@@ -152,6 +156,8 @@ class ManageSchedule extends Component {
         const { selectedDoctor } = this.state;
         const { language } = this.props;
         this.setState({ currentDate: date });
+        const timestamp = moment(date).startOf("day").valueOf();
+        localStorage.setItem("dataTime", timestamp)
 
         if (!selectedDoctor) {
             toast.error(
@@ -162,120 +168,88 @@ class ManageSchedule extends Component {
             );
             return;
         }
-        await this.getAllScheduleDoctor(selectedDoctor, date);
+        await this.getAllScheduleDoctor(selectedDoctor, timestamp);
     };
 
     handleSelectTime = (data) => {
         let { rangeTime } = this.state;
-        //Tìm ra vị trí khi được click
-        let index = rangeTime.findIndex((item) => {
-            return item.id === data.id;
+    
+        // Lấy ra index của item được click
+        let updatedRangeTime = rangeTime.map((item) => {
+            if (item.id === data.id) {
+                return { ...item, isSelected: !item.isSelected };
+            }
+            return item;
         });
 
-        //Sửa lại isSelected của item được click
-        if (index !== -1) {
-            let newRangeTime = rangeTime;
-            newRangeTime[index].isSelected = !newRangeTime[index].isSelected;
-            this.setState({
-                rangeTime: newRangeTime,
-            });
-        }
+        console.log(updatedRangeTime)
+    
+        this.setState({
+            rangeTime: updatedRangeTime,
+        });
     };
+    
 
     handleSaveSchedule = async () => {
-        const { currentDate, selectedDoctor, rangeTime } = this.state;
-        const { language } = this.props;
-        if (!currentDate) {
-            toast.error(
-                `${LANGUAGE.VI === language
-                    ? "Yêu cầu chọn ngày!"
-                    : "Isvalid selected Date!"
-                }`
-            );
+        var clickCount = 1
+        localStorage.setItem("clickCount", clickCount)
+        const {
+            selectedDoctor,
+            currentDate,
+            rangeTime,
+            numOfPatient,
+            listSchedule,
+        } = this.state;
+    
+        if (!selectedDoctor || !currentDate || !numOfPatient) {
+            toast.error("Vui lòng nhập đầy đủ thông tin!");
             return;
         }
-        if (!selectedDoctor) {
-            toast.error(
-                `${LANGUAGE.VI === language
-                    ? "Yêu cầu chọn bác sĩ!"
-                    : "Isvalid selected Doctor!"
-                }`
+    
+        const selectedTimes = rangeTime.filter((time) => {
+            return (
+                time.isSelected &&
+                !listSchedule.some((schedule) => schedule.timeType === time.keyMap)
             );
-            return;
-        }
-
-        let data = [];
-
-        //Gửi lên dạng timeTamp
-        let formattedDate = new Date(currentDate).getTime();
-
-        if (rangeTime && rangeTime.length > 0) {
-            //Lấy ra mảng các time được chọn
-            let selectedTime = rangeTime.filter(
-                (item) => item.isSelected === true
-            );
-            // console.log("Check selected time: ", selectedTime);
-
-            //Check nếu chưa có lịch thì sẽ đưa ra thông báo
-            if (selectedTime && selectedTime.length > 0) {
-                //Mỗi lần lặp lấy ra 1 obj và thêm vào mảng data
-                data = selectedTime.map((schedule) => {
-                    let object = {};
-                    object.doctorId = selectedDoctor;
-                    object.date = formattedDate;
-                    object.timeType = schedule.keyMap;
-
-                    return object;
-                });
-            } else {
-                toast.error(
-                    `${LANGUAGE.VI === language
-                        ? "Yêu cầu chọn thời gian!"
-                        : "Isvalid selected Time!"
-                    }`
-                );
-                return;
-            }
-        }
-
-        let res = await saveBulkScheduleDoctorService({
-            arrSchedule: data,
-            doctorId: selectedDoctor,
-            date: formattedDate,
         });
-        if (res && res.errCode === 0) {
-            toast.success(
-                `${LANGUAGE.VI === language
-                    ? "Lưu kế hoạch khám bệnh thành công!"
-                    : "Isvalid ScheduleTime Time!"
-                }`
-            );
-            this.getAllScheduleDoctor(selectedDoctor, currentDate);
+    
+        if (selectedTimes.length === 0) {
+            toast.error("Vui lòng chọn ít nhất một khoảng thời gian mới!");
+            return;
         }
-        // console.log("check response saveBulkScheduleDoctorService: ", res);
+    
+        const scheduleData = selectedTimes.map((time) => ({
+            doctorId: selectedDoctor,
+            date: moment(new Date(currentDate)).startOf("day").valueOf(),
+            maxNumber: numOfPatient,
+            timeType: time.keyMap,
+            currentNumber: 0,
+        }));
+    
+        try {
+            this.props.isShowLoading(true);
+    
+            const response = await axios.post(
+                "http://localhost:8080/api/create-schedule-doctor-by-date",
+                scheduleData[0]
+            );
+    
+            if (response && response.data && response.data.errCode === 0) {
+                toast.success("Lưu lịch thành công!");
+                // Cập nhật lại danh sách lịch và bảng
 
-        // console.log("Check data: ", data);
-
-        // console.log(
-        //     moment(currentDate).format("DD/MM/YYYY"),
-        //     selectedDoctor,
-        //     rangeTime
-        // );
-
-        // if (currentDate) {
-        //     const year = currentDate.getFullYear();
-        //     const month = (currentDate.getMonth() + 1)
-        //         .toString()
-        //         .padStart(2, "0");
-        //     const day = currentDate.getDate().toString().padStart(2, "0");
-
-        //     // Tạo chuỗi datetime phù hợp để lưu vào SQL
-        //     const sqlDatetime = `${year}-${month}-${day}`;
-
-        //     // Sử dụng giá trị sqlDatetime trong truy vấn SQL hoặc chèn dữ liệu vào cơ sở dữ liệu MySQL
-        //     console.log(sqlDatetime);
-        // }
+                console.log(selectedDoctor, currentDate)
+                await this.getAllScheduleDoctor(selectedDoctor, currentDate);
+            } else {
+                toast.error(response.data.errMessage || "Không thể lưu lịch!");
+            }
+        } catch (error) {
+            toast.error("Đã xảy ra lỗi khi lưu lịch!");
+        } finally {
+            this.props.isShowLoading(false);
+        }
     };
+    
 
     handleDelete = async (data) => {
         const { selectedDoctor, currentDate } = this.state;
@@ -298,6 +272,24 @@ class ManageSchedule extends Component {
                 listDoctor: res.data,
             });
         }
+    };
+
+    handleSelectnumOfPatient = async (event) => {
+        const numOfPatient = event.target.value;
+        // const { numOfPatient } = this.state;
+        const { language } = this.props;
+        this.setState({ numOfPatient: numOfPatient });
+
+        if (!numOfPatient) {
+            toast.error(
+                `${LANGUAGE.VI === language
+                    ? "Yêu cầu nhập số lượng bệnh nhân!"
+                    : "Isvalid number of patient!"
+                }`
+            );
+            return;
+        }
+        // await this.getAllScheduleDoctor(numOfPatient, num);
     };
 
     render() {
@@ -433,6 +425,23 @@ class ManageSchedule extends Component {
                                 dateFormat="dd/MM/yyyy" // Định dạng ngày tháng thành "dd/mm/yyyy"
                                 minDate={tomorrow} // Giới hạn ngày tối thiểu là ngày hiện tại
                                 value={currentDate}
+                            />
+                        </div>
+                        <div className="col-lg-4 col-sm-12 form-group"> 
+                            <label>
+                                <FormattedMessage
+                                    id={"manage-schedule.choose-numOfPatient"}
+                                />
+                            </label>
+                            <br />
+                            <input
+                                className="form-control"
+                                name="maxNumber"
+                                type="number"
+                                onChange={(num)=>{
+                                    this.handleSelectnumOfPatient(num)
+                                }}
+
                             />
                         </div>
                         <div className="col-12 pick-hour_container">

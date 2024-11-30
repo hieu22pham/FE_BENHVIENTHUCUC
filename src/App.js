@@ -10,6 +10,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import System from "./templates/AdminTemplates/System";
 import { history } from "./redux/configStore";
+import Receptionist from "./templates/AdminTemplates/Receptionist";
 
 import {
     userIsAuthenticated,
@@ -24,10 +25,11 @@ import DetailSpecialty from "./pages/HomePage/Specialty/DetailSpecialty";
 import DetailClinic from "./pages/HomePage/Clinic/DetailClinic";
 import ListSpecialty from "./pages/HomePage/Specialty/ListSpecialty";
 import ListDoctor from "./pages/HomePage/Doctor/ListDoctor";
-import HistoryBooking from "./pages/HomePage/Booking/HistoryBooking";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/HomePage/Profile/Profile";
+import ExaminationForm from "./pages/System/Doctor/examinationForm";
+import HistoryBooking from "./pages/HomePage/Booking/HistoryBooking";
 
 class App extends Component {
     handlePersistorState = () => {
@@ -62,6 +64,12 @@ class App extends Component {
                                     exact
                                     component={Home}
                                 />
+
+                                <Route
+                                    path={configs.routes.HISTORY_BOOKING}
+                                    component={HistoryBooking}
+                                />
+
                                 <Route
                                     path={configs.routes.LOGIN}
                                     component={userIsNotAuthenticated(Login)}
@@ -83,6 +91,11 @@ class App extends Component {
                                     path={"/doctor"}
                                     component={userIsAuthenticated(Doctor)}
                                 />
+                                   <Route
+                                    path={"/receptionist"}
+                                    component={userIsAuthenticated(Receptionist)}
+                                />
+                                
 
                                 <Route
                                     path={configs.routes.HOMEPAGE}
@@ -115,10 +128,7 @@ class App extends Component {
                                     component={VerifyEmail}
                                 />
 
-                                <Route
-                                    path={configs.routes.HISTORY_BOOKING}
-                                    component={HistoryBooking}
-                                />
+                                
                                 <Route
                                     path={configs.routes.PROFILE}
                                     component={Profile}

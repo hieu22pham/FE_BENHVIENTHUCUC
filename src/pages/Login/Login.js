@@ -52,7 +52,11 @@ class Login extends Component {
                 this.state.userName,
                 this.state.passWord
             );
+
+            console.log(res)
+           
             if (res && res.errCode !== 0) {
+                
                 //Lấy kết quả trả về
                 this.setState({
                     errMessage: res.message,
@@ -63,6 +67,7 @@ class Login extends Component {
                 // console.log("Login success");
 
                 this.props.userLoginSuccess(res.user); //vứt lên reducer để quản lý
+                
                 // this.props.history.replace("/"); //điều hướng sang trang home
             }
         } catch (error) {
@@ -87,6 +92,13 @@ class Login extends Component {
                 this.state.userName,
                 this.state.passWord
             );
+
+            console.log('res: ', res)
+
+            if(res){
+                localStorage.setItem("idUser", res.id);
+                
+            }
             if (res && res.errCode !== 0) {
                 this.props.isShowLoading(false);
                 //Lấy kết quả trả về

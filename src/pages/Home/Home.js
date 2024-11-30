@@ -19,6 +19,7 @@ class Home extends Component {
 
             if (resUser && resUser.errCode === 0 && isLoggedIn) {
                 let userInfor = resUser.userInfor;
+                localStorage.setItem("fullNameUser", `${userInfor.lastName} ${userInfor.firstName}`);
 
                 if (
                     userInfor.userType === "admin" ||
@@ -26,7 +27,13 @@ class Home extends Component {
                 ) {
                     this.props.history.push("/system/home");
                 } else {
-                    this.props.history.push("/home");
+                    if(userInfor.userType === "receptionist"){
+                        this.props.history.push("/system/home");
+                    }
+                    else{
+                        this.props.history.push("/home");
+                    }
+
                 }
             }
         } else {

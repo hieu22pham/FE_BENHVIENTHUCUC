@@ -43,6 +43,14 @@ export const adminMenu = [
                 name: "menu.doctor.manage-schedule",
                 link: "/system/manage-schedule",
             },
+            {
+                name: "Quản lý thuốc",
+                link: "/system/manage-medicine",
+                },
+            {
+                name: "Quản lý dịch vụ",
+                link: "/system/manage-service",
+            }
             // { name: 'menu.system.system-parameter.header', link: '/system/system-parameter' },
         ],
     },
@@ -79,6 +87,7 @@ export const adminMenu = [
             },
         ],
     },
+    
     {
         //quản lý thông tin cá nhân
         id: "4",
@@ -114,11 +123,49 @@ export const doctorMenu = [
                 name: "menu.doctor.manage-schedule",
                 link: "/doctor/manage-schedule",
             },
+            {
+                name: "Xác nhận lịch hẹn",
+                link: "/doctor/manage-confirm-schedule",
+            },
             //Quản lý bệnh nhân
             {
                 name: "menu.doctor.manage-patient",
                 link: "/doctor/manage-patient",
+            }, 
+                        //Quản lý bệnh nhân
+            
+        ],
+    },
+    {
+        //quản lý thông tin cá nhân
+        id: "4",
+        name: "menu.admin.profile",
+        icon: <FontAwesomeIcon icon={faIdCard} style={{ fontSize: "20px" }} />,
+        menus: [
+            {
+                id: "sub_4_1",
+                name: "menu.admin.manage-profile",
+                link: "/system/manage-profile",
             },
+        ],
+    },
+];
+
+export const receptionistMenu = [
+    {
+        //quản lý người dùng
+        name: "menu.admin.manage-user",
+        icon: <UserOutlined style={{ fontSize: "20px" }} />,
+        menus: [
+            {
+                name: "Quản lý lịch hẹn",
+                link: "/receptionist/manage-schedule",
+            },
+            //Quản lý bệnh nhân
+            {
+                name: "Quản lý ca khám",
+                link: "/receptionist/manage-time-stamp",
+            }   
         ],
     },
     {

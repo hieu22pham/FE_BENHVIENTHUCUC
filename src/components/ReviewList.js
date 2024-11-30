@@ -14,7 +14,11 @@ export default class ReviewList extends Component {
     }
     async componentDidUpdate(prevProps) {
         if (prevProps.doctorId !== this.props.doctorId) {
-            let res = await getDoctorReviewService(this.props.doctorId);
+          console.log("Review id: " , this.props.doctorId)
+        //   const doctorIdSelected = localStorage.getItem("doctorIdSelected")
+          const path = window.location.pathname; // Lấy toàn bộ đường dẫn sau domain
+            const doctorIdSelected = path.split("/").pop();
+            let res = await getDoctorReviewService(doctorIdSelected);
             console.log(' GET REVIEW By Nhat Ba: ', res);
             if (res && res.errCode === 0) {
                 this.setState({

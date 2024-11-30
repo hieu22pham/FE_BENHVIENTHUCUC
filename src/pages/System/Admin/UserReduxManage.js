@@ -504,9 +504,10 @@ class UserReduxManage extends Component {
                                                     key={item.id}
                                                     value={item.keyMap}
                                                 >
-                                                    {language === LANGUAGE.VI
+                                                    {/* {language === LANGUAGE.VI
                                                         ? item.valueVi
-                                                        : item.valueEn}
+                                                        : item.valueEn} */}
+                                                        {item.valueVi}
                                                 </option>
                                             );
                                         })}

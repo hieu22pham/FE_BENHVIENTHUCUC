@@ -4,22 +4,18 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Menu, Layout } from "antd";
 
 import Header from "./Header/Header";
-import ManageSchedule from "../../pages/System/Doctor/ManageSchedule";
-import ManagePatient from "../../pages/System/Doctor/ManagePatient";
-import ManageMedicine from "../../pages/System/Medicine/ManageMedicine";
-import CreateMedicine from "../../pages/System/Medicine/CreateMedicine";
 import AppointmentManagement from "../../pages/System/Receptionist/ManageSchedule";
+// import ManagePatient from "../../pages/System/Receptionist/ManagePatient";
 import { FormattedMessage } from "react-intl";
 import { getUserInforSystem, getUserInforPatient } from "../../services";
 import * as actions from "../../redux/actions";
-import { adminMenu, doctorMenu, receptionistMenu } from "./Header/menuApp";
-import ExaminationForm from "../../pages/System/Doctor/examinationForm";
-import MedicineForm from "../../pages/System/Doctor/medicineForm";
-import MangeConfirmSchedule from "../../pages/System/Doctor/MangeConfirmSchedule";
+import { receptionistMenu } from "./Header/menuApp";
+import ExaminationManagement from "../../pages/System/Receptionist/MangeExamination";
+import Invoice from "../../pages/System/Invoice/Invoice";
 
 const { Content, Footer, Sider } = Layout;
 
-class Doctor extends Component {
+class Receptionist extends Component {
     _isMounted = false;
     constructor(props) {
         super(props);
@@ -29,6 +25,7 @@ class Doctor extends Component {
             collapsed: true,
         };
     }
+
     async componentDidMount() {
         try {
             this._isMounted = true;
@@ -41,23 +38,17 @@ class Doctor extends Component {
             if (this._isMounted) {
                 if (res && res.errCode === 0) {
                     userInfor = res.userInfor;
-                    //Lưu lại thông tin người dùng lên redux
                     await this.props.userLoginSuccess(userInfor);
                     userInfor = res.userInfor;
                     let resUser = await getUserInforPatient(userInfor.id);
 
-                    if (userInfor.userType === "admin") {
-                        menu = adminMenu;
-                    } else if (userInfor.userType === "doctor") {
-                        menu = doctorMenu;
-                    } else if (userInfor.userType === "receptionist") {
+                    if (userInfor.userType === "receptionist") {
                         menu = receptionistMenu;
                     } else {
                         this.props.history.push("/home");
                         this._isMounted = false;
                     }
 
-                    //Cập nhật trạng thái React trên một thành phần phải được gắn kết, tránh bất đồng bộ
                     if (this._isMounted) {
                         this.setState({
                             menuSystem: this.renderMenuItems(menu),
@@ -67,7 +58,7 @@ class Doctor extends Component {
                 }
             }
         } catch (error) {
-            // Xử lý lỗi ở đây nếu có
+            // Xử lý lỗi nếu cần
         }
     }
 
@@ -98,7 +89,6 @@ class Doctor extends Component {
     }
 
     render() {
-        // console.log(`system: ${this.props.isLoggedIn}`);
         const { systemMenuPath, userInfo } = this.props;
         const { collapsed } = this.state;
 
@@ -188,33 +178,17 @@ class Doctor extends Component {
                         <Content>
                             <Switch>
                                 <Route
-                                    path="/doctor/manage-schedule"
-                                    component={ManageSchedule}
+                                    path="/receptionist/manage-schedule"
+                                    component={AppointmentManagement}
                                 />
                                 <Route
-                                    path="/doctor/manage-patient"
-                                    component={ManagePatient}
+                                    path="/receptionist/manage-time-stamp"
+                                    component={ExaminationManagement}
                                 />
-                                <Route
-                                    path="/doctor/manage-confirm-schedule"
-                                    component={MangeConfirmSchedule}
+                                 <Route
+                                    path="/receptionist/invoice"
+                                    component={Invoice}
                                 />
-
-                                <Route
-                                    path="/doctor/examination-form"
-                                    component={ExaminationForm}
-                                />
-                                <Route
-                                    path="/doctor/medicine-form"
-                                    component={MedicineForm}
-                                />
-                                
-                                <Route
-                                    path="/doctor/create-medicine"
-                                    component={CreateMedicine}
-                                />
-                               
-
                                 <Route
                                     component={() => {
                                         return <Redirect to={systemMenuPath} />;
@@ -249,4 +223,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Doctor);
+export default connect(mapStateToProps, mapDispatchToProps)(Receptionist);

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./DoctorSchedule.scss";
 import moment from "moment";
+import { toast } from "react-toastify";
 import localization from "moment/locale/vi";
 import { getScheduleDoctorByDateServicde } from "../../../services/userService";
 
@@ -112,23 +113,40 @@ class DoctorSchedule extends Component {
     };
 
     handleChangeSelectDate = async (e) => {
-        if (
-            this.props.doctorIdFromParent &&
-            this.props.doctorIdFromParent !== -1
-        ) {
-            let doctorId = this.props.doctorIdFromParent;
-            let date = e.target.value;
-
-            let res = await getScheduleDoctorByDateServicde(doctorId, date);
-            // console.log("check response schedule from react: ", res);
-
-            if (res && res.errCode == 0) {
-                this.setState({
-                    allAvalableTime: res.data,
-                });
+        const { doctorIdFromParent } = this.props;
+        
+        // Lấy giá trị ngày từ sự kiện (trong trường hợp này là giá trị của select)
+        let date = e.target.value;
+        localStorage.setItem('dataTime', date);
+    
+        if (doctorIdFromParent && doctorIdFromParent !== -1) {
+            let doctorId = doctorIdFromParent;
+            
+            try {
+                let res = await getScheduleDoctorByDateServicde(doctorId, date);
+        
+                if (res && res.errCode === 0 && res.data) {
+                    this.setState({
+                        allAvalableTime: res.data, // Cập nhật tất cả các thời gian khả dụng
+                        dataTime: date, // Gán thời gian đầu tiên (hoặc null nếu không có lịch)
+                    });
+                } else {
+                    // Không có lịch khả dụng
+                    this.setState({
+                        allAvalableTime: [], // Xóa danh sách các thời gian
+                        dataTime: null, // Xóa dữ liệu thời gian đã chọn
+                    });
+                    toast.error("Không có lịch khả dụng cho ngày đã chọn!");
+                }
+            } catch (error) {
+                // Xử lý lỗi khi gọi API
+                console.error("Error fetching schedule:", error);
+                toast.error("Đã xảy ra lỗi khi tải lịch trình!");
             }
         }
     };
+    
+    
 
     //Mở modal
     handleClickScheduleTime = (time) => {
@@ -136,8 +154,9 @@ class DoctorSchedule extends Component {
             isOpenModalBooking: true,
             dataScheduleTimeModal: time,
             recaptchaValue: null,
+            dataScheduleTimeModal: time,
         });
-        // console.log("check click schedule time: ", time);
+
     };
     //Tắt modal
     handleCloseModalBooking = () => {
@@ -240,7 +259,7 @@ class DoctorSchedule extends Component {
                 <BookingModal
                     isOpenModal={isOpenModalBooking}
                     handleCloseModalBooking={this.handleCloseModalBooking}
-                    dataTime={dataScheduleTimeModal}
+                    dataTime={dataScheduleTimeModal} // Truyền thông tin lịch vào modal
                     recaptchaValue={recaptchaValue}
                 />
             </>

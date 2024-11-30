@@ -5,7 +5,7 @@ import _ from "lodash";
 
 import * as actions from "../../../redux/actions";
 import "./Header.scss";
-import { adminMenu, doctorMenu } from "./menuApp";
+import { adminMenu, doctorMenu,receptionistMenu } from "./menuApp";
 import Navigator from "../../../components/System/Navigator";
 import { LANGUAGE } from "../../../utils";
 
@@ -36,6 +36,8 @@ class Header extends Component {
                 if (authorizeUser && authorizeUser.errCode === 0) {
                     if (res && res.errCode === 0) {
                         userInfor = res.userInfor;
+                        localStorage.setItem("emailUser", userInfor.email);
+                        localStorage.setItem("fullNameUser", `${userInfor.lastName} ${userInfor.firstName}`);
                         //Lưu lại thông tin người dùng lên redux
                         await this.props.userLoginSuccess(userInfor);
 
@@ -43,7 +45,9 @@ class Header extends Component {
                             menu = adminMenu;
                         } else if (userInfor.userType === "doctor") {
                             menu = doctorMenu;
-                        } else {
+                        }  else if (userInfor.userType === "receptionist") {
+                            menu = receptionistMenu;
+                        }else {
                             this.props.history.push("/home");
                             this._isMounted = false;
                         }
@@ -54,6 +58,8 @@ class Header extends Component {
                                 menuSystem: menu,
                                 userInfo: userInfor,
                             });
+
+                            localStorage.setItem("fullNameUser", `${userInfor.lastName} ${userInfor.firstName}`);
                         }
                     }
                 }

@@ -11,8 +11,9 @@ import TableManagePatient from "./TableManagePatient";
 import { getListPatientForDoctorService } from "../../../services";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import * as actions from "../../../redux/actions";
+import TableMangeConfirmSchedule from "./TableMangeConfirmSchedule";
 
-class ManagePatient extends Component {
+class MangeConfirmSchedule extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -120,7 +121,7 @@ class ManagePatient extends Component {
                         />
                     </div>
                 </div>
-                <TableManagePatient
+                <TableMangeConfirmSchedule
                     data={this.state.listPatient}
                     language={this.props.language}
                     getDataPatient={this.getDataPatient}
@@ -151,5 +152,5 @@ const mapDispatchToProps = (dispatch) => {
 };  
 
 export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(ManagePatient)
+    connect(mapStateToProps, mapDispatchToProps)(MangeConfirmSchedule)
 );

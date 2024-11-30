@@ -1,539 +1,284 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom/cjs/react-router-dom";
-import { FormattedMessage } from "react-intl";
-import { Table, Space } from "antd";
-import _ from "lodash";
-import { toast } from "react-toastify";
-import moment from "moment";
-import { LANGUAGE } from "../../../utils";
-
-import * as actions from "../../../redux/actions";
+import React, { useEffect, useState } from "react";
+import { Table, Typography, Spin, Rate, Modal, Input, Button, Card, Tabs, Row, Col } from "antd";
+import axios from "axios";
 import HomeFooter from "../HomeFooter";
 import HomeHeader from "../HomeHeader";
-import "./HistoryBooking.scss";
-import {
-    getBookingHistoryForPatient,
-    lookUpBookingHistoryForPatient,
-    newReviewService,
-} from "../../../services";
-import ReviewModal from "../../../components/ReviewModal";
+import { toast } from "react-toastify";
 
-// Hàm này trả về tên lớp CSS tùy thuộc vào giá trị trạng thái
-const getStatusColor = (status) => {
-    switch (status) {
-        case "S1":
-            return "new-status"; // Đặt tên lớp CSS cho trạng thái hoàn thành
-        case "S2":
-            return "confirmed-status"; // Đặt tên lớp CSS cho trạng thái chưa hoàn thành
-        case "S3":
-            return "done-status"; // Đặt tên lớp CSS cho trạng thái chưa hoàn thành
-        case "S4":
-            return "cancle-status"; // Đặt tên lớp CSS cho trạng thái chưa hoàn thành
-        default:
-            return "default-status"; // Đặt tên lớp CSS cho trạng thái mặc định hoặc khác
+const { Title } = Typography;
+const { TextArea } = Input;
+const { TabPane } = Tabs;
+
+const HistoryBooking = () => {
+  const [dataSource1, setDataSource1] = useState([]);
+  const [dataSource2, setDataSource2] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentRecord, setCurrentRecord] = useState(null);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+
+  const userId = localStorage.getItem("idUser");
+
+  const fetchBookings = async () => {
+    setLoading(true);
+    try {
+      const responseBookings = await axios.get(`http://localhost:8080/api/get-booking-by-user-id/${userId}`);
+      const bookingsData = responseBookings.data.data;
+
+      const updatedBookings = await Promise.all(
+        bookingsData.map(async (booking) => {
+          const doctorResponse = await axios.get(`http://localhost:8080/api/get-doctor-by-id/${booking.doctorId}`);
+          const doctorData = doctorResponse.data.data;
+          return {
+            ...booking,
+            doctorInfo: doctorData,
+          };
+        })
+      );
+
+      const responseExam = await axios.get(`http://localhost:8080/api/get-examination/${userId}`);
+      const ExamData = responseExam.data.data || [];
+
+      const updatedExam = await Promise.all(
+        updatedBookings.map(async (exam) => {
+          const doctorResponse = await axios.get(`http://localhost:8080/api/get-examination/${userId}`);
+          const doctorData = doctorResponse.data.data || {};
+          return {
+            ...exam,
+            doctorData,
+          };
+        })
+      );
+
+      const arr1 = updatedBookings.filter((data) => data.statusId === "S2");
+      const arr2 = updatedExam.filter((data) => data.detailed_examination !== "");
+
+      setDataSource1(arr1);
+      setDataSource2(arr2);
+      console.log(dataSource1)
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+    } finally {
+      setLoading(false);
     }
-};
+  };
 
-class HistoryBooking extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchInput: "",
-            bookings: [],
-            bookingHistories: [],
+  useEffect(() => {
+    fetchBookings();
+  }, []);
 
-            lookUpBooking: [],
+  const handleOpenModal = (record) => {
+    const patientId = localStorage.getItem("idUser"); // Lấy patientId từ localStorage
+    console.log("Hh: ", patientId)
 
-            bookingData: {},
-            modalVisible: false,
-        };
-    }
+  const updatedRecord = { ...record, patientId };
+    setCurrentRecord(updatedRecord);
+    console.log("updatedRecord: ", updatedRecord)
 
-    async componentDidMount() {
-        const { token } = this.props;
-        if (token) {
-            this.getDataBookingLogged(token);
-        }
-    }
+    setIsModalOpen(true);
+  };
 
-    async componentDidUpdate(prevProps) {
-        const { token } = this.props;
-        if (prevProps.token !== this.props.token) {
-            if (token) {
-                this.getDataBookingLogged(token);
-            } else {
-                this.setState({
-                    bookings: [],
-                    bookingHistories: [],
-                });
-            }
-        }
-    }
+  const handleCancelModal = () => {
+    setIsModalOpen(false);
+    setRating(0);
+    setComment("");
+  };
 
-    getDataBookingLogged = async (token) => {
-        let res = await getBookingHistoryForPatient(token);
-        if (res && res.errCode === 0) {
-            let bookings = this.buildDataBooking(res.data.bookings);
-            let bookingHistories = this.builDataBookingHistory(
-                res.data.bookingHistory
-            );
-
-            this.setState({
-                bookings: bookings,
-                bookingHistories: bookingHistories,
-            });
-        }
-    };
-
-    buildDataBooking = (data) => {
-        const { language } = this.props;
-        let dataSource = data.map((item) => {
-            return {
-                key: item.id,
-                fullName: `${item.patientData.lastName} ${item.patientData.firstName ? item.patientData.firstName : ""
-                    } `,
-                doctorName: `${item.User.lastName} ${item.User.firstName} `,
-                timeType: `${item.timeTypeDataPatient.valueVi}, ${language === LANGUAGE.VI
-                    ? moment
-                        .unix(+item.date / 1000)
-                        .format("dddd - DD/MM/YYYY")
-                    : moment
-                        .unix(+item.date / 1000)
-                        .locale("en")
-                        .format("ddd - MM/DD/YYYY")
-                    }`,
-                reason: item.reason,
-                description: "",
-                date: item.date,
-                addressClinic: item.User.Doctor_Infor.addressClinic,
-            };
+  const handleSubmitRating = async () => {
+    try {
+      if (currentRecord) {
+        
+        await axios.post("http://localhost:8080/api/new-review", {
+          doctorId: currentRecord?.doctorId || "",
+          bookingId: currentRecord.id,
+          rating,
+          patientId: userId,
+          comment,
         });
 
-        return dataSource;
-    };
+        toast.success("Đánh giá đã được gửi");
+        handleCancelModal();
+      }
+    } catch (error) {
+      console.error("Error submitting rating:", error);
+    }
+  };
 
-    builDataBookingHistory = (data) => {
-        const { language } = this.props;
-        let dataSource = data.map((item) => {
-            return {
-                key: item.id,
-                fullName: `${item.bookingData.patientData.lastName} ${item.bookingData.patientData.firstName} `,
-                doctorName: `${item.bookingData.User.lastName} ${item.bookingData.User.firstName} `,
-                timeType: `${item.bookingData.timeTypeDataPatient.valueVi}, ${language === LANGUAGE.VI
-                    ? moment
-                        .unix(+item.bookingData.date / 1000)
-                        .format("dddd - DD/MM/YYYY")
-                    : moment
-                        .unix(+item.bookingData.date / 1000)
-                        .locale("en")
-                        .format("ddd - MM/DD/YYYY")
-                    }`,
-                reason: item.bookingData.reason,
-                description: item.description,
-                doctorId: item.doctorId,
-                bookingId: item.bookingId,
-                reviewId: item.reviewId,
-                addressClinic: item.bookingData.User.Doctor_Infor.addressClinic,
-            };
-        });
+  const handleCancel =async (id) => {
+    console.log("Id: ", id)
+    const isConfirmed = window.confirm("Bạn có chắc chắn muốn hủy lịch hẹn này?");
+    if (!isConfirmed) return;
 
-        return dataSource;
-    };
-
-    builDataLookUp = (data) => {
-        const { language } = this.props;
-        let dataSource = data.map((item) => {
-            return {
-                key: item.id,
-                fullName: `${item.patientData.firstName ? item.patientData.firstName : ""
-                    } ${item.patientData.lastName}`,
-                doctorName: `${item.User.firstName} ${item.User.lastName}`,
-                timeType: `${item.timeTypeDataPatient.valueVi}, ${language === LANGUAGE.VI
-                    ? moment
-                        .unix(+item.date / 1000)
-                        .format("dddd - DD/MM/YYYY")
-                    : moment
-                        .unix(+item.date / 1000)
-                        .locale("en")
-                        .format("ddd - MM/DD/YYYY")
-                    }`,
-                statusId: `${item.statusId}`,
-                status: `${language === LANGUAGE.VI
-                    ? item.statusData.valueVi
-                    : item.statusData.valueEn
-                    }`,
-                reason: item.reason,
-                description:
-                    item.bookingData && item.bookingData.description
-                        ? item.bookingData.description
-                        : "",
-            };
-        });
-
-        return dataSource;
-    };
-
-    handleOnChangeInput = (e) => {
-        let name = e.target.name;
-        let value = e.target.value;
-        let copyState = { ...this.state };
-        copyState[name] = value;
-
-        this.setState({
-            ...copyState,
-        });
-    };
-
-    handleEnterKeyPress = async (event) => {
-        if (event.key === "Enter") {
-            let tokenBooking = this.state.searchInput;
-
-            let res = await lookUpBookingHistoryForPatient(tokenBooking);
-            if (res && res.errCode === 0) {
-                if (res.data && !_.isEmpty(res.data)) {
-                    let booking = this.builDataLookUp(res.data.booking);
-
-                    this.setState({
-                        lookUpBooking: booking,
-                    });
-                }
-            } else {
-                this.setState({
-                    lookUpBooking: [],
-                });
-                toast.error(res.errMessage);
-            }
-        }
-    };
-
-    handleCancelBooking = async (data) => {
-        const { token } = this.props;
-        var isConfirmed = window.confirm(
-            "Bạn có chắc chắn hủy lịch này không?"
+    try {
+        const response = await axios.put(
+            `http://localhost:8080/api/cancle-booking/${id}`
         );
 
-        if (isConfirmed) {
-            await this.props.cancleBooking(data.key);
-            if (token) {
-                this.getDataBookingLogged(token);
-            }
-        }
-    };
-
-    //Đánh giá
-    handleReviewClick = (data) => {
-        this.setState({
-            bookingData: data,
-            modalVisible: true,
-        });
-    };
-
-    handleModalClose = () => {
-        this.setState({
-            modalVisible: false,
-        });
-    };
-
-    handleReviewSubmit = async (data) => {
-        const { token } = this.props;
-        let res = await newReviewService(data);
-
-        if (res && res.errCode === 0) {
-            toast.success(res.message);
-            this.getDataBookingLogged(token);
+        if (response.status === 200) {
+            alert("Hủy lịch hẹn thành công!");
+            fetchBookings(); // Làm mới danh sách sau khi hủy
         } else {
-            toast.error(res.errMessage);
+            alert("Hủy lịch hẹn thất bại!");
         }
-    };
-
-    render() {
-        const { searchInput, lookUpBooking, bookingData, modalVisible } =
-            this.state;
-        const { isLoggedIn, language } = this.props;
-
-        const columns = [
-            {
-                title: language === LANGUAGE.VI ? "Họ và tên" : "FullName",
-                dataIndex: "fullName",
-                key: "fullName",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Doctor" : "Bác sĩ khám",
-                dataIndex: "doctorName",
-                key: "doctorName",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Time" : "Thời gian",
-                dataIndex: "timeType",
-                key: "timeType",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Địa chỉ" : "Adress Clinic",
-                dataIndex: "addressClinic",
-                key: "addressClinic",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Reason" : "Lý do khám",
-                dataIndex: "reason",
-                key: "reason",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Action" : "Chức năng",
-                key: "action",
-                render: (_, record) => {
-                    const currentDate = new Date();
-
-                    //Trừ đi 1 ngày của timetamp
-                    let dateBooking =
-                        parseInt(record.date) - 24 * 60 * 60 * 1000;
-
-
-
-                    return currentDate.getTime() < dateBooking ? (
-                        <Space size="middle">
-                            <button
-                                className="btn btn-danger"
-                                onClick={() => {
-                                    this.handleCancelBooking(record);
-                                }}
-                            >
-                                <FormattedMessage id={"actions.cancel"} />
-                            </button>
-                        </Space>
-                    ) : null;
-                },
-            },
-        ];
-
-        const columnsHistories = [
-            {
-                title: language === LANGUAGE.VI ? "Họ và tên" : "FullName",
-                dataIndex: "fullName",
-                key: "fullName",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Doctor" : "Bác sĩ khám",
-                dataIndex: "doctorName",
-                key: "doctorName",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Time" : "Thời gian",
-                dataIndex: "timeType",
-                key: "timeType",
-            },
-            {
-                title: language === LANGUAGE.VI ? "Địa chỉ" : "Address Clinic",
-                dataIndex: "addressClinic",
-                key: "addressClinic",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Reason" : "Lý do khám",
-                dataIndex: "reason",
-                key: "reason",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Result" : "Kết quả khám",
-                dataIndex: "description",
-                key: "description",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Action" : "Chức năng",
-                key: "action",
-                render: (_, record) => {
-                    return record.reviewId ? null : (
-                        <Space size="middle">
-                            <button
-                                className="btn btn-primary"
-                                onClick={() => {
-                                    this.handleReviewClick(record);
-                                }}
-                            >
-                                {/* <FormattedMessage id={"actions.cancel"} /> */}
-                                Đánh giá
-                            </button>
-                        </Space>
-                    );
-                },
-            },
-        ];
-
-        const columnsLookUp = [
-            {
-                title: language === LANGUAGE.VI ? "Họ và tên" : "FullName",
-                dataIndex: "fullName",
-                key: "fullName",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Doctor" : "Bác sĩ khám",
-                dataIndex: "doctorName",
-                key: "doctorName",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Time" : "Thời gian",
-                dataIndex: "timeType",
-                key: "timeType",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Reason" : "Lý do khám",
-                dataIndex: "reason",
-                key: "reason",
-            },
-            {
-                title: language === LANGUAGE.EN ? "Result" : "Kết quả khám",
-                dataIndex: "description",
-                key: "description",
-                render: (text, record) => {
-                    return <span>{text}</span>;
-                },
-            },
-            {
-                title: language === LANGUAGE.EN ? "Status" : "Trạng thái",
-                dataIndex: "status",
-                key: "status",
-                render: (text, record) => {
-                    return (
-                        <span
-                            className={`status-column ${getStatusColor(
-                                record.statusId
-                            )}`}
-                        >
-                            {record.status}
-                        </span>
-                    );
-                },
-            },
-        ];
-
-        return (
-            <>
-                <HomeHeader bgColor={true} />
-                <div className="booking-history-container">
-                    <div className="booking-history-header">
-                        <Link to="/home">
-                            <i className="fas fa-home"></i>
-                            <span>/</span>
-                        </Link>
-                        <div>
-                            <FormattedMessage
-                                id={
-                                    "patient.appointment-schedule.text-appointment-schedule"
-                                }
-                            />
-                        </div>
-                    </div>
-                    {isLoggedIn === false ? (
-                        <>
-                            <div className="booking-search">
-                                <div className="filter_search">
-                                    <input
-                                        className="form-control"
-                                        name="searchInput"
-                                        value={searchInput}
-                                        placeholder="Search"
-                                        onChange={(e) => {
-                                            this.handleOnChangeInput(e);
-                                        }}
-                                        onKeyPress={(e) => {
-                                            this.handleEnterKeyPress(e);
-                                        }}
-                                    />
-                                    <i className="fas fa-search"></i>
-                                </div>
-                            </div>
-                            <div className="booking-history-content">
-                                <div className="booking-current">
-                                    <h2>
-                                        <FormattedMessage
-                                            id={
-                                                "patient.appointment-schedule.text-title-lookup"
-                                            }
-                                        />
-                                    </h2>
-                                    {lookUpBooking &&
-                                        lookUpBooking.length > 0 ? (
-                                        <Table
-                                            dataSource={lookUpBooking}
-                                            columns={columnsLookUp}
-                                            pagination={false}
-                                        />
-                                    ) : (
-                                        <p className="text-center">
-                                            <FormattedMessage
-                                                id={
-                                                    "patient.appointment-schedule.text-result"
-                                                }
-                                            />
-                                        </p>
-                                    )}
-                                </div>
-                            </div>
-                        </>
-                    ) : (
-                        <>
-
-                            <div className="booking-history-content">
-                                <div className="booking-current">
-                                    <h2>
-                                        <FormattedMessage
-                                            id={
-                                                "patient.appointment-schedule.text-title-appointment-scheduled"
-                                            }
-                                        />
-                                    </h2>
-                                    <Table
-                                        dataSource={this.state.bookings}
-                                        columns={columns}
-                                    />
-                                </div>
-                                <div className="booking-history">
-                                    <h2>
-                                        <FormattedMessage
-                                            id={
-                                                "patient.appointment-schedule.text-title-history"
-                                            }
-                                        />
-                                    </h2>
-                                    <Table
-                                        dataSource={this.state.bookingHistories}
-                                        columns={columnsHistories}
-                                    />
-                                    {bookingData && (
-                                        <ReviewModal
-                                            visible={modalVisible}
-                                            onClose={this.handleModalClose}
-                                            onSubmit={this.handleReviewSubmit}
-                                            data={bookingData}
-                                        />
-                                    )}
-                                </div>
-                            </div>
-                        </>
-                    )}
-                </div>
-                <HomeFooter />
-            </>
-        );
+    } catch (error) {
+        console.error("Lỗi khi hủy lịch hẹn:", error);
+        alert("Đã xảy ra lỗi, vui lòng thử lại sau!");
     }
-}
+  }
 
-const mapStateToProps = (state) => {
-    return {
-        language: state.appReducer.language,
-        token: state.user.token,
-        isLoggedIn: state.user.isLoggedIn,
-    };
+  const columns1 = [
+    {
+      title: "Bác sĩ khám",
+      dataIndex: "doctorName",
+      key: "doctorName",
+      render: (_, record) => `${record.doctorInfo?.firstName || ""} ${record.doctorInfo?.lastName || ""}`,
+    },
+    {
+      title: "Tên bệnh nhân",
+      dataIndex: "patientName",
+      key: "patientName",
+      render: (_, record) => `${localStorage.getItem("fullNameUser")}`,
+    },
+    {
+      title: "Thời gian",
+      dataIndex: "date",
+      key: "date",
+      render: (date) => (date ? new Date(Number(date)).toLocaleString() : "Không có dữ liệu"),
+    },
+    {
+      title: "Địa chỉ",
+      dataIndex: "address",
+      key: "address",
+      render: (_, record) => record.doctorInfo?.address || "",
+    },
+    {
+      title: "Lý do khám",
+      dataIndex: "reason",
+      key: "reason",
+    },
+    {
+      title: "Chức năng",
+      key: "actions",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleCancel(record.id)}>
+          Hủy
+        </Button>
+      ),
+    },
+  ];
+
+  const columns2 = [
+    {
+      title: "Bác sĩ khám",
+      dataIndex: "doctorName",
+      key: "doctorName",
+      render: (_, record) => {
+        const doctorInfo = record.doctorInfo || {};
+        return `${doctorInfo.lastName || ""} ${doctorInfo.firstName || ""}` || "Không có thông tin";
+      },
+    },
+    {
+      title: "Tên bệnh nhân",
+      dataIndex: "patientName",
+      key: "patientName",
+      render: (_, record) => `${localStorage.getItem("fullNameUser")}`,
+    },
+    {
+      title: "Thời gian",
+      dataIndex: "date",
+      key: "date",
+      render: (date) => (date ? new Date(Number(date)).toLocaleString() : "Không có dữ liệu"),
+    },
+    {
+      title: "Địa chỉ",
+      dataIndex: "address",
+      key: "address",
+      render: (_, record) => record.doctorInfo?.address || "Không có địa chỉ",
+    },
+    {
+      title: "Kết quả khám",
+      dataIndex: "detailed_examination",
+      key: "detailed_examination",
+      render: (_, record) => {
+        const doctorData = record.doctorData?.[0];
+        return doctorData
+          ? `${doctorData.detailed_examination}`
+          : "Chưa có kết quả";
+      },
+    },
+    {
+      title: "Chức năng",
+      key: "actions",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleOpenModal(record)}>
+          Đánh giá
+        </Button>
+      ),
+    },
+  ];
+
+  return (
+    <>
+    <HomeHeader />
+    <div style={{ padding: "24px" }}>
+      <Spin spinning={loading}>
+        <Card style={{ marginBottom: "24px" }}>
+          <Tabs defaultActiveKey="1">
+            <TabPane tab="Lịch Hẹn" key="1">
+              <Table
+                columns={columns1}
+                dataSource={dataSource1}
+                rowKey={(record) => record.id}
+                bordered
+                locale={{ emptyText: "Không có dữ liệu" }}
+              />
+            </TabPane>
+            <TabPane tab="Lịch Sử Khám" key="2">
+              <Table
+                columns={columns2}
+                dataSource={dataSource2}
+                rowKey={(record) => record.id}
+                bordered
+                locale={{ emptyText: "Không có dữ liệu" }}
+              />
+            </TabPane>
+          </Tabs>
+        </Card>
+      </Spin>
+
+      <Modal
+        title="Đánh giá bác sĩ"
+        open={isModalOpen}
+        onCancel={handleCancelModal}
+        footer={[
+          <Button key="cancel" onClick={handleCancelModal}>
+            Hủy
+          </Button>,
+          <Button key="submit" type="primary" onClick={handleSubmitRating}>
+            Gửi đánh giá
+          </Button>,
+        ]}
+      >
+        <div>
+          <label>Đánh giá:</label>
+          <Rate value={rating} onChange={setRating} />
+        </div>
+        <div style={{ marginTop: 16 }}>
+          <label>Bình luận:</label>
+          <TextArea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            rows={4}
+            placeholder="Nhập bình luận của bạn"
+          />
+        </div>
+      </Modal>
+    </div>
+    <HomeFooter />
+  </>
+  );
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        isShowLoading: (isLoading) => {
-            return dispatch(actions.isLoadingAction(isLoading));
-        },
-        cancleBooking: (id) => {
-            return dispatch(actions.cancleBookingAction(id));
-        },
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HistoryBooking);
+export default HistoryBooking;

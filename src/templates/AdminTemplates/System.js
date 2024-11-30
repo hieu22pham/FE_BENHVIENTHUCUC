@@ -9,6 +9,7 @@ import ManageSpecialty from "../../pages/System/Specialty/ManageSpecialty";
 import ManageClinic from "../../pages/System/Clinic/ManageClinic";
 import SystemHome from "../../pages/System/Admin/SystemHome";
 import { Menu, Layout } from "antd";
+import { receptionistMenu } from "./Header/menuApp";
 
 import { adminMenu, doctorMenu } from "./Header/menuApp";
 import { FormattedMessage } from "react-intl";
@@ -21,6 +22,11 @@ import * as actions from "../../redux/actions";
 import ManageSchedule from "../../pages/System/Doctor/ManageSchedule";
 import "./System.scss";
 import ManageProfile from "../../pages/System/Admin/ManageProfile";
+import CreateMedicine from "../../pages/System/Medicine/CreateMedicine";
+import ManageMedicine from "../../pages/System/Medicine/ManageMedicine";
+import ManageService from "../../pages/System/Admin/ManageService";
+import AddService from "../../pages/System/Admin/AddService";
+import EditService from "../../pages/System/Admin/EditService";
 
 const { Content, Sider } = Layout;
 
@@ -61,7 +67,9 @@ class System extends Component {
                                 menu = adminMenu;
                             } else if (userInfor.userType === "doctor") {
                                 menu = doctorMenu;
-                            } else {
+                            } else if (userInfor.userType === "receptionist") {
+                                menu = receptionistMenu;
+                            }else {
                                 this.props.history.push("/home");
                                 this._isMounted = false;
                             }
@@ -226,6 +234,21 @@ class System extends Component {
                                     path="/system/manage-doctor"
                                     component={ManageDoctor}
                                 />
+
+                                <Route
+                                    path="/system/manage-service"
+                                    component={ManageService}
+                                />
+
+                                <Route
+                                    path="/system/add-service"
+                                    component={AddService}
+                                />
+
+                                <Route
+                                    path="/system/edit-service"
+                                        component={EditService}
+                                />
                                 {/* <Route
                                     path="/system/user-manage-redux"
                                     component={UserReduxManage}
@@ -246,6 +269,14 @@ class System extends Component {
                                 <Route
                                     path="/system/manage-profile"
                                     component={ManageProfile}
+                                />
+                                <Route
+                                    path="/system/create-medicine"
+                                    component={CreateMedicine}
+                                />
+                                <Route
+                                    path="/system/manage-medicine"
+                                    component={ManageMedicine}
                                 />
                                 <Route
                                     component={() => {

@@ -25,7 +25,7 @@ export default class TableManageUser extends Component {
             data &&
             data.length > 0 &&
             data.map((item) => {
-                return { ...item, key: item.id, role: item.Role.valueVi };
+                return { ...item, key: item.id, role: item.Role?.valueVi };
             });
 
         //Tạo columns
