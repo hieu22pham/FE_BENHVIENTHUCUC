@@ -403,7 +403,7 @@ class BookingModal extends Component {
                 this.setState({
                     recaptchaValue: null,
                 });
-
+                const a = 0;
             } else {
                 this.props.isShowLoading(false);
                 toast.error(res.errMessage);
