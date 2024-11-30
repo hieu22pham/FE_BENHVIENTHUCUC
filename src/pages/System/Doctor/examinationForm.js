@@ -148,7 +148,7 @@ const ExaminationForm = () => {
           </Col>
           <Col span={12}>
             <Form.Item label="Họ và tên">
-              <Input value={`${userInfo?.lastName} ${userInfo?.firstName}`} disabled />
+              <Input value={`${userInfo?.lastName || ""} ${userInfo?.firstName || ""}`} disabled />
             </Form.Item>
           </Col>
           <Col span={12}>
@@ -163,7 +163,7 @@ const ExaminationForm = () => {
           </Col>
           <Col span={12}>
             <Form.Item label="Giới tính">
-              <Input value={userInfo?.gender} disabled />
+              <Input value={userInfo?.gender == "M" ? "Nam" : "Nữ"} disabled />
             </Form.Item>
           </Col>
         </Row>

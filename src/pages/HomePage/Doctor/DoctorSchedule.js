@@ -117,6 +117,7 @@ class DoctorSchedule extends Component {
         
         // Lấy giá trị ngày từ sự kiện (trong trường hợp này là giá trị của select)
         let date = e.target.value;
+        console.log("e: ", e)
         localStorage.setItem('dataTime', date);
     
         if (doctorIdFromParent && doctorIdFromParent !== -1) {
@@ -150,6 +151,8 @@ class DoctorSchedule extends Component {
 
     //Mở modal
     handleClickScheduleTime = (time) => {
+        console.log("TT:", time)
+        localStorage.setItem("maxNumberBooking", time.maxNumber)
         this.setState({
             isOpenModalBooking: true,
             dataScheduleTimeModal: time,

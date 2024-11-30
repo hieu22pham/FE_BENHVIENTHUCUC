@@ -137,7 +137,7 @@ class ModalUser extends Component {
                                 type="text"
                                 name="firstName"
                                 onChange={(e) => handleOnChange(e)}
-                                value={this.state.firstName}
+                                value={this.state?.firstName || ""}
                             />
                         </div>
                         <div className="input-container">

@@ -314,10 +314,13 @@ class BookingModal extends Component {
 
     handleConfirmBooking = async () => {
         //validate input
-        const doctorId = 33;
+        const path = window.location.pathname; // Lấy toàn bộ đường dẫn sau domain
+        const doctorId = path.split("/").pop();
         const storedData = localStorage.getItem("dataTime");
 
         console.log(storedData)
+        console.log("doctorId", doctorId)
+
         let birthDay = new Date(this.state.birthDay).getTime(); //timestamp
         let timeString = this.buildTimeBooking(this.props.dataTime);
         let timeType = this.props.dataTime?.timeType 
@@ -330,6 +333,7 @@ class BookingModal extends Component {
         );
         const data1 = await response1.json();
         console.log("data1: ", data1)
+        console.log("date: ", storedData)
 
         // Lấy số lượng tối đa
         const response2 = await fetch(
@@ -339,11 +343,13 @@ class BookingModal extends Component {
         console.log("data2: ", data2)
         const number = parseInt(this.props.dataTime?.timeType.replace(/\D/g, ''), 10)-1; 
 
-            const registeredCount = data1?.data?.length || 0;
-            const maxNumber = data2?.data?.[number]?.maxNumber || 0;;
+            const registeredCount = data1?.data?.length;
 
              console.log(registeredCount)
-             console.log(maxNumber)
+             console.log("number: ", number)
+
+             const maxNumber = localStorage.getItem("maxNumberBooking")
+             console.log("maxNumber: ", maxNumber)
 
             if (registeredCount >= maxNumber) {
                 this.setState({
@@ -392,10 +398,12 @@ class BookingModal extends Component {
             if (res && res.errCode === 0) {
                 this.props.isShowLoading(false);
                 toast.success(res.message);
+                this.props.handleCloseModalBooking();
                 this.resetInput();
                 this.setState({
                     recaptchaValue: null,
                 });
+
             } else {
                 this.props.isShowLoading(false);
                 toast.error(res.errMessage);

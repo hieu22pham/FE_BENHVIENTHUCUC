@@ -35,6 +35,7 @@ const TableMangeConfirmSchedule = () => {
     useEffect(() => {
         const userId = localStorage.getItem("idUser");
         if (userId) setIdUser(userId);
+        
         fetchPatients();
     }, [localDate]);
 
@@ -43,6 +44,9 @@ const TableMangeConfirmSchedule = () => {
             const response = await axios.get(
                 `http://localhost:8080/api/get-list-patient-for-doctor-admin?doctorId=${idUser}&date=${localDate}`
             );
+
+            console.log("response: ", response)
+
             if (response.data.data) setDataPatients(response.data.data);
         } catch (error) {
             console.error("Error fetching doctor schedules:", error);
@@ -51,7 +55,7 @@ const TableMangeConfirmSchedule = () => {
 
     const handleFilter = () => {
         const filtered = dataPatients.filter((patient) =>
-            patient.patientData.lastName.toLowerCase().includes(nameFilter.toLowerCase())
+            `${patient.patientData.lastName} ${patient.patientData.firstName}`.toLowerCase().includes(nameFilter.toLowerCase())
         );
         setFilteredData(filtered);
     };
@@ -125,14 +129,14 @@ const TableMangeConfirmSchedule = () => {
     }
     };
 
-    const dataSource = (filteredData.length > 0 ? filteredData : dataPatients).map((item) => ({
+    const dataSource = (dataPatients).map((item) => ({
         key: item.id,
         bookingId: item.id,
         statusId: item.statusId,
         doctorId: item.doctorId,
         patientId: item.patientId,
         email: item.patientData.email,
-        fullName: item.patientData.lastName,
+        fullName:`${item.patientData?.lastName || ""} ${item.patientData?.firstName || ""}` ,
         address: item.patientData.address,
         phoneNumber: item.patientData.phoneNumber,
         birthday: moment.unix(+item.patientData.birthday / 1000).format("DD/MM/YYYY"),

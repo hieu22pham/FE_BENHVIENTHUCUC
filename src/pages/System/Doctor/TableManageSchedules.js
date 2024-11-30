@@ -27,19 +27,22 @@ const TableManageSchedules = ({ language }) => {
     const fetchSchedules = async () => {
         setLoading(true);
         const timestamp = moment(selectedDate || new Date()).startOf("day").valueOf();
-        const userId = localStorage.getItem("idUser");
+        var userId = localStorage.getItem("IdSelectedDoctor");
+
+        if(!userId){
+            userId = localStorage.getItem("idUser");
+        }
         
         console.log("localDate: ", localDate)
         console.log("localDate: ", timestamp)
         console.log("localDate: ", clickCount)
-
 
         try {
             const response = await axios.get(
                 `http://localhost:8080/api/get-schedule-doctor-by-date?doctorId=${userId}&date=${localDate}`
             );
 
-            console.log(response)
+            console.log("response: ", response)
 
             if (response.data.errCode === 0) {
                 setDataSchedules(response.data.data);

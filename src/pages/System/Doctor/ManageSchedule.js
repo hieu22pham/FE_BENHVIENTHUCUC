@@ -147,6 +147,7 @@ class ManageSchedule extends Component {
     };
 
     handleSelectDoctor = async (value) => {
+        localStorage.setItem("IdSelectedDoctor", value)
         this.setState({
             selectedDoctor: value,
         });

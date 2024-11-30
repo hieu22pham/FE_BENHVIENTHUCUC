@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const { Title } = Typography;
 const { Option } = Select;
 
-const AppointmentManagement = () => {
+const  AppointmentManagement = () => {
   const [appointments, setAppointments] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [newStatus, setNewStatus] = useState("");
@@ -27,7 +27,7 @@ const AppointmentManagement = () => {
       for (const appointment of data.data) {
         if (!doctorData[appointment.doctorId]) {
           const doctorResponse = await axios.get(`http://localhost:8080/api/get-infor-user?id=${appointment.doctorId}`);
-          doctorData[appointment.doctorId] = `${doctorResponse.data?.data?.lastName} ${doctorResponse.data?.data?.firstName}`;
+          doctorData[appointment.doctorId] = `${doctorResponse.data?.data?.lastName || ""} ${doctorResponse.data?.data?.firstName || ""}`;
         }
       }
       setDoctorNames(doctorData);
@@ -109,7 +109,7 @@ const AppointmentManagement = () => {
       title: 'Bệnh nhân',
       dataIndex: 'patientData',
       key: 'patientData',
-      render: (patientData) => `${patientData?.firstName || ''} ${patientData?.lastName || ''}` || 'N/A',
+      render: (patientData) => `${patientData?.lastName || ''} ${patientData?.firstName || ''}` || '',
     },
     {
       title: 'Số điện thoại',
@@ -127,7 +127,7 @@ const AppointmentManagement = () => {
       title: 'Ngày hẹn',
       dataIndex: 'date',
       key: 'date',
-      render: (date) => new Date(parseInt(date)).toLocaleDateString(),
+      render: (date) => `${new Date(Number(date)).toLocaleDateString('en-GB')}`,
     },
     {
       title: 'Khung giờ',

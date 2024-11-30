@@ -27,24 +27,62 @@ const HistoryBooking = () => {
       const responseBookings = await axios.get(`http://localhost:8080/api/get-booking-by-user-id/${userId}`);
       const bookingsData = responseBookings.data.data;
 
-      const updatedBookings = await Promise.all(
+      const updatedBookings =  await Promise.all(
         bookingsData.map(async (booking) => {
+          console.log("booking.doctorId: ", booking.doctorId)
           const doctorResponse = await axios.get(`http://localhost:8080/api/get-doctor-by-id/${booking.doctorId}`);
           const doctorData = doctorResponse.data.data;
+
+          const timeType = booking.timeType
+          let timeTypeLabel;
+          switch (timeType) {
+            case "T1":
+              timeTypeLabel = "8:00 - 9:00";
+              break;
+            case "T2":
+              timeTypeLabel = "9:00 - 10:00";
+              break;
+            case "T3":
+              timeTypeLabel = "10:00 - 11:00";
+              break;
+            case "T4":
+              timeTypeLabel = "11:00 - 12:00";
+              break;
+            case "T5":
+              timeTypeLabel = "13:00 - 14:00";
+              break;
+            case "T6":
+              timeTypeLabel = "14:00 - 15:00";
+              break;
+            case "T7":
+              timeTypeLabel = "15:00 - 16:00";
+              break;
+            case "T8":
+              timeTypeLabel = "16:00 - 17:00";
+              break;
+            default:
+              timeTypeLabel = "Thời gian không xác định";
+          }
+          const dateTime = `${new Date(Number(booking.date)).toLocaleDateString('en-GB')}, từ ${timeTypeLabel}`
+
           return {
             ...booking,
             doctorInfo: doctorData,
+            dateTime: dateTime
           };
         })
       );
 
       const responseExam = await axios.get(`http://localhost:8080/api/get-examination/${userId}`);
-      const ExamData = responseExam.data.data || [];
-
+      const ExamData = responseExam.data.data || [];  
+      var doctorData
       const updatedExam = await Promise.all(
         updatedBookings.map(async (exam) => {
-          const doctorResponse = await axios.get(`http://localhost:8080/api/get-examination/${userId}`);
-          const doctorData = doctorResponse.data.data || {};
+          if(bookingsData.doctorData){
+            const doctorResponse = await axios.get(`http://localhost:8080/api/get-infor-user/${bookingsData.doctorData}`);
+            doctorData = doctorResponse.data.data || {};
+          }
+          
           return {
             ...exam,
             doctorData,
@@ -56,8 +94,9 @@ const HistoryBooking = () => {
       const arr2 = updatedExam.filter((data) => data.detailed_examination !== "");
 
       setDataSource1(arr1);
+
+      console.log("Data1: ", arr1)
       setDataSource2(arr2);
-      console.log(dataSource1)
     } catch (error) {
       console.error("Error fetching bookings:", error);
     } finally {
@@ -129,12 +168,7 @@ const HistoryBooking = () => {
   }
 
   const columns1 = [
-    {
-      title: "Bác sĩ khám",
-      dataIndex: "doctorName",
-      key: "doctorName",
-      render: (_, record) => `${record.doctorInfo?.firstName || ""} ${record.doctorInfo?.lastName || ""}`,
-    },
+    
     {
       title: "Tên bệnh nhân",
       dataIndex: "patientName",
@@ -142,10 +176,16 @@ const HistoryBooking = () => {
       render: (_, record) => `${localStorage.getItem("fullNameUser")}`,
     },
     {
+      title: "Bác sĩ khám",
+      dataIndex: "doctorName",
+      key: "doctorName",
+      render: (_, record) => ` ${record.doctorInfo?.lastName || ""} ${record.doctorInfo?.firstName || ""}`,
+    },
+    {
       title: "Thời gian",
-      dataIndex: "date",
-      key: "date",
-      render: (date) => (date ? new Date(Number(date)).toLocaleString() : "Không có dữ liệu"),
+      dataIndex: "dateTime",
+      key: "dateTime",
+      render: (dateTime) => `${dateTime}`
     },
     {
       title: "Địa chỉ",
@@ -171,25 +211,25 @@ const HistoryBooking = () => {
 
   const columns2 = [
     {
-      title: "Bác sĩ khám",
-      dataIndex: "doctorName",
-      key: "doctorName",
-      render: (_, record) => {
-        const doctorInfo = record.doctorInfo || {};
-        return `${doctorInfo.lastName || ""} ${doctorInfo.firstName || ""}` || "Không có thông tin";
-      },
-    },
-    {
       title: "Tên bệnh nhân",
       dataIndex: "patientName",
       key: "patientName",
       render: (_, record) => `${localStorage.getItem("fullNameUser")}`,
     },
     {
+      title: "Bác sĩ khám",
+      dataIndex: "doctorName",
+      key: "doctorName",
+      render: (_, record) => {
+        const doctorInfo = record.doctorInfo || {};
+        return `${doctorInfo.lastName || ""} ${doctorInfo.firstName || ""}`;
+      },
+    },
+    {
       title: "Thời gian",
-      dataIndex: "date",
-      key: "date",
-      render: (date) => (date ? new Date(Number(date)).toLocaleString() : "Không có dữ liệu"),
+      dataIndex: "dateTime",
+      key: "dateTime",
+      render: (dateTime) => (`${dateTime}`),
     },
     {
       title: "Địa chỉ",

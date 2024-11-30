@@ -72,6 +72,8 @@ class ManagePatient extends Component {
                 this.getDataPatient();
             }
         );
+        
+
     };
 
     handleCancle = async (data) => {
@@ -107,17 +109,28 @@ class ManagePatient extends Component {
                                 id={"admin.manage-patient.choose-date"}
                             />
                         </label>
-                        <br />
+                        {/* <br />
                         <DatePicker
                             className="form-control"
-                            selected=""
+                            selected={currentDate}
                             onChange={(date) => {
                                 this.handleSelectDate(date);
                             }}
                             dateFormat="dd/MM/yyyy" // Định dạng ngày tháng thành "dd/mm/yyyy"
                             minDate={tomorrow}
                             value={currentDate}
-                        />
+                        /> */}
+
+                            <DatePicker
+                                className="form-control"
+                                selected={currentDate}
+                                onChange={(date) => {
+                                    this.handleSelectDate(date);
+                                }}
+                                dateFormat="dd/MM/yyyy" // Định dạng ngày tháng thành "dd/mm/yyyy"
+                                minDate={new Date()} // Giới hạn ngày tối thiểu là ngày hiện tại
+                                value={currentDate}
+                            />
                     </div>
                 </div>
                 <TableManagePatient

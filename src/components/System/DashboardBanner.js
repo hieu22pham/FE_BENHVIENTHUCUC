@@ -15,7 +15,8 @@ class DashboardBanner extends Component {
     componentDidMount() {
         if (this.props.userInfo) {
             this.setState({
-                fullName: `${this.props.userInfo.firstName} ${this.props.userInfo.lastName}`,
+                // fullName: `${this.props.userInfo.firstName} ${this.props.userInfo.lastName}`,
+                fullName: `${this.props.userInfo?.firstName || ""} ${this.props.userInfo?.lastName || ""}`,
             });
         }
     }
@@ -23,7 +24,7 @@ class DashboardBanner extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps.userInfo !== this.props.userInfo) {
             this.setState({
-                fullName: `${this.props.userInfo.firstName} ${this.props.userInfo.lastName}`,
+                fullName: `${this.props.userInfo?.firstName || ""} ${this.props.userInfo?.lastName || ""}`,
             });
         }
     }

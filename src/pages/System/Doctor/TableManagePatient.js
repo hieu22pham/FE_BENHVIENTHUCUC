@@ -127,7 +127,7 @@ const TableManagePatient = () => {
         doctorId: item.doctorId,
         patientId: item.patientId,
         email: item.patientData.email,
-        fullName: `${item.patientData.lastName}`,
+        fullName: `${item.patientData.lastName} ${item.patientData.firstName}`,
         address: item.patientData.address,
         phoneNumber: item.patientData.phoneNumber,
         birthday: moment.unix(+item.patientData.birthday / 1000).format("DD/MM/YYYY"),

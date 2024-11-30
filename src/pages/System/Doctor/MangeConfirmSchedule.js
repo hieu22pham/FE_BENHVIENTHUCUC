@@ -109,7 +109,7 @@ class MangeConfirmSchedule extends Component {
                             />
                         </label>
                         <br />
-                        <DatePicker
+                        {/* <DatePicker
                             className="form-control"
                             selected=""
                             onChange={(date) => {
@@ -118,6 +118,13 @@ class MangeConfirmSchedule extends Component {
                             dateFormat="dd/MM/yyyy" // Định dạng ngày tháng thành "dd/mm/yyyy"
                             minDate={tomorrow}
                             value={currentDate}
+                        /> */}
+                         <DatePicker
+                            className="form-control"
+                            selected={new Date(currentDate)} // Đảm bảo selected là kiểu Date
+                            onChange={(date) => this.handleSelectDate(date)} // Cập nhật khi chọn ngày
+                            dateFormat="dd/MM/yyyy" // Định dạng ngày tháng
+                            minDate={new Date()} // Bỏ hạn chế hoặc thiết lập phù hợp
                         />
                     </div>
                 </div>

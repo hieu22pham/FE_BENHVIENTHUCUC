@@ -19,7 +19,7 @@ class Home extends Component {
 
             if (resUser && resUser.errCode === 0 && isLoggedIn) {
                 let userInfor = resUser.userInfor;
-                localStorage.setItem("fullNameUser", `${userInfor.lastName} ${userInfor.firstName}`);
+                localStorage.setItem("fullNameUser", `${userInfor?.lastName || ""} ${userInfor?.firstName || ""}`);
 
                 if (
                     userInfor.userType === "admin" ||
