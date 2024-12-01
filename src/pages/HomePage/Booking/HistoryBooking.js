@@ -74,6 +74,8 @@ const HistoryBooking = () => {
       );
 
       const responseExam = await axios.get(`http://localhost:8080/api/get-examination/${userId}`);
+      console.log("responseExam: ", responseExam)
+
       const ExamData = responseExam.data.data || [];  
       var doctorData
       const updatedExam = await Promise.all(
@@ -82,10 +84,12 @@ const HistoryBooking = () => {
             const doctorResponse = await axios.get(`http://localhost:8080/api/get-infor-user/${bookingsData.doctorData}`);
             doctorData = doctorResponse.data.data || {};
           }
+        const detailed_examination = responseExam.data.data.detailed_examination
           
           return {
             ...exam,
             doctorData,
+            detailed_examination: detailed_examination
           };
         })
       );
@@ -96,6 +100,8 @@ const HistoryBooking = () => {
       setDataSource1(arr1);
 
       console.log("Data1: ", arr1)
+      console.log("Data2: ", arr2)
+
       setDataSource2(arr2);
     } catch (error) {
       console.error("Error fetching bookings:", error);
@@ -241,12 +247,8 @@ const HistoryBooking = () => {
       title: "Kết quả khám",
       dataIndex: "detailed_examination",
       key: "detailed_examination",
-      render: (_, record) => {
-        const doctorData = record.doctorData?.[0];
-        return doctorData
-          ? `${doctorData.detailed_examination}`
-          : "Chưa có kết quả";
-      },
+      render: (_, record) => 
+       `${record?.detailed_examination}`
     },
     {
       title: "Chức năng",

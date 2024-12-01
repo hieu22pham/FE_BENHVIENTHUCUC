@@ -12,21 +12,37 @@ export default class ReviewList extends Component {
             reviews: [],
         };
     }
+    // async componentDidUpdate(prevProps) {
+    //     if (prevProps.doctorId !== this.props.doctorId) {
+    //         let res = await getDoctorReviewService(this.props.doctorId);
+    //         console.log(' GET REVIEW By Nhat Ba: ', res);
+    //         if (res && res.errCode === 0) {
+    //             this.setState({
+    //                 reviews: res.data,
+    //             });
+    //         }
+    //     }
+    // }
+
     async componentDidUpdate(prevProps) {
         if (prevProps.doctorId !== this.props.doctorId) {
-          console.log("Review id: " , this.props.doctorId)
-        //   const doctorIdSelected = localStorage.getItem("doctorIdSelected")
-          const path = window.location.pathname; // Lấy toàn bộ đường dẫn sau domain
-            const doctorIdSelected = path.split("/").pop();
-            let res = await getDoctorReviewService(doctorIdSelected);
+            let res = await getDoctorReviewService(this.props.doctorId);
             console.log(' GET REVIEW By Nhat Ba: ', res);
+
+            var newArr = [];
+            for(var i=0; i<res.data.length; i++){
+                if(i != res.data.length-1){
+                    newArr.push(res.data[i])
+                }
+            }
             if (res && res.errCode === 0) {
                 this.setState({
-                    reviews: res.data,
+                    reviews: newArr,
                 });
             }
         }
     }
+    
 
     render() {
         let { reviews } = this.state;
@@ -41,8 +57,7 @@ export default class ReviewList extends Component {
                                 <div className="feedback-item" key={index}>
                                     <div className="feedback-name">
                                         <strong>
-                                            {/* {`${review.lastName} ${review.firstName} `} */}
-                                            {review?.lastName || ""} {review?.firstName || ""} 
+                                            {`${review.lastName} ${review.firstName} `}
                                             &nbsp; &nbsp;
                                         </strong>
                                         <a className="feedback-info">

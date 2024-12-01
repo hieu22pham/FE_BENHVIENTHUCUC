@@ -86,30 +86,57 @@ const ExaminationForm = () => {
     }
   };
 
+  const [medicineData, setMedicineData] = useState({
+    parentId: null, // ID của thuốc (từ bảng medicine)
+    keyTable: "service", // Loại hóa đơn (luôn là 'medicine' trong trường hợp này)
+    medicine_quantity: null, // Số lượng thuốc
+  });
+
   const handleSubmit = async () => {
     try {
+      const id = localStorage.getItem("patientId")
       // Calculate BMI
       const heightInMeters = examinationData.height / 100;
       examinationData.bmi = examinationData.weight / (heightInMeters ** 2);
       examinationData.patientId = userInfo.id;
 
       // Save examination data
-      const examinationResponse = await axios.post("http://localhost:8080/api/post-examination", examinationData);
+      const examinationResponse = await axios.post(`http://localhost:8080/api/post-examination/${id}`, examinationData);
       
       console.log("examinationResponse: ", examinationResponse)
 
       if (examinationResponse.status === 200) {
         message.success("Lưu thông tin khám bệnh thành công!");
+
+        // medicineData.parentId = 
+
+        
       }
 
-      const id = localStorage.getItem("patientId")
       console.log("create-service id: ", id)
       // Prepare and save additional data
       additionalData.patientId = userInfo.id;
       additionalData.price = additionalData.unit_price * additionalData.quantity; // Calculate price
       const additionalResponse = await axios.post(`http://localhost:8080/api/create-service/${id}`, additionalData);
       
-      
+      console.log("additionalResponse: ", additionalResponse)
+
+      if(additionalResponse.data.errCode == 0){
+        medicineData.parentId = additionalResponse.data.data.id
+        medicineData.keyTable = "service"
+        medicineData.medicine_quantity = additionalResponse.data.data.quantity
+        const response = await axios.post(`http://localhost:8080/api/create-invoice/${id}`, medicineData);
+        console.log("Invoide res:", response)
+        if (response.data.errCode === 200) {
+          message.success("Lưu thông tin thuốc thành công!");
+          // Reset form sau khi lưu
+          setMedicineData({
+            parentId: null,
+            keyTable: "medicine",
+            medicine_quantity: null,
+          });
+        }
+      }
       console.log(userInfo.id)
       console.log("additionalData: ", additionalData)
       

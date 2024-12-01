@@ -9,7 +9,7 @@ import { withRouter } from "react-router-dom";
 
 import { LANGUAGE } from "../../../utils";
 import { getTopDoctorAction } from "../../../redux/actions";
-import { getTopDoctorHome2Service } from "../../../services/userService";
+import { getAllDoctorService, getTopDoctorHome2Service } from "../../../services/userService";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import * as actions from "../../../redux/actions";
 
@@ -24,7 +24,9 @@ class OutStandingDoctor extends Component {
     async componentDidMount() {
         // this.props.loadTopDoctors();
         this.props.isShowLoading(true);
-        let res = await getTopDoctorHome2Service(8);
+        let res = await getAllDoctorService();
+
+        console.log("res: ", res)
         if (res && res.errCode === 0) {
             this.setState(
                 {
@@ -50,21 +52,22 @@ class OutStandingDoctor extends Component {
         // console.log("Check props topDoctors from redux: ", topDoctorsRedux);
 
         const handleDetailDoctor = (doctor) => {
-            this.props.history.push(`detail-doctor/${doctor.doctorId}`);
+            this.props.history.push(`detail-doctor/${doctor.id}`);
         };
 
         const renderTopDoctor = () => {
             return this.state.arrDoctors.map((doctor, index) => {
+                console.log("Doctor: ", doctor)
                 let imageBase64 = "";
-                if (doctor.User.image) {
+                if (doctor?.image) {
                     //decode từ base64 để lấy ra ảnh dạng binary
                     imageBase64 = new Buffer(
-                        doctor.User.image,
+                        doctor.image,
                         "base64"
                     ).toString("binary");
                 }
-                let nameVi = `${doctor.User.positionData.valueVi}, ${doctor.User.lastName} ${doctor.User.firstName} `;
-                let nameEn = `${doctor.User.positionData.valueEn}, ${doctor.User.firstName} ${doctor.User.lastName}`;
+                let nameVi = `${doctor?.positionData.valueVi}, ${doctor?.lastName} ${doctor?.firstName} `;
+                let nameEn = `${doctor?.positionData.valueEn}, ${doctor?.firstName} ${doctor?.lastName}`;
 
                 return (
                     <div
@@ -78,7 +81,7 @@ class OutStandingDoctor extends Component {
                             <div
                                 className="bg-img outstanding-doctor-img"
                                 style={{
-                                    backgroundImage: `url(${imageBase64})`,
+                                    backgroundImage: `url(${doctor.image})`,
                                 }}
                             ></div>
                             <div className="description text-center">
@@ -87,9 +90,9 @@ class OutStandingDoctor extends Component {
                                 </div>
                                 <span>
                                     {language === LANGUAGE.VI
-                                        ? doctor.User.Doctor_Infor.specialtyData
+                                        ? doctor.Doctor_Infor.specialtyData
                                             .nameVi
-                                        : doctor.User.Doctor_Infor.specialtyData
+                                        : doctor.Doctor_Infor.specialtyData
                                             .nameEn}
                                 </span>
                             </div>

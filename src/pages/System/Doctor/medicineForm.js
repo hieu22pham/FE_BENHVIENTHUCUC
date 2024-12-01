@@ -82,6 +82,8 @@ const MedicineForm = () => {
       }
       
       const id = localStorage.getItem("patientId")
+      console.log("Id: ", id)
+      console.log("medicineData22: ", medicineData)
       const response = await axios.post(`http://localhost:8080/api/create-invoice/${id}`, medicineData);
       if (response.status === 200) {
         message.success("Lưu thông tin thuốc thành công!");

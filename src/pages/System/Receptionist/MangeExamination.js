@@ -9,6 +9,7 @@ const ExaminationManagement = () => {
   const [doctorNames, setDoctorNames] = useState({});
   const [editingId, setEditingId] = useState(null); // Dòng đang chỉnh sửa
   const history = useHistory();
+  const [name, setName] = useState("")
 
   // Fetch data from the API
   useEffect(() => {
@@ -27,6 +28,8 @@ const ExaminationManagement = () => {
           }
         }
         setDoctorNames(doctorData);
+
+        console.log("doctorData: ", doctorData)
       } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
         toast.error("Không thể tải dữ liệu!");
@@ -84,6 +87,9 @@ const ExaminationManagement = () => {
   };
 
   const handlePayment = (appointmentId) => {
+    console.log("appointment: ", appointmentId)
+    localStorage.setItem("selectedDoctor", appointmentId.doctorId)
+    localStorage.setItem("nameSelectedDoctor", doctorNames[appointmentId.doctorId])
     localStorage.setItem("patientId", appointmentId.patientId);
     history.push("/receptionist/invoice");
   };

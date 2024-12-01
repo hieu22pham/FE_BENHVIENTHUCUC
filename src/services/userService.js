@@ -258,9 +258,10 @@ const registerUserService = (data) => {
 };
 
 //Api đánh giá
-const newReviewService = (data) => {
-    return axios.post(`/api/new-review`, data);
-};
+// const newReviewService = (data) => {
+//     return axios.post(`/api/new-review`, data);
+// };
+
 const getDoctorRatingService = (id) => {
     return axios.get(`/api/get-doctor-rating?id=${id}`);
 };
@@ -318,7 +319,7 @@ export {
     changePasswordService,
     getAllGenderService,
     registerUserService,
-    newReviewService,
+    // newReviewService,
     getDoctorRatingService,
     getDoctorReviewService,
     deleteScheduleService,
