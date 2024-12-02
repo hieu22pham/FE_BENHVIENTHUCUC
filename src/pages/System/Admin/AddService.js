@@ -12,9 +12,9 @@ const AddService = ({ fetchServices }) => {
     // Submit form to add new service
     const handleAddService = async (values) => {
         try {
-            const id = localStorage.getItem("patientId")
-            setLoading(true);
-            const response = await axios.post(`http://localhost:8080/api/create-service/${id}`, values);
+            const response = await axios.post(`http://localhost:8080/api/create-allservice`, values);
+
+            console.log("response: ", response)
             if (response.data.errCode === 0) {
                 message.success("Thêm dịch vụ thành công!")
                 form.resetFields(); // Reset các trường của form về ban đầu

@@ -16,9 +16,10 @@ const Invoice = () => {
     useEffect(() => {
         const fetchData = async () => {
             const id = localStorage.getItem("patientId");
+            const doctorId = localStorage.getItem("selectedDoctor");
             try {
-                const serviceRes = await axios.get(`http://localhost:8080/api/get-all-service-invoice/${id}`);
-                const medicineRes = await axios.get(`http://localhost:8080/api/get-all-medicine-invoice/${id}`);
+                const serviceRes = await axios.get(`http://localhost:8080/api/get-all-service-invoice?id=${id}&doctorId=${doctorId}`);
+                const medicineRes = await axios.get(`http://localhost:8080/api/get-all-medicine-invoice?id=${id}&doctorId=${doctorId}`);
                 const userRes = await axios.get(`http://localhost:8080/api/get-infor-user?id=${id}`); // ID bệnh nhân
                 const doctor_id = localStorage.getItem("selectedDoctor")
                 const priceExaminationRes = await axios.get(`http://localhost:8080/api/get-extra-infor-doctor-by-id?doctorId=${doctor_id}`);

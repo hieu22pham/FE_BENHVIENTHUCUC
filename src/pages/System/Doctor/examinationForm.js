@@ -99,6 +99,7 @@ const ExaminationForm = () => {
       const heightInMeters = examinationData.height / 100;
       examinationData.bmi = examinationData.weight / (heightInMeters ** 2);
       examinationData.patientId = userInfo.id;
+      examinationData.keyTable = "service"
 
       // Save examination data
       const examinationResponse = await axios.post(`http://localhost:8080/api/post-examination/${id}`, examinationData);

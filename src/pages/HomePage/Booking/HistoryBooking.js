@@ -76,33 +76,36 @@ const HistoryBooking = () => {
       const responseExam = await axios.get(`http://localhost:8080/api/get-examination/${userId}`);
       console.log("responseExam: ", responseExam)
 
-      const ExamData = responseExam.data.data || [];  
-      var doctorData
-      const updatedExam = await Promise.all(
-        updatedBookings.map(async (exam) => {
-          if(bookingsData.doctorData){
-            const doctorResponse = await axios.get(`http://localhost:8080/api/get-infor-user/${bookingsData.doctorData}`);
-            doctorData = doctorResponse.data.data || {};
-          }
-        const detailed_examination = responseExam.data.data.detailed_examination
-          
-          return {
-            ...exam,
-            doctorData,
-            detailed_examination: detailed_examination
-          };
-        })
-      );
+      if(responseExam.status == 200){
+        const ExamData = responseExam.data.data || [];  
+        var doctorData
+        const updatedExam = await Promise.all(
+          updatedBookings.map(async (exam) => {
+            if(bookingsData.doctorData){
+              const doctorResponse = await axios.get(`http://localhost:8080/api/get-infor-user/${bookingsData.doctorData}`);
+              doctorData = doctorResponse.data.data || {};
+            }
+          const detailed_examination = responseExam.data.data.detailed_examination
+            
+            return {
+              ...exam,
+              doctorData,
+              detailed_examination: detailed_examination
+            };
+          })
+        );
+
+        const arr2 = updatedExam.filter((data) => data.detailed_examination !== "");
+        console.log("Data2: ", arr2)
+        setDataSource2(arr2);
+      }
 
       const arr1 = updatedBookings.filter((data) => data.statusId === "S2");
-      const arr2 = updatedExam.filter((data) => data.detailed_examination !== "");
 
       setDataSource1(arr1);
 
       console.log("Data1: ", arr1)
-      console.log("Data2: ", arr2)
 
-      setDataSource2(arr2);
     } catch (error) {
       console.error("Error fetching bookings:", error);
     } finally {

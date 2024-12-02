@@ -30,16 +30,26 @@ export default class ReviewList extends Component {
             console.log(' GET REVIEW By Nhat Ba: ', res);
 
             var newArr = [];
-            for(var i=0; i<res.data.length; i++){
-                if(i != res.data.length-1){
-                    newArr.push(res.data[i])
+            if(res.data.length < 2){
+                for(var i=0; i<res.data.length; i++){
+                    if(i != res.data.length-1){
+                        newArr.push(res.data[i])
+                    }
+                }
+                if (res && res.errCode === 0) {
+                    this.setState({
+                        reviews: newArr,
+                    });
+                }
+            } else{
+                newArr = res.data
+                if (res && res.errCode === 0) {
+                    this.setState({
+                        reviews: newArr,
+                    });
                 }
             }
-            if (res && res.errCode === 0) {
-                this.setState({
-                    reviews: newArr,
-                });
-            }
+            
         }
     }
     

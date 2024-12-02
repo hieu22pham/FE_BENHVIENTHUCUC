@@ -84,7 +84,10 @@ const MedicineForm = () => {
       const id = localStorage.getItem("patientId")
       console.log("Id: ", id)
       console.log("medicineData22: ", medicineData)
+      console.log("medicineData: ", medicineData)
       const response = await axios.post(`http://localhost:8080/api/create-invoice/${id}`, medicineData);
+
+      console.log("Ress: ", response)
       if (response.status === 200) {
         message.success("Lưu thông tin thuốc thành công!");
         // Reset form sau khi lưu
