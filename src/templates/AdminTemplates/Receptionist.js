@@ -128,7 +128,7 @@ class Receptionist extends Component {
                                     </div>
 
                                     <div className="header-menu-infor">
-                                        <h6>{`${userInfo.firstName} ${userInfo.lastName}`}</h6>
+                                        <h6>{`${userInfo.lastName} ${userInfo.firstName} `}</h6>
                                         <p> {userInfo.userName}</p>
                                     </div>
                                 </div>
@@ -185,7 +185,7 @@ class Receptionist extends Component {
                                     path="/receptionist/manage-time-stamp"
                                     component={ExaminationManagement}
                                 />
-                                 <Route
+                                <Route
                                     path="/receptionist/invoice"
                                     component={Invoice}
                                 />

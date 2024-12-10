@@ -138,7 +138,7 @@ class Doctor extends Component {
                                     </div>
 
                                     <div className="header-menu-infor">
-                                        <h6>{`${userInfo.firstName} ${userInfo.lastName}`}</h6>
+                                        <h6>{`${userInfo.lastName} ${userInfo.firstName} `}</h6>
                                         <p> {userInfo.userName}</p>
                                     </div>
                                 </div>
@@ -208,12 +208,12 @@ class Doctor extends Component {
                                     path="/doctor/medicine-form"
                                     component={MedicineForm}
                                 />
-                                
+
                                 <Route
                                     path="/doctor/create-medicine"
                                     component={CreateMedicine}
                                 />
-                               
+
 
                                 <Route
                                     component={() => {

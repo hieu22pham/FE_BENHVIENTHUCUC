@@ -52,12 +52,12 @@ export default class TableManageUser extends Component {
                 ),
             },
             {
-                title: language === LANGUAGE.EN ? "First Name" : "Họ",
+                title: language === LANGUAGE.EN ? "First Name" : "Tên",
                 dataIndex: "firstName",
                 key: "firstName",
             },
             {
-                title: language === LANGUAGE.EN ? "Last Name" : "Tên",
+                title: language === LANGUAGE.EN ? "Last Name" : "Họ",
                 dataIndex: "lastName",
                 key: "lastName",
             },
@@ -126,8 +126,8 @@ export default class TableManageUser extends Component {
                 <Table
                     dataSource={
                         filteredData &&
-                        filteredData.length > 0 &&
-                        nameFilter !== ""
+                            filteredData.length > 0 &&
+                            nameFilter !== ""
                             ? filteredData
                             : dataSource
                     }
@@ -145,7 +145,7 @@ export default class TableManageUser extends Component {
                         showTotal: (total, range) =>
                             `${range[0]}-${range[1]} of ${total} items`, // Hiển thị tổng số bản ghi
                     }}
-                    // responsive={{ xs: 28, sm: 12, md: 8, lg: 6 }} // Tùy chỉnh các breakpoints
+                // responsive={{ xs: 28, sm: 12, md: 8, lg: 6 }} // Tùy chỉnh các breakpoints
                 />
             </div>
         );

@@ -5,7 +5,7 @@ import _ from "lodash";
 
 import * as actions from "../../../redux/actions";
 import "./Header.scss";
-import { adminMenu, doctorMenu,receptionistMenu } from "./menuApp";
+import { adminMenu, doctorMenu, receptionistMenu } from "./menuApp";
 import Navigator from "../../../components/System/Navigator";
 import { LANGUAGE } from "../../../utils";
 
@@ -45,9 +45,9 @@ class Header extends Component {
                             menu = adminMenu;
                         } else if (userInfor.userType === "doctor") {
                             menu = doctorMenu;
-                        }  else if (userInfor.userType === "receptionist") {
+                        } else if (userInfor.userType === "receptionist") {
                             menu = receptionistMenu;
-                        }else {
+                        } else {
                             this.props.history.push("/home");
                             this._isMounted = false;
                         }
@@ -124,7 +124,7 @@ class Header extends Component {
                             <span className="welcome">
                                 <FormattedMessage id={"homeHeader.welcome"} />
                                 {userInfo
-                                    ? `${userInfo.firstName} ${userInfo.lastName}!`
+                                    ? `${userInfo.lastName} ${userInfo.firstName} !`
                                     : ""}
                             </span>
                             <span

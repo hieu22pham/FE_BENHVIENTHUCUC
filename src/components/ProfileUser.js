@@ -304,7 +304,7 @@ class ProfileUser extends Component {
                                     <label>
                                         <FormattedMessage
                                             id={
-                                                "admin.manage-profile.firstName"
+                                                "admin.manage-profile.lastName"
                                             }
                                         />
                                     </label>
@@ -321,7 +321,7 @@ class ProfileUser extends Component {
                                 <div className="col-lg-6 col-sm-12 mt-3">
                                     <label>
                                         <FormattedMessage
-                                            id={"admin.manage-profile.lastName"}
+                                            id={"admin.manage-profile.firstName"}
                                         />
                                     </label>
                                     <input

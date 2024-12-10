@@ -69,7 +69,7 @@ class System extends Component {
                                 menu = doctorMenu;
                             } else if (userInfor.userType === "receptionist") {
                                 menu = receptionistMenu;
-                            }else {
+                            } else {
                                 this.props.history.push("/home");
                                 this._isMounted = false;
                             }
@@ -179,7 +179,7 @@ class System extends Component {
                                     </div>
 
                                     <div className="header-menu-infor">
-                                        <h6>{`${userInfo.firstName} ${userInfo.lastName}`}</h6>
+                                        <h6>{`${userInfo.lastName} ${userInfo.firstName} `}</h6>
                                         <p>{userInfo.email}</p>
                                     </div>
                                 </div>
@@ -247,7 +247,7 @@ class System extends Component {
 
                                 <Route
                                     path="/system/edit-service"
-                                        component={EditService}
+                                    component={EditService}
                                 />
                                 {/* <Route
                                     path="/system/user-manage-redux"

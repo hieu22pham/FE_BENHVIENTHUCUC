@@ -4,7 +4,7 @@ import axios from "axios";
 
 const ExaminationForm = () => {
   const [userInfo, setUserInfo] = useState({
-    email: "",  
+    email: "",
     passWord: "",
     firstName: "",
     lastName: "",
@@ -89,29 +89,34 @@ const ExaminationForm = () => {
   const [medicineData, setMedicineData] = useState({
     parentId: null, // ID của thuốc (từ bảng medicine)
     keyTable: "service", // Loại hóa đơn (luôn là 'medicine' trong trường hợp này)
+    doctorId: null,
     medicine_quantity: null, // Số lượng thuốc
   });
 
   const handleSubmit = async () => {
     try {
       const id = localStorage.getItem("patientId")
+      const doctorId = localStorage.getItem("idUser")
+
       // Calculate BMI
       const heightInMeters = examinationData.height / 100;
       examinationData.bmi = examinationData.weight / (heightInMeters ** 2);
       examinationData.patientId = userInfo.id;
       examinationData.keyTable = "service"
+      examinationData.doctorId = doctorId
 
       // Save examination data
       const examinationResponse = await axios.post(`http://localhost:8080/api/post-examination/${id}`, examinationData);
-      
+
       console.log("examinationResponse: ", examinationResponse)
+      console.log("examinationData: ", examinationData)
 
       if (examinationResponse.status === 200) {
         message.success("Lưu thông tin khám bệnh thành công!");
 
         // medicineData.parentId = 
 
-        
+
       }
 
       console.log("create-service id: ", id)
@@ -119,13 +124,18 @@ const ExaminationForm = () => {
       additionalData.patientId = userInfo.id;
       additionalData.price = additionalData.unit_price * additionalData.quantity; // Calculate price
       const additionalResponse = await axios.post(`http://localhost:8080/api/create-service/${id}`, additionalData);
-      
+
       console.log("additionalResponse: ", additionalResponse)
 
-      if(additionalResponse.data.errCode == 0){
+      if (additionalResponse.data.errCode == 0) {
         medicineData.parentId = additionalResponse.data.data.id
         medicineData.keyTable = "service"
         medicineData.medicine_quantity = additionalResponse.data.data.quantity
+        const doctorId = localStorage.getItem("idUser")
+        medicineData.doctorId = doctorId
+
+        console.log("medicineData: ", medicineData)
+
         const response = await axios.post(`http://localhost:8080/api/create-invoice/${id}`, medicineData);
         console.log("Invoide res:", response)
         if (response.data.errCode === 200) {
@@ -134,13 +144,14 @@ const ExaminationForm = () => {
           setMedicineData({
             parentId: null,
             keyTable: "medicine",
+            doctorId: null,
             medicine_quantity: null,
           });
         }
       }
       console.log(userInfo.id)
       console.log("additionalData: ", additionalData)
-      
+
       if (additionalResponse.status === 200) {
         message.success("Lưu thông tin dịch vụ thành công!");
       }

@@ -15,7 +15,8 @@ const MedicineForm = () => {
 
   const [medicineData, setMedicineData] = useState({
     parentId: null, // ID của thuốc (từ bảng medicine)
-    keyTable: "medicine", // Loại hóa đơn (luôn là 'medicine' trong trường hợp này)
+    keyTable: "medicine",
+    doctorId: null, // Loại hóa đơn (luôn là 'medicine' trong trường hợp này)
     medicine_quantity: null, // Số lượng thuốc
   });
 
@@ -80,11 +81,13 @@ const MedicineForm = () => {
         message.warning("Vui lòng chọn thuốc và nhập số lượng.");
         return;
       }
-      
+
       const id = localStorage.getItem("patientId")
       console.log("Id: ", id)
       console.log("medicineData22: ", medicineData)
       console.log("medicineData: ", medicineData)
+      const doctorId = localStorage.getItem("idUser")
+      medicineData.doctorId = doctorId
       const response = await axios.post(`http://localhost:8080/api/create-invoice/${id}`, medicineData);
 
       console.log("Ress: ", response)
@@ -94,6 +97,7 @@ const MedicineForm = () => {
         setMedicineData({
           parentId: null,
           keyTable: "medicine",
+          doctorId: null,
           medicine_quantity: null,
         });
       }
@@ -131,7 +135,7 @@ const MedicineForm = () => {
           </Col>
           <Col span={12}>
             <Form.Item label="Giới tính">
-              <Input value={(userInfo?.gender=="M") ? "Nam" : "Nữ"  } disabled />
+              <Input value={(userInfo?.gender == "M") ? "Nam" : "Nữ"} disabled />
             </Form.Item>
           </Col>
         </Row>

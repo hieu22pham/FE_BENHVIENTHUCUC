@@ -75,7 +75,7 @@ class ManageSchedule extends Component {
                 data = data.map((item) => {
                     return {
                         ...item,
-                       
+
                     };
                 });
             }
@@ -108,7 +108,7 @@ class ManageSchedule extends Component {
         this.props.isShowLoading(true);
         let res = await getScheduleDoctorByDateServicde(doctorId, formattedDate);
         this.props.isShowLoading(false);
-    
+
         console.log("API Response:", res); // Kiểm tra dữ liệu trả về từ API
         if (res && res.data) {
             this.setState(
@@ -119,7 +119,7 @@ class ManageSchedule extends Component {
                 () => {
                     console.log("Updated listSchedule:", this.state.listSchedule); // Kiểm tra state
                     const { rangeTime, listSchedule } = this.state;
-    
+
                     let newArr = rangeTime.map((time) => {
                         let updatedTime = { ...time, isSelected: false };
                         for (const schedule of listSchedule) {
@@ -129,7 +129,7 @@ class ManageSchedule extends Component {
                         }
                         return updatedTime;
                     });
-    
+
                     this.setState({
                         rangeTime: newArr,
                     });
@@ -137,7 +137,7 @@ class ManageSchedule extends Component {
             );
         }
     };
-    
+
 
     handleGetAllDoctor = async () => {
         await this.props.getAllDoctor();
@@ -174,7 +174,7 @@ class ManageSchedule extends Component {
 
     handleSelectTime = (data) => {
         let { rangeTime } = this.state;
-    
+
         // Lấy ra index của item được click
         let updatedRangeTime = rangeTime.map((item) => {
             if (item.id === data.id) {
@@ -184,12 +184,12 @@ class ManageSchedule extends Component {
         });
 
         console.log(updatedRangeTime)
-    
+
         this.setState({
             rangeTime: updatedRangeTime,
         });
     };
-    
+
 
     handleSaveSchedule = async () => {
         var clickCount = 1
@@ -201,24 +201,24 @@ class ManageSchedule extends Component {
             numOfPatient,
             listSchedule,
         } = this.state;
-    
+
         if (!selectedDoctor || !currentDate || !numOfPatient) {
             toast.error("Vui lòng nhập đầy đủ thông tin!");
             return;
         }
-    
+
         const selectedTimes = rangeTime.filter((time) => {
             return (
                 time.isSelected &&
                 !listSchedule.some((schedule) => schedule.timeType === time.keyMap)
             );
         });
-    
+
         if (selectedTimes.length === 0) {
             toast.error("Vui lòng chọn ít nhất một khoảng thời gian mới!");
             return;
         }
-    
+
         const scheduleData = selectedTimes.map((time) => ({
             doctorId: selectedDoctor,
             date: moment(new Date(currentDate)).startOf("day").valueOf(),
@@ -226,15 +226,15 @@ class ManageSchedule extends Component {
             timeType: time.keyMap,
             currentNumber: 0,
         }));
-    
+
         try {
             this.props.isShowLoading(true);
-    
+
             const response = await axios.post(
                 "http://localhost:8080/api/create-schedule-doctor-by-date",
                 scheduleData[0]
             );
-    
+
             if (response && response.data && response.data.errCode === 0) {
                 toast.success("Lưu lịch thành công!");
                 // Cập nhật lại danh sách lịch và bảng
@@ -250,7 +250,7 @@ class ManageSchedule extends Component {
             this.props.isShowLoading(false);
         }
     };
-    
+
 
     handleDelete = async (data) => {
         const { selectedDoctor, currentDate } = this.state;
@@ -381,8 +381,8 @@ class ManageSchedule extends Component {
                                 {listDoctor.map((item) => (
                                     <Option key={item.id} value={item.id}>
                                         {language === LANGUAGE.VI
-                                            ? `${item.firstName} ${item.lastName
-                                            } - ${item.Doctor_Infor
+                                            ? `${item.lastName
+                                            } ${item.firstName}  - ${item.Doctor_Infor
                                                 .specialtyData.nameVi
                                                 ? item.Doctor_Infor
                                                     .specialtyData
@@ -428,7 +428,7 @@ class ManageSchedule extends Component {
                                 value={currentDate}
                             />
                         </div>
-                        <div className="col-lg-4 col-sm-12 form-group"> 
+                        <div className="col-lg-4 col-sm-12 form-group">
                             <label>
                                 <FormattedMessage
                                     id={"manage-schedule.choose-numOfPatient"}
@@ -439,7 +439,7 @@ class ManageSchedule extends Component {
                                 className="form-control"
                                 name="maxNumber"
                                 type="number"
-                                onChange={(num)=>{
+                                onChange={(num) => {
                                     this.handleSelectnumOfPatient(num)
                                 }}
 

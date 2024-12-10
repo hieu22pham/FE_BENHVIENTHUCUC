@@ -16,12 +16,12 @@ const TableManageSchedules = ({ language }) => {
 
     // Fetch schedules based on selected date
     useEffect(() => {
-            setLocalDate(localStorage.getItem("dataTime"));
+        setLocalDate(localStorage.getItem("dataTime"));
     }, [localStorage.getItem("dataTime")]);
 
     useEffect(() => {
         setClickCount(localStorage.getItem("clickCount"));
-}, [localStorage.getItem("clickCount")]);
+    }, [localStorage.getItem("clickCount")]);
 
     // Fetch schedules based on selected date or localStorage change
     const fetchSchedules = async () => {
@@ -29,10 +29,10 @@ const TableManageSchedules = ({ language }) => {
         const timestamp = moment(selectedDate || new Date()).startOf("day").valueOf();
         var userId = localStorage.getItem("IdSelectedDoctor");
 
-        if(!userId){
+        if (!userId) {
             userId = localStorage.getItem("idUser");
         }
-        
+
         console.log("localDate: ", localDate)
         console.log("localDate: ", timestamp)
         console.log("localDate: ", clickCount)
@@ -46,9 +46,9 @@ const TableManageSchedules = ({ language }) => {
 
             if (response.data.errCode === 0) {
                 setDataSchedules(response.data.data);
-                
+
                 setSelectedKeys([]);
-            } 
+            }
         } catch (error) {
             console.error("Error fetching schedules:", error);
             message.error(language === LANGUAGE.EN ? "Error fetching schedules." : "Lỗi khi lấy dữ liệu lịch trình.");
@@ -76,10 +76,10 @@ const TableManageSchedules = ({ language }) => {
         console.log("Processed dataSource: ", dataSources);
         setdataSource(dataSources);
     }, [dataSchedules]);
-    
+
     const handleDelete = async (id) => {
 
-        
+
         const confirmDelete = window.confirm(
             language === LANGUAGE.EN ? "Are you sure you want to delete this schedule?" : "Bạn có chắc chắn muốn xóa lịch trình này?"
         );
@@ -125,6 +125,7 @@ const TableManageSchedules = ({ language }) => {
             key: "action",
             render: (_, record) => (
                 <Button
+                    className="btn btn-danger"
                     type="danger"
                     onClick={() => handleDelete(record.key)}
                 >
@@ -132,7 +133,7 @@ const TableManageSchedules = ({ language }) => {
                 </Button>
             ),
         },
-        
+
     ];
 
     // Handle date selection
@@ -187,7 +188,7 @@ const TableManageSchedules = ({ language }) => {
             <Button
                 type="primary"
                 onClick={handleSubmit}
-                style={{ marginTop: 20 }}
+                style={{ marginTop: 20, display: "none" }}
                 disabled={selectedKeys.length === 0} // Disable if no items selected
             >
                 {language === LANGUAGE.EN ? "Submit" : "Gửi"}

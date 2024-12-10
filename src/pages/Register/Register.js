@@ -276,12 +276,12 @@ class Register extends Component {
                                         </div>
                                         <div className="mb-lg-3 col-sm-12 col-md-12 col-lg-6">
                                             <label
-                                                htmlFor="firstName"
+                                                htmlFor="lastName"
                                                 className="form-label"
                                             >
                                                 <FormattedMessage
                                                     id={
-                                                        "patient.register.firstName"
+                                                        "patient.register.lastName"
                                                     }
                                                 />
                                             </label>
@@ -299,12 +299,12 @@ class Register extends Component {
                                         </div>
                                         <div className="mb-lg-3 col-sm-12 col-md-12 col-lg-6">
                                             <label
-                                                htmlFor="lastName"
+                                                htmlFor="firstName"
                                                 className="form-label"
                                             >
                                                 <FormattedMessage
                                                     id={
-                                                        "patient.register.lastName"
+                                                        "patient.register.firstName"
                                                     }
                                                 />
                                             </label>

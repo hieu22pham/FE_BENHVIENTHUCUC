@@ -19,7 +19,7 @@ const EditService = () => {
         console.log("serviceId: ", serviceId)
         const id = serviceId
         try {
-            const response = await axios.get(`http://localhost:8080/api/get-service/${id}`);
+            const response = await axios.get(`http://localhost:8080/api/get-all-service/${id}`);
 
             console.log(response)
             if (response.data.errCode === 0) {
