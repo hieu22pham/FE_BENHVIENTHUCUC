@@ -20,12 +20,19 @@ const HistoryBooking = () => {
   const [comment, setComment] = useState("");
 
   const userId = localStorage.getItem("idUser");
+  const [adress, setAddress] = useState("");
 
   const fetchBookings = async () => {
     setLoading(true);
     try {
       const responseBookings = await axios.get(`http://localhost:8080/api/get-booking-by-user-id/${userId}`);
       const bookingsData = responseBookings.data.data;
+
+      const userRes = await axios.get(`http://localhost:8080/api/get-infor-user?id=${userId}`);
+      console.log("userRes: ", userRes)
+
+      setAddress(userRes.data.data.address)
+      console.log("adress: ", adress)
 
       const updatedBookings = await Promise.all(
         bookingsData.map(async (booking) => {
@@ -219,7 +226,7 @@ const HistoryBooking = () => {
       title: "Địa chỉ",
       dataIndex: "address",
       key: "address",
-      render: (_, record) => record.doctorInfo?.address || "",
+      render: () => adress|| "",
     },
     {
       title: "Lý do khám",
@@ -263,7 +270,7 @@ const HistoryBooking = () => {
       title: "Địa chỉ",
       dataIndex: "address",
       key: "address",
-      render: (_, record) => record.doctorInfo?.address || "Không có địa chỉ",
+      render: () => adress|| "",
     },
     {
       title: "Kết quả khám",

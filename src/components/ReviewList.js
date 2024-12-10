@@ -24,34 +24,44 @@ export default class ReviewList extends Component {
     //     }
     // }
 
+    enrichReviewsWithPatientNames = async (reviews) => {
+        return Promise.all(
+            reviews.map(async (review) => {
+                if (review.patientId) {
+                    try {
+                        const response = await fetch(`http://localhost:8080/api/get-infor-user?id=${review.patientId}`);
+                        const data = await response.json();
+                        console.log("Data: ", data)
+                        console.log("Data: ", data.firstName)
+                        console.log("Data: ", data.lastName)
+
+
+                        review.patientName = data.data?.lastName + " " + data.data?.firstName  || "Không xác định"; // Gán tên bệnh nhân
+                    } catch (error) {
+                        console.error(`Error fetching name for patientId ${review.patientId}:`, error);
+                        review.patientName = "Không xác định"; // Gán giá trị mặc định nếu lỗi
+                    }
+                }
+                return review;
+            })
+        );
+    };
+    
+
     async componentDidUpdate(prevProps) {
         if (prevProps.doctorId !== this.props.doctorId) {
             let res = await getDoctorReviewService(this.props.doctorId);
-            console.log(' GET REVIEW By Nhat Ba: ', res);
-
-            var newArr = [];
-            if(res.data.length < 2){
-                for(var i=0; i<res.data.length; i++){
-                    if(i != res.data.length-1){
-                        newArr.push(res.data[i])
-                    }
-                }
-                if (res && res.errCode === 0) {
-                    this.setState({
-                        reviews: newArr,
-                    });
-                }
-            } else{
-                newArr = res.data
-                if (res && res.errCode === 0) {
-                    this.setState({
-                        reviews: newArr,
-                    });
-                }
+            console.log(`GET REVIEW By Nhat Ba: ${this.props.doctorId}`, res);
+            if (res && res.errCode === 0) {
+                // Enrich dữ liệu với tên bệnh nhân
+                const enrichedReviews = await this.enrichReviewsWithPatientNames(res.data);
+                this.setState({
+                    reviews: enrichedReviews,
+                });
             }
-            
         }
     }
+    
     
 
     render() {
@@ -67,8 +77,7 @@ export default class ReviewList extends Component {
                                 <div className="feedback-item" key={index}>
                                     <div className="feedback-name">
                                         <strong>
-                                            {`${review.lastName} ${review.firstName} `}
-                                            &nbsp; &nbsp;
+                                            {`${review.patientName} `}
                                         </strong>
                                         <a className="feedback-info">
                                             <i className="fas fa-check-circle"></i>

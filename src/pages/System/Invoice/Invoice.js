@@ -85,8 +85,7 @@ const Invoice = () => {
             0
         );
 
-        const priceExam = parseFloat(price || 0)
-        return serviceTotal + medicineTotal + priceExam;
+        return serviceTotal + medicineTotal ;
     };
 
     const calculateTableTotal = (items, key) => {
@@ -124,7 +123,6 @@ const Invoice = () => {
                             <p><Text strong>Địa chỉ:</Text> {userInfo?.address || 'N/A'}</p>
                             <p><Text strong>Số điện thoại:</Text> {userInfo?.phoneNumber || 'N/A'}</p>
                             <span><b>Bác sĩ</b>: {doctorName}</span><br></br>
-                            <span><b>Giá khám bệnh</b>: {formatCurrency(price)}</span>
                         </Card>
                     </Col>
                 </Row>
